@@ -8,8 +8,7 @@ Map<String, String> filter
 -
 DTOPart.class
 
-3.
-/api/v1/parts/{number} [GET]
+3. /api/v1/parts/{number} [GET]
 -
 -
 
