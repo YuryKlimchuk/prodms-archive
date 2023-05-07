@@ -1,0 +1,13 @@
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPartType.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/dto/DTOPart.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/services/listeners/PartChangeListener.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPart.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPartStatus.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartPredicateGenerator.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/ArchiveApplication.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/data/entities/DBId.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/services/parts/IPartService.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/data/repositories/PartRepository.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/data/repositories/BaseRepository.java
+/home/yury/working_folder/java_projects/prodms/archive/src/main/java/com/hydroyura/prodms/archive/services/predicates/IPredicateGenerator.java

@@ -1,0 +1,15 @@
+com/hydroyura/prodms/archive/services/listeners/PartChangeListener.class
+com/hydroyura/prodms/archive/data/entities/QDBId.class
+com/hydroyura/prodms/archive/data/entities/DBPart.class
+com/hydroyura/prodms/archive/data/repositories/PartRepository.class
+com/hydroyura/prodms/archive/services/predicates/PartPredicateGenerator.class
+com/hydroyura/prodms/archive/data/entities/DBId.class
+com/hydroyura/prodms/archive/data/entities/QDBPart.class
+com/hydroyura/prodms/archive/services/parts/IPartService.class
+com/hydroyura/prodms/archive/data/entities/DBPartStatus.class
+com/hydroyura/prodms/archive/dto/DTOPart.class
+com/hydroyura/prodms/archive/services/predicates/IPredicateGenerator.class
+com/hydroyura/prodms/archive/data/repositories/BaseRepository.class
+com/hydroyura/prodms/archive/data/entities/DBPartType.class
+com/hydroyura/prodms/archive/services/parts/PartService.class
+com/hydroyura/prodms/archive/ArchiveApplication.class
