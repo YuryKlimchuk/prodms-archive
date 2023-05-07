@@ -42,7 +42,6 @@ public class PartRestController extends AbstractRestController implements IPartR
     private Validator validator;
 
     @Override
-    @RequestMapping(value = V1 + "/parts/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiResponse> getItemById(String id) {
         logger.warn("\u001B[32m Attempt to receive item with ID = {}", id);
         ApiResponse response = new ApiResponse();
@@ -71,7 +70,6 @@ public class PartRestController extends AbstractRestController implements IPartR
     }
 
     @Override
-    @RequestMapping(value = V1 + "/parts", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiResponse> create(DTOPart item) {
         logger.warn("\u001B[32m Attempt to create item with ID = {}", item.getNumber());
         ApiResponse response = new ApiResponse();
@@ -105,7 +103,6 @@ public class PartRestController extends AbstractRestController implements IPartR
     }
 
     @Override
-    @RequestMapping(value = V1 + "/parts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiResponse> getAll(Map<String, String> filter) {
         logger.warn("\u001B[32m Attempt to receive items by filter = {}", filter);
         ApiResponse response = new ApiResponse();
@@ -137,7 +134,6 @@ public class PartRestController extends AbstractRestController implements IPartR
 
     // FIXME: check if exist
     @Override
-    @RequestMapping(value = V1 + "/parts/{number}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiResponse> update(String number, DTOPart modifiedItem) {
         logger.warn("\u001B[32m Attempt to update item with ID = {}", number);
         ApiResponse response = new ApiResponse();
@@ -171,7 +167,6 @@ public class PartRestController extends AbstractRestController implements IPartR
     }
 
     @Override
-    @RequestMapping(value = V1 + "/parts/{number}/changes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiResponse> getChangesByItemNumber(String number) {
         logger.warn("\u001B[32m Attempt to receive changes for item with ID = {}", number);
         ApiResponse response = new ApiResponse();
@@ -185,7 +180,6 @@ public class PartRestController extends AbstractRestController implements IPartR
     }
 
     @Override
-    @RequestMapping(value = V1 + "/parts/{number}/all-rates", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiResponse> getAllRatesByAssemblyNumber(String number) {
         logger.warn("\u001B[32m Attempt to receive all rates for assembly with ID = {}", number);
         ApiResponse response = new ApiResponse();
