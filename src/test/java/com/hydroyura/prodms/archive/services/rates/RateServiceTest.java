@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 //@PropertySource(value = {"application-testing-datalayer"})
 @TestPropertySource(
-        locations = "classpath:application-testing-datalayer.properties")
+        locations = "classpath:application-test.properties")
 class RateServiceTest {
 
     @Test

@@ -50,22 +50,22 @@ public class PartService implements IPartService<DTOPart, String> {
 
     @Override
     public Optional<DTOPart> getItemById(String id) {
-        logger.warn("\u001B[34m Attempt to receive item with ID = {}", id);
+        logger.warn("Attempt to receive item with ID = {}", id);
 
         Optional<DBPart> entity = repository.findById(id);
         if(entity.isEmpty()) {
-            logger.warn("\u001B[34m Item with ID = {} => not found", id);
+            logger.warn("Item with ID = {} => not found", id);
             return Optional.empty();
         }
 
         DTOPart dto = modelMapper.map(entity.get(), dtoType);
-        logger.warn("\u001B[34m Item with ID = {} => received from DB successfully", id);
+        logger.warn("Item with ID = {} => received from DB successfully", id);
         return Optional.of(dto);
     }
 
     @Override
     public Collection<DTOPart> getAllByFilter(Map<String, String> filter) {
-        logger.warn("\u001B[34m Attempt to receiving items by filter = {}", filter);
+        logger.warn("Attempt to receiving items by filter = {}", filter);
         return
                 StreamSupport.stream(repository.findAll(predicateGenerator.generate(filter)).spliterator(), false)
                         .map(entity -> modelMapper.map(entity, dtoType))
@@ -74,23 +74,23 @@ public class PartService implements IPartService<DTOPart, String> {
 
     @Override
     public Optional<DTOPart> delete(String id) {
-        logger.warn("\u001B[34m Attempt to delete item with ID = {}", id);
+        logger.warn("Attempt to delete item with ID = {}", id);
         Optional<DBPart> dbPart = repository.findById(id);
 
         if(dbPart.isEmpty()) {
-            logger.warn("\u001B[34m Item with ID = {} => not found", id);
+            logger.warn("Item with ID = {} => not found", id);
             return Optional.empty();
         }
 
         repository.deleteById(id);
         DTOPart dtoPart = modelMapper.map(dbPart.get(), DTOPart.class);
-        logger.warn("\u001B[34m Item with ID = {} => deleted from DB successfully", id);
+        logger.warn("Item with ID = {} => deleted from DB successfully", id);
         return Optional.of(dtoPart);
     }
 
     @Override
     public Optional<DTOPart> create(DTOPart dto) {
-        logger.warn("\u001B[34m Attempt to create item with ID = {}", dto.getNumber());
+        logger.warn("Attempt to create item with ID = {}", dto.getNumber());
 
         dto.setVersion(1L);
         dto.setCreated(LocalDate.now());
@@ -99,7 +99,7 @@ public class PartService implements IPartService<DTOPart, String> {
 
         DTOPart savedDTO = null;
         if(repository.existsById(dto.getNumber())) {
-            logger.warn("\u001B[34m ID = {} => Already exists", dto.getNumber());
+            logger.warn("ID = {} => Already exists", dto.getNumber());
         } else {
             try {
                 savedDTO = modelMapper.map(repository.save(entity), dtoType);
@@ -118,20 +118,19 @@ public class PartService implements IPartService<DTOPart, String> {
     }
 
 
-    // FIXME: добавить сервис каторый извлекает изменненные поля
     @Override
     public Optional<DTOPart> update(DTOPart updated) {
-        logger.warn("\u001B[34m Attempt to update item with ID = {}", updated.getNumber());
+        logger.warn("Attempt to update item with ID = {}", updated.getNumber());
 
         Optional<DTOPart> current = getItemById(updated.getNumber());
         if(current.isEmpty()) {
-            logger.warn("\u001B[34m Item with ID = {} => Not found", updated.getNumber());
+            logger.warn("Item with ID = {} => Not found", updated.getNumber());
             return Optional.empty();
         }
 
         Map<String, String> difference = objectComparator.getDifference(DTOPart.class, current.get(), updated);
         if(difference.isEmpty()) {
-            logger.warn("\u001B[34m Nothing to update, updatedObject the same with current version", updated.getNumber());
+            logger.warn("Nothing to update, updatedObject the same with current version", updated.getNumber());
             return Optional.empty();
         }
 
