@@ -30,4 +30,7 @@ public interface IPartRestController {
     @RequestMapping(value = "/api/v1/parts/{number}/all-rates", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<ApiResponse> getAllRatesByAssemblyNumber(@PathVariable(name = "number") String number);
 
+    @RequestMapping(value = "/api/v1/parts/{number}/all-assemblies", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<ApiResponse> getAssembliesByElementNumber(@PathVariable(name = "number") String number);
+
 }

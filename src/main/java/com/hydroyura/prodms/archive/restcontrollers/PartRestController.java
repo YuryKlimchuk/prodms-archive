@@ -200,5 +200,18 @@ public class PartRestController extends AbstractRestController implements IPartR
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<ApiResponse> getAssembliesByElementNumber(String number) {
+        logger.warn("Attempt to receive all rates for assembly with ID = {}", number);
+        ApiResponse response = new ApiResponse();
+        Collection<DTORate> assemblies = rateService.getAssemblies(number);
+
+        response.setStatus(HttpStatus.OK.value());
+        response.setMessage("Get rates success");
+        response.setObject(assemblies);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 
 }
