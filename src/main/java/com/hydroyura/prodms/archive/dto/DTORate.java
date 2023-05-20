@@ -6,6 +6,7 @@ public class DTORate {
     private long replacement;
     private long priority;
     private DTOPart element;
+    private DTOPart assembly;
 
 
     public DTORate() {}
@@ -41,5 +42,13 @@ public class DTORate {
 
     public void setPriority(long priority) {
         this.priority = priority;
+    }
+
+    public DTOPart getAssembly() {
+        return assembly;
+    }
+
+    public void setAssembly(DTOPart assembly) {
+        this.assembly = assembly;
     }
 }
