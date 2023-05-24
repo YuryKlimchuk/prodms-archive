@@ -39,7 +39,7 @@ public class RateService implements IRateService {
     public Collection<DTORate> getAllRates(String assemblyNumber) {
         Predicate predicate = QDBRate.dBRate.assembly.number.eq(assemblyNumber);
         return StreamSupport.stream(rateRepository.findAll(predicate).spliterator(), false)
-                    .map(item -> mapper.map(item.getElement(), DTORate.class))
+                    .map(item -> mapper.map(item, DTORate.class))
                     .collect(Collectors.toList());
     }
 

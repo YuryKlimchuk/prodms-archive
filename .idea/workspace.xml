@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="updates">
+    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="add getAssembliesByElementNumber">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/IPartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/IPartRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-testing-datalayer.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/PartRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/PartRestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/parts/PartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/parts/PartService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/ArchiveApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/ArchiveApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/dto/DTORate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/dto/DTORate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/RateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/RateService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +78,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.hydroyura.prodms.archive.dto" />
       <recent name="com.hydroyura.prodms.archive.restcontrollers" />
       <recent name="com.hydroyura.prodms.archive.services.rates" />
       <recent name="com.hydroyura.prodms.archive.data.entities" />
       <recent name="com.hydroyura.prodms.archive.services.changes" />
-      <recent name="com.hydroyura.prodms.archive.services.parts" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.hydroyura.prodms.archive.services.parts" />
@@ -109,6 +107,22 @@
       <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.entities" />
       <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.entities.DBPartChangeTest" />
       <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DTOPartChangeTest.mappingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.dto.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.dto" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.dto.DTOPartChangeTest" />
+      <option name="METHOD_NAME" value="mappingTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -161,21 +175,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PartServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.parts.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -184,19 +183,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Starter" />
+      <item itemvalue="JUnit.DTOPartChangeTest.mappingTest" />
       <item itemvalue="JUnit.PartRepositoryTest.simpleRateTest" />
       <item itemvalue="JUnit.PartRepositoryTest.rateTest" />
       <item itemvalue="JUnit.DBPartChangeTest.test1" />
       <item itemvalue="JUnit.PartChangeServiceTest" />
-      <item itemvalue="JUnit.PartServiceTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DTOPartChangeTest.mappingTest" />
         <item itemvalue="JUnit.PartRepositoryTest.simpleRateTest" />
         <item itemvalue="JUnit.PartRepositoryTest.rateTest" />
         <item itemvalue="JUnit.DBPartChangeTest.test1" />
         <item itemvalue="JUnit.PartChangeServiceTest" />
-        <item itemvalue="JUnit.PartServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -251,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683534766782</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add getAssembliesByElementNumber">
+      <created>1684433824099</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684433824099</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,7 +281,8 @@
     <MESSAGE value="corrected IPartRestController" />
     <MESSAGE value="code cleanup" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="add getAssembliesByElementNumber" />
+    <option name="LAST_COMMIT_MESSAGE" value="add getAssembliesByElementNumber" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
