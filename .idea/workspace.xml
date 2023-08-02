@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="add getAssembliesByElementNumber">
+    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="updated test data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/ArchiveApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/ArchiveApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/dto/DTORate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/dto/DTORate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/RateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/RateService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/TestData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/TestData.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +54,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
@@ -257,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684433824099</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updated test data">
+      <created>1685858979619</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685858979619</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -282,7 +287,8 @@
     <MESSAGE value="code cleanup" />
     <MESSAGE value="updates" />
     <MESSAGE value="add getAssembliesByElementNumber" />
-    <option name="LAST_COMMIT_MESSAGE" value="add getAssembliesByElementNumber" />
+    <MESSAGE value="updated test data" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated test data" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
