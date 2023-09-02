@@ -3,21 +3,13 @@ package com.hydroyura.prodms.archive.restcontrollers;
 import java.util.HashMap;
 
 public class ApiResponse {
-    private long status;
+
     private String message;
     private HashMap<String, String> info;
     private Object object;
 
 
     public ApiResponse() {}
-
-    public long getStatus() {
-        return status;
-    }
-
-    public void setStatus(long status) {
-        this.status = status;
-    }
 
     public String getMessage() {
         return message;

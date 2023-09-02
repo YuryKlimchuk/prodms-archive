@@ -1,0 +1,18 @@
+package com.hydroyura.prodms.archive.restcontrollers.examples;
+
+import com.hydroyura.prodms.archive.dto.DTOPart;
+import com.hydroyura.prodms.archive.restcontrollers.ApiResponse;
+
+
+public class ApiResponseExampleForSuccessGetId extends ApiResponse {
+
+    public ApiResponseExampleForSuccessGetId() {
+        setMessage("SUCCESS_OPERATION");
+        setInfo(null);
+        DTOPart part = new DTOPart();
+        part.setName("TEST_NAME");
+        part.setNumber("TEST_NUMBER");
+        setObject(part);
+    }
+
+}

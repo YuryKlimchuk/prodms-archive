@@ -4,6 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface IEntityChangeListener<DTO> {
 
-    public void receiveMessage(EntityChangeMessage message) throws JsonProcessingException;
+    public void receiveMessage(EntityChangeMessage message);
 
 }

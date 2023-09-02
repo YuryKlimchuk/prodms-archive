@@ -38,14 +38,6 @@ public class DBRateKey implements Serializable {
         this.elementId = elementId;
     }
 
-    public long getReplacement() {
-        return replacement;
-    }
-
-    public void setReplacement(long replacement) {
-        this.replacement = replacement;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

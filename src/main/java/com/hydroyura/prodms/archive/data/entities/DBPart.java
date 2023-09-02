@@ -15,7 +15,7 @@ import java.util.Set;
 @Entity @Table(name = "parts")
 public class DBPart {
 
-    @Id @Column
+    @Id
     private String number;
     @Column
     private long version;
@@ -44,120 +44,112 @@ public class DBPart {
     @Column
     private String info;
 
-    /*
-    @OneToMany(mappedBy = "assembly", fetch = FetchType.EAGER)
-    private Set<DBRate> assemblies;
-    @OneToMany(mappedBy = "element", fetch = FetchType.EAGER)
-    private Set<DBRate> elements;
-    */
 
-    public DBPart() {}
+    public DBPart() {
+        setPdf("N/A");
+        setOtherFile("N/A");
+        setCreated(LocalDate.now());
+        setUpdated(LocalDate.now());
+        setVersion(1L);
+    }
 
 
     public String getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public DBPart setNumber(String number) {
         this.number = number;
+        return this;
     }
 
     public long getVersion() {
         return version;
     }
 
-    public void setVersion(long version) {
+    public DBPart setVersion(long version) {
         this.version = version;
+        return this;
     }
 
     public LocalDate getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public DBPart setCreated(LocalDate created) {
         this.created = created;
+        return this;
     }
 
     public LocalDate getUpdated() {
         return updated;
     }
 
-    public void setUpdated(LocalDate updated) {
+    public DBPart setUpdated(LocalDate updated) {
         this.updated = updated;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public DBPart setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getPdf() {
         return pdf;
     }
 
-    public void setPdf(String pdf) {
+    public DBPart setPdf(String pdf) {
         this.pdf = pdf;
+        return this;
     }
 
     public String getOtherFile() {
         return otherFile;
     }
 
-    public void setOtherFile(String otherFile) {
+    public DBPart setOtherFile(String otherFile) {
         this.otherFile = otherFile;
+        return this;
     }
 
     public DBPartStatus getStatus() {
         return status;
     }
 
-    public void setStatus(DBPartStatus status) {
+    public DBPart setStatus(DBPartStatus status) {
         this.status = status;
+        return this;
     }
 
     public DBPartType getType() {
         return type;
     }
 
-    public void setType(DBPartType type) {
+    public DBPart setType(DBPartType type) {
         this.type = type;
+        return this;
     }
 
     public Collection<DBPartChange> getChanges() {
         return changes;
     }
 
-    public void setChanges(Collection<DBPartChange> changes) {
+    public DBPart setChanges(Collection<DBPartChange> changes) {
         this.changes = changes;
+        return this;
     }
 
     public String getInfo() {
         return info;
     }
 
-    public void setInfo(String info) {
+    public DBPart setInfo(String info) {
         this.info = info;
+        return this;
     }
-
-
-    /*
-    public Set<DBRate> getAssemblies() {
-        return assemblies;
-    }
-
-    public void setAssemblies(Set<DBRate> assemblies) {
-        this.assemblies = assemblies;
-    }
-
-    public Set<DBRate> getElements() {
-        return elements;
-    }
-
-    public void setElements(Set<DBRate> elements) {
-        this.elements = elements;
-    }
-     */
 }

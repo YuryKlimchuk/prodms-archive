@@ -9,12 +9,17 @@ import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
 import com.hydroyura.prodms.archive.dto.DTOPart;
 import com.hydroyura.prodms.archive.services.listeners.EntityChangeMessage;
 import com.hydroyura.prodms.archive.services.listeners.IEntityChangeListener;
+import com.hydroyura.prodms.archive.services.parts.PartService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component(value = "PartListener")
 public class PartListener implements IEntityChangeListener<DTOPart> {
+
+    private Logger logger = LoggerFactory.getLogger(PartListener.class);
 
     @Autowired @Qualifier(value = "PartChangeRepository")
     private BaseRepository<DBPartChange, DBPartChangeKey> changeRepository;
@@ -28,7 +33,7 @@ public class PartListener implements IEntityChangeListener<DTOPart> {
 
     // FIXME: User name must be edit
     @Override
-    public void receiveMessage(EntityChangeMessage message) throws JsonProcessingException {
+    public void receiveMessage(EntityChangeMessage message) {
         if(message.getObject() instanceof DTOPart part) {
             DBPartChangeKey key = new DBPartChangeKey();
             key.setVersion(part.getVersion());
@@ -42,7 +47,12 @@ public class PartListener implements IEntityChangeListener<DTOPart> {
             change.setFieldName(String.join(",", message.getMap().keySet()));
             change.setFieldValue(String.join(",", message.getMap().values()));
             change.setOperation(message.getOperation());
-            change.setObject(objectMapper.writeValueAsString(part));
+            try {
+                change.setObject(objectMapper.writeValueAsString(part));
+            } catch (JsonProcessingException e) {
+                logger.error("Error while parsing JSON");
+                //throw new RuntimeException(e);
+            }
 
             changeRepository.save(change);
         }
