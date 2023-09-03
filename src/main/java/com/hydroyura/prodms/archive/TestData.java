@@ -14,7 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;
 
-@Component
+//@Component
 public class TestData {
 
     @Autowired @Qualifier(value = "PartService")

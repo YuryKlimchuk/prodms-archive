@@ -10,9 +10,13 @@ public interface IRateService {
 
     Collection<DTORate> getAllRates(String assemblyNumber);
     Collection<DTORate> getDefaultRates(String assemblyNumber);
-    Collection<DTORate> getAssemblies(String elementNumber);
+    Collection<DTOPart> getAssemblies(String elementNumber);
 
     Optional<DTORate> create(String assemblyNumber, String elementNumber, long count);
+
+    boolean delete(String assemblyNumber, String elementNumber);
+
+    boolean changeCount(String assemblyNumber, String elementNumber, long newCount);
 
 
 }

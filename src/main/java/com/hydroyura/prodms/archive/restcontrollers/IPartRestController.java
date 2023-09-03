@@ -61,7 +61,7 @@ public interface IPartRestController {
     ResponseEntity<ApiResponse> deleteRate(@PathVariable(name = "number") String number, @PathVariable(name = "sub-number") String subNumber);
 
     @RequestMapping(value = "/api/v1/parts/{number}/rates/{sub-number}", method = RequestMethod.PUT)
-    ResponseEntity<ApiResponse> changeRateCount(@PathVariable(name = "number") String number, @PathVariable(name = "sub-number") String subNumber, @RequestBody int count);
+    ResponseEntity<ApiResponse> changeRateCount(@PathVariable(name = "number") String number, @PathVariable(name = "sub-number") String subNumber, @RequestParam int newCount);
 
     @RequestMapping(value = "/api/v1/parts/{number}/rates/{sub-number}/replacement", method = RequestMethod.POST)
     ResponseEntity<ApiResponse> addReplacement(@PathVariable(name = "number") String number, @PathVariable(name = "sub-number") String subNumber, @RequestBody String replacementNumber);

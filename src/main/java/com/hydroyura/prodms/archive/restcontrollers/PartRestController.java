@@ -186,7 +186,19 @@ public class PartRestController extends AbstractRestController implements IPartR
 
     @Override
     public ResponseEntity<ApiResponse> getAssembliesByPartNumber(String number) {
-        return null;
+        ApiResponse response = new ApiResponse();
+        Optional<DTOPart> part = partService.getItemById(number);
+
+        if (part.isEmpty()) {
+            response.setMessage("element with id[" + number + "] not found");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+
+        Collection<DTOPart> assemblies = rateService.getAssemblies(number);
+        response.setMessage("element found");
+        response.setObject(assemblies);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Override
@@ -194,26 +206,47 @@ public class PartRestController extends AbstractRestController implements IPartR
         logger.warn("Attempt to receive all rates for assembly with ID = {}", number);
         ApiResponse response = new ApiResponse();
         Collection<DTORate> rates = rateService.getAllRates(number);
-
+        //TODO: add check if assembly exist
         response.setMessage("Get rates success");
         response.setObject(rates);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+
+    // TODO: add logic for bad cases
     @Override
     public ResponseEntity<ApiResponse> createRate(String number, DTORate rate) {
-        return null;
+        ApiResponse response = new ApiResponse();
+        response.setMessage("SUCCESS");
+        response.setObject(rateService.create(number, rate.getElement().getNumber(), rate.getCount()).get());
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<ApiResponse> deleteRate(String number, String subNumber) {
-        return null;
+        ApiResponse response = new ApiResponse();
+
+        if (rateService.delete(number, subNumber)) {
+            response.setMessage("SUCCESS_DELETED");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+
+        response.setMessage("NOT_DELETED");
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
-    public ResponseEntity<ApiResponse> changeRateCount(String number, String subNumber, int count) {
-        return null;
+    public ResponseEntity<ApiResponse> changeRateCount(String number, String subNumber, int newCount) {
+        ApiResponse response = new ApiResponse();
+
+        if (rateService.changeCount(number, subNumber, newCount)) {
+            response.setMessage("SUCCESS_UPDATED_COUNT");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+
+        response.setMessage("NOT_UPDATED");
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
@@ -222,7 +255,7 @@ public class PartRestController extends AbstractRestController implements IPartR
     }
 
     @Override
-    public ResponseEntity<ApiResponse> updateReplacementNumber(String number, String subNumber, String replacementNumber) {
+    public ResponseEntity<ApiResponse> updateReplacementNumber(String number, String subNumber, String replacementPriority) {
         return null;
     }
 

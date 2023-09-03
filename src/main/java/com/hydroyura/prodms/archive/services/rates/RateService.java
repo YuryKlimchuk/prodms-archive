@@ -5,7 +5,9 @@ import com.hydroyura.prodms.archive.data.entities.DBRate;
 import com.hydroyura.prodms.archive.data.entities.DBRateKey;
 import com.hydroyura.prodms.archive.data.entities.QDBRate;
 import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
+import com.hydroyura.prodms.archive.dto.DTOPart;
 import com.hydroyura.prodms.archive.dto.DTORate;
+import com.hydroyura.prodms.archive.services.predicates.IPredicateGenerator;
 import com.querydsl.core.types.Predicate;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -25,6 +28,9 @@ public class RateService implements IRateService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+
+    @Autowired @Qualifier(value = "PartRatePredicateGenerator")
+    private IPredicateGenerator partRatePredicateGenerator;
 
     @Autowired @Qualifier(value = "RateRepository")
     private BaseRepository<DBRate, DBRateKey> rateRepository;
@@ -39,7 +45,7 @@ public class RateService implements IRateService {
     public Collection<DTORate> getAllRates(String assemblyNumber) {
         Predicate predicate = QDBRate.dBRate.assembly.number.eq(assemblyNumber);
         return StreamSupport.stream(rateRepository.findAll(predicate).spliterator(), false)
-                    .map(item -> mapper.map(item.getElement(), DTORate.class))
+                    .map(item -> mapper.map(item, DTORate.class))
                     .collect(Collectors.toList());
     }
 
@@ -61,10 +67,10 @@ public class RateService implements IRateService {
     }
 
     @Override
-    public Collection<DTORate> getAssemblies(String elementNumber) {
+    public Collection<DTOPart> getAssemblies(String elementNumber) {
         Predicate predicate = QDBRate.dBRate.element.number.eq(elementNumber);
         return StreamSupport.stream(rateRepository.findAll(predicate).spliterator(), false)
-                .map(item -> mapper.map(item.getElement(), DTORate.class))
+                .map(item -> mapper.map(item.getAssembly(), DTOPart.class))
                 .collect(Collectors.toList());
     }
 
@@ -78,6 +84,42 @@ public class RateService implements IRateService {
         rate.setElement(partRepository.getReferenceById(elementNumber));
         DBRate savedRate = rateRepository.save(rate);
         return Optional.ofNullable(mapper.map(savedRate, DTORate.class));
+    }
+
+    @Override
+    public boolean delete(String assemblyNumber, String elementNumber) {
+        Map<String, String> params = Map.of(
+                "assembly-number", assemblyNumber,
+                "element-number", elementNumber
+        );
+
+        Predicate predicate = partRatePredicateGenerator.generate(params);
+
+        try {
+            Collection<DBRateKey> rateKeysForDeleting = StreamSupport.stream(rateRepository.findAll(predicate).spliterator(), true)
+                    .map(DBRate::getKey)
+                    .collect(Collectors.toList());
+            rateRepository.deleteAllById(rateKeysForDeleting);
+        } catch (Exception e) {
+            logger.error("Error while removing DB rates");
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean changeCount(String assemblyNumber, String elementNumber, long newCount) {
+        Map<String, String> params = Map.of(
+                "assembly-number", assemblyNumber,
+                "element-number", elementNumber
+        );
+
+        Predicate predicate = partRatePredicateGenerator.generate(params);
+        DBRate rate = rateRepository.findAll(predicate).iterator().next();
+
+        rate.setCount(newCount);
+        rateRepository.save(rate);
+        return true;
     }
 
 
