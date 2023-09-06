@@ -173,11 +173,6 @@ public class PartRestController extends AbstractRestController implements IPartR
     }
 
     @Override
-    public ResponseEntity<ApiResponse> getExpandedRatesByAssemblyNumber(String number) {
-        return null;
-    }
-
-    @Override
     public ResponseEntity<ApiResponse> getAssembliesByPartNumber(String number) {
         ApiResponse response = new ApiResponse();
         Optional<DTOPart> part = partService.getItemById(number);
@@ -244,11 +239,19 @@ public class PartRestController extends AbstractRestController implements IPartR
 
     @Override
     public ResponseEntity<ApiResponse> addReplacement(String number, String subNumber, String replacementNumber) {
-        return null;
+        ApiResponse response = new ApiResponse();
+
+        if (rateService.addReplacement(number, subNumber, replacementNumber)) {
+            response.setMessage("SUCCESS_ADDED_REPLACEMENT");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+
+        response.setMessage("SERVER_ERROR");
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
-    public ResponseEntity<ApiResponse> updateReplacementNumber(String number, String subNumber, String replacementPriority) {
+    public ResponseEntity<ApiResponse> updateReplacementPriority(String number, String subNumber, String replacementPriority) {
         return null;
     }
 
@@ -257,6 +260,10 @@ public class PartRestController extends AbstractRestController implements IPartR
         return null;
     }
 
+    @Override
+    public ResponseEntity<ApiResponse> getExpandedRatesByAssemblyNumber(String number) {
+        return null;
+    }
 
     @ModelAttribute
     private void getRequestLog(HttpServletRequest request) {

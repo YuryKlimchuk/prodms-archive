@@ -2,8 +2,10 @@ package com.hydroyura.prodms.archive.services.rates;
 
 import com.hydroyura.prodms.archive.data.entities.DBPart;
 import com.hydroyura.prodms.archive.data.entities.DBRate;
+import com.hydroyura.prodms.archive.data.entities.DBRateReplacement;
 import com.hydroyura.prodms.archive.data.entities.keys.DBRateKey;
 import com.hydroyura.prodms.archive.data.entities.QDBRate;
+import com.hydroyura.prodms.archive.data.entities.keys.DBRateReplacementKey;
 import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
 import com.hydroyura.prodms.archive.dto.DTOPart;
 import com.hydroyura.prodms.archive.dto.DTORate;
@@ -37,6 +39,9 @@ public class RateService implements IRateService {
 
     @Autowired @Qualifier(value = "PartRepository")
     private BaseRepository<DBPart, String> partRepository;
+
+    @Autowired @Qualifier(value = "RateReplacementRepository")
+    private BaseRepository<DBRateReplacement, DBRateReplacementKey> rateReplacementRepository;
 
     @Autowired
     private ModelMapper mapper;
@@ -123,15 +128,34 @@ public class RateService implements IRateService {
     }
 
     @Override
-    public boolean addReplacement(String number, String subNumber, String replacementNumber) {
-        Map<String, String> params = Map.of(
-                "assembly-number", number,
-                "element-number", subNumber
-        );
-        Predicate predicate = partRatePredicateGenerator.generate(params);
+    public boolean addReplacement(String assemblyNumber, String elementNumber, String replacementNumber) {
+        DBRateKey rateKey = new DBRateKey().setAssemblyId(assemblyNumber).setElementId(elementNumber);
 
+        if (!rateRepository.existsById(rateKey)) {
+            logger.info("rate not exist");
+            return false;
+        };
 
-        return false;
+        DBRateReplacementKey rateReplacementKey = new DBRateReplacementKey()
+                .setReplacementId(replacementNumber)
+                .setAssemblyId(assemblyNumber)
+                .setElementId(elementNumber);
+
+        DBRateReplacement rateReplacement = new DBRateReplacement()
+                .setKey(rateReplacementKey)
+                .setAssembly(partRepository.findById(assemblyNumber).get())
+                .setElement(partRepository.findById(elementNumber).get())
+                .setReplacement(partRepository.findById(replacementNumber).get())
+                .setPriority(0L);
+
+        try {
+            rateReplacementRepository.save(rateReplacement);
+        } catch (Exception e) {
+            logger.error("error while adding replacement to rate", e);
+            return false;
+        }
+
+        return true;
     }
 
 

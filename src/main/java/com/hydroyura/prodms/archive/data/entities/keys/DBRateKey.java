@@ -18,21 +18,22 @@ public class DBRateKey implements Serializable {
 
     public DBRateKey() {}
 
-
     public String getAssemblyId() {
         return assemblyId;
     }
 
-    public void setAssemblyId(String assemblyId) {
+    public DBRateKey setAssemblyId(String assemblyId) {
         this.assemblyId = assemblyId;
+        return this;
     }
 
     public String getElementId() {
         return elementId;
     }
 
-    public void setElementId(String elementId) {
+    public DBRateKey setElementId(String elementId) {
         this.elementId = elementId;
+        return this;
     }
 
     @Override

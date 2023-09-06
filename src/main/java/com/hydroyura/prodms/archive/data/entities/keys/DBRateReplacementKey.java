@@ -26,24 +26,27 @@ public class DBRateReplacementKey implements Serializable {
         return assemblyId;
     }
 
-    public void setAssemblyId(String assemblyId) {
+    public DBRateReplacementKey setAssemblyId(String assemblyId) {
         this.assemblyId = assemblyId;
+        return this;
     }
 
     public String getElementId() {
         return elementId;
     }
 
-    public void setElementId(String elementId) {
+    public DBRateReplacementKey setElementId(String elementId) {
         this.elementId = elementId;
+        return this;
     }
 
     public String getReplacementId() {
         return replacementId;
     }
 
-    public void setReplacementId(String replacementId) {
+    public DBRateReplacementKey setReplacementId(String replacementId) {
         this.replacementId = replacementId;
+        return this;
     }
 
     @Override
