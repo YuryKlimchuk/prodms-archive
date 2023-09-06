@@ -1,5 +1,6 @@
 package com.hydroyura.prodms.archive.data.entities;
 
+import com.hydroyura.prodms.archive.data.entities.keys.DBRateKey;
 import jakarta.persistence.*;
 
 @Entity @Table(name = "assembly_rates")
@@ -21,8 +22,6 @@ public class DBRate {
     @Column(name = "count")
     private long count;
 
-    @Column(name = "priority")
-    private long priority = 0;
 
     public DBRate() {}
 
@@ -59,11 +58,4 @@ public class DBRate {
         this.count = count;
     }
 
-    public long getPriority() {
-        return priority;
-    }
-
-    public void setPriority(long priority) {
-        this.priority = priority;
-    }
 }

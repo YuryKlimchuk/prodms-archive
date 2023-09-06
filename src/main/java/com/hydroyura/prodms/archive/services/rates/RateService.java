@@ -2,7 +2,7 @@ package com.hydroyura.prodms.archive.services.rates;
 
 import com.hydroyura.prodms.archive.data.entities.DBPart;
 import com.hydroyura.prodms.archive.data.entities.DBRate;
-import com.hydroyura.prodms.archive.data.entities.DBRateKey;
+import com.hydroyura.prodms.archive.data.entities.keys.DBRateKey;
 import com.hydroyura.prodms.archive.data.entities.QDBRate;
 import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
 import com.hydroyura.prodms.archive.dto.DTOPart;
@@ -120,6 +120,18 @@ public class RateService implements IRateService {
         rate.setCount(newCount);
         rateRepository.save(rate);
         return true;
+    }
+
+    @Override
+    public boolean addReplacement(String number, String subNumber, String replacementNumber) {
+        Map<String, String> params = Map.of(
+                "assembly-number", number,
+                "element-number", subNumber
+        );
+        Predicate predicate = partRatePredicateGenerator.generate(params);
+
+
+        return false;
     }
 
 

@@ -4,14 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="code cleanup">
+    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="saved current changes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBRateReplacement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/keys/DBRateReplacementKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V2__add_replacement_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/TestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/TestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBRate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBRateKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/keys/DBRateKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/repositories/RateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/repositories/RateRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-testing-datalayer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-testing-datalayer.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/IRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/IRateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__init_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__init_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/DBEntitiesBuilders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/DBEntitiesBuilders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/RateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/RateRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBRateKey.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/IPartRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/IPartRestController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/PartRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/PartRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/IRateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/IRateService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/RateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/RateService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/hydroyura/prodms/archive/data/entities/QDBRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/hydroyura/prodms/archive/data/entities/QDBRate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/hydroyura/prodms/archive/data/entities/QDBRateKey.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +41,8 @@
         <option value="Enum" />
         <option value="Dockerfile" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -33,6 +50,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/repositories/RateRepository.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__init_db.sql" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -41,31 +59,38 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-        <option name="useMavenConfig" value="true" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../Program Files/apache-maven-3.9.4" />
+        <option name="useMavenConfig" value="false" />
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: -1
+}</component>
   <component name="ProjectId" id="2NvR8Mu8hnnNGx7x2iYyzPp5eLR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/yury/working_folder/java_projects/prodms/archive&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/user/IdeaProjects/prodms-archive/src/main/resources/db/migration",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "copyright"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\IdeaProjects\prodms-archive\src\main\resources\db\migration" />
       <recent name="$PROJECT_DIR$/dev/discovery" />
       <recent name="$PROJECT_DIR$/src/main/resources/db/migration" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -75,17 +100,24 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.hydroyura.prodms.archive.services.parts" />
+      <recent name="com.hydroyura.prodms.archive.data.repositories" />
       <recent name="com.hydroyura.prodms.archive.services.rates" />
       <recent name="com.hydroyura.prodms.archive.data.entities" />
       <recent name="com.hydroyura.prodms.archive.services.changes" />
-      <recent name="com.hydroyura.prodms.archive.restcontrollers" />
-      <recent name="com.hydroyura.prodms.archive.services.parts" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hydroyura.prodms.archive.data.entities.keys" />
       <recent name="com.hydroyura.prodms.archive.services.parts" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Starter">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="Starter" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.ArchiveApplication" />
       <module name="archive" />
@@ -93,65 +125,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DBPartChangeTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PartRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="archive" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.entities.*" />
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.entities" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.entities.DBPartChangeTest" />
-      <option name="METHOD_NAME" value="test1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PartChangeServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.changes.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.changes" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.changes.PartChangeServiceTest" />
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.PartRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PartRepositoryTest.rateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.PartRepositoryTest" />
-      <option name="METHOD_NAME" value="rateTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PartRepositoryTest.simpleRateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.PartRepositoryTest" />
-      <option name="METHOD_NAME" value="simpleRateTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,32 +150,75 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
       <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
+      <option name="METHOD_NAME" value="context" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings />
-      </deployment>
-      <method v="2" />
+    <configuration name="PartServiceTest.context" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.parts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
+      <option name="METHOD_NAME" value="context" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RateRepositoryTest.context" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.RateRepositoryTest" />
+      <option name="METHOD_NAME" value="context" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RateRepositoryTest.save" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.RateRepositoryTest" />
+      <option name="METHOD_NAME" value="save" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Application.Starter" />
-      <item itemvalue="JUnit.PartRepositoryTest.simpleRateTest" />
-      <item itemvalue="JUnit.PartRepositoryTest.rateTest" />
-      <item itemvalue="JUnit.DBPartChangeTest.test1" />
-      <item itemvalue="JUnit.PartChangeServiceTest" />
       <item itemvalue="JUnit.PartServiceTest" />
+      <item itemvalue="JUnit.PartServiceTest.context" />
+      <item itemvalue="JUnit.RateRepositoryTest.context" />
+      <item itemvalue="JUnit.RateRepositoryTest.save" />
+      <item itemvalue="JUnit.PartRepositoryTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PartRepositoryTest.simpleRateTest" />
-        <item itemvalue="JUnit.PartRepositoryTest.rateTest" />
-        <item itemvalue="JUnit.DBPartChangeTest.test1" />
-        <item itemvalue="JUnit.PartChangeServiceTest" />
         <item itemvalue="JUnit.PartServiceTest" />
+        <item itemvalue="JUnit.PartServiceTest.context" />
+        <item itemvalue="JUnit.RateRepositoryTest.save" />
+        <item itemvalue="JUnit.RateRepositoryTest.context" />
+        <item itemvalue="JUnit.PartRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -239,8 +266,36 @@
       <option name="project" value="LOCAL" />
       <updated>1683469773708</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="saved current changes">
+      <option name="closed" value="true" />
+      <created>1693638908942</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693638908942</updated>
+    </task>
+    <task id="LOCAL-00007" summary="saved current changes">
+      <option name="closed" value="true" />
+      <created>1693762970733</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693762970733</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.ws.rs:jakarta.ws.rs-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -262,20 +317,36 @@
     <MESSAGE value="update README.md" />
     <MESSAGE value="corrected IPartRestController" />
     <MESSAGE value="code cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="code cleanup" />
+    <MESSAGE value="saved current changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="saved current changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/PartRepositoryTest.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/PartChangeRepositoryTest.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="2" />
+          <line>41</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java</url>
+          <line>212</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -284,11 +355,19 @@
         <PinnedItemInfo parentTag="java.beans.PropertyChangeSupport" memberName="map" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((AnnotationConfigServletWebServerApplicationContext)((TestData)this).context2).earlyApplicationListeners" custom="org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext,com.hydroyura.prodms.archive.TestData" />
+        <watch expression="((AnnotationConfigServletWebServerApplicationContext)((TestData)this).context2).earlyApplicationListeners" custom="org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext,com.hydroyura.prodms.archive.TestData" />
+        <watch expression="((ApplicationContext)((ApplicationContextFacade)((AnnotationConfigServletWebServerApplicationContext)((TestData)this).context2).servletContext).context).dispatchData" custom="org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext,org.apache.catalina.core.ApplicationContextFacade,com.hydroyura.prodms.archive.TestData,org.apache.catalina.core.ApplicationContext" />
+        <watch expression="((java.util.concurrent.ConcurrentHashMap)((ApplicationContext)((ApplicationContextFacade)((AnnotationConfigServletWebServerApplicationContext)((TestData)this).context2).servletContext).context).attributes).entrySet().toArray()[8]" custom="org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext,org.apache.catalina.core.ApplicationContextFacade,com.hydroyura.prodms.archive.TestData,java.util.concurrent.ConcurrentHashMap,org.apache.catalina.core.ApplicationContext" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/archive$Starter.ic" NAME="Starter Coverage Results" MODIFIED="1681028043749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/archive$PartRepositoryTest_rateTest.ic" NAME="PartRepositoryTest.rateTest Coverage Results" MODIFIED="1683313242686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.hydroyura.prodms.archive.data.repositories.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/archive$Starter.ic" NAME="Starter Coverage Results" MODIFIED="1681028043749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

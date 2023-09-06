@@ -18,5 +18,7 @@ public interface IRateService {
 
     boolean changeCount(String assemblyNumber, String elementNumber, long newCount);
 
+    boolean addReplacement(String number, String subNumber, String replacementNumber);
+
 
 }

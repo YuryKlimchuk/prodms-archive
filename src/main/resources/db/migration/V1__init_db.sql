@@ -33,14 +33,14 @@ CREATE TABLE parts_changes(
 CREATE TABLE assembly_rates(
     assembly_id VARCHAR(255) NOT NULL,
     element_id VARCHAR(255) NOT NULL,
-    replacement bigint NOT NULL,
-    count bigint,
-    priority bigint,
-    PRIMARY KEY (assembly_id, element_id, replacement),
-    CONSTRAINT fki7d2y2lh5v32s1wu8i2lrrrfk
+    count bigint NOT NULL,
+
+    PRIMARY KEY (assembly_id, element_id),
+
+    CONSTRAINT asm_rates2parts__element_id2number
         FOREIGN KEY (element_id)
         REFERENCES parts (number),
-    CONSTRAINT fknxg4bmya15yuvnhm7ejsmdb7a
+    CONSTRAINT asm_rates2parts__assembly_id2number
         FOREIGN KEY (assembly_id)
         REFERENCES parts (number)
 )

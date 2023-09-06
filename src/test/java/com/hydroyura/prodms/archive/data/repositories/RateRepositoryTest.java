@@ -1,6 +1,7 @@
 package com.hydroyura.prodms.archive.data.repositories;
 
 import com.hydroyura.prodms.archive.data.entities.*;
+import com.hydroyura.prodms.archive.data.entities.keys.DBRateKey;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
