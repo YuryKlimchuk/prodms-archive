@@ -69,7 +69,7 @@ public interface IPartRestController {
     @RequestMapping(value = "/api/v1/parts/{number}/rates/{sub-number}/replacement", method = RequestMethod.PUT)
     ResponseEntity<ApiResponse> updateReplacementPriority(@PathVariable(name = "number") String number, @PathVariable(name = "sub-number") String subNumber, @RequestBody String replacementNumber);
 
-    @RequestMapping(value = "/api/v1/parts/{number}/rates/{sub-number}/replacement", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/api/v1/parts/{number}/rates/{sub-number}/replacement/{replacement-number}", method = RequestMethod.DELETE)
     ResponseEntity<ApiResponse> removeReplacement(@PathVariable(name = "number") String number, @PathVariable(name = "sub-number") String subNumber, @PathVariable(name = "replacement-number") String replacementNumber);
 
     @RequestMapping(value = "/api/v1/parts/{number}/rates/expanded", method = RequestMethod.GET)

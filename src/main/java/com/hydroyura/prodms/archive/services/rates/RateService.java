@@ -143,15 +143,36 @@ public class RateService implements IRateService {
 
         DBRateReplacement rateReplacement = new DBRateReplacement()
                 .setKey(rateReplacementKey)
-                .setAssembly(partRepository.findById(assemblyNumber).get())
-                .setElement(partRepository.findById(elementNumber).get())
-                .setReplacement(partRepository.findById(replacementNumber).get())
+                .setAssembly(partRepository.getReferenceById(assemblyNumber))
+                .setElement(partRepository.getReferenceById(elementNumber))
+                .setReplacement(partRepository.getReferenceById(replacementNumber))
                 .setPriority(0L);
 
         try {
             rateReplacementRepository.save(rateReplacement);
         } catch (Exception e) {
             logger.error("error while adding replacement to rate", e);
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean removeReplacement(String assemblyNumber, String elementNumber, String replacementNumber) {
+        DBRateReplacementKey rateReplacementKey = new DBRateReplacementKey()
+                .setReplacementId(replacementNumber)
+                .setAssemblyId(assemblyNumber)
+                .setElementId(elementNumber);
+
+        if (!rateReplacementRepository.existsById(rateReplacementKey)) {
+            return false;
+        }
+
+        try {
+            rateReplacementRepository.deleteById(rateReplacementKey);
+        } catch (Exception e) {
+            logger.error("Error while deleting replacement", e);
             return false;
         }
 

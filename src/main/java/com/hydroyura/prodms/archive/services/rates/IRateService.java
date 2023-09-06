@@ -20,5 +20,7 @@ public interface IRateService {
 
     boolean addReplacement(String number, String subNumber, String replacementNumber);
 
+    boolean removeReplacement(String number, String subNumber, String replacementNumber);
+
 
 }

@@ -257,7 +257,15 @@ public class PartRestController extends AbstractRestController implements IPartR
 
     @Override
     public ResponseEntity<ApiResponse> removeReplacement(String number, String subNumber, String replacementNumber) {
-        return null;
+        ApiResponse response = new ApiResponse();
+
+        if (rateService.removeReplacement(number, subNumber, replacementNumber)) {
+            response.setMessage("SUCCESS_REMOVED_REPLACEMENT");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+
+        response.setMessage("SERVER_ERROR");
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
