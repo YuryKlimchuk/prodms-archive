@@ -22,5 +22,5 @@ public interface IRateService {
 
     boolean removeReplacement(String number, String subNumber, String replacementNumber);
 
-
+    boolean updateReplacementPriority(String number, String subNumber, String replacementNumber, int priority);
 }

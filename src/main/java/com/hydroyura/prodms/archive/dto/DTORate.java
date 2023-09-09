@@ -3,8 +3,7 @@ package com.hydroyura.prodms.archive.dto;
 public class DTORate {
 
     private long count;
-    private long replacement;
-    private long priority;
+
     private DTOPart element;
 
 
@@ -19,14 +18,6 @@ public class DTORate {
         this.count = count;
     }
 
-    public long getReplacement() {
-        return replacement;
-    }
-
-    public void setReplacement(long replacement) {
-        this.replacement = replacement;
-    }
-
     public DTOPart getElement() {
         return element;
     }
@@ -35,11 +26,4 @@ public class DTORate {
         this.element = element;
     }
 
-    public long getPriority() {
-        return priority;
-    }
-
-    public void setPriority(long priority) {
-        this.priority = priority;
-    }
 }

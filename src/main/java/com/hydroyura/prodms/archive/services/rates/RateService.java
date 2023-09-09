@@ -56,6 +56,7 @@ public class RateService implements IRateService {
 
     @Override
     public Collection<DTORate> getDefaultRates(String assemblyNumber) {
+        /*
         Collection<DTORate> allRates = getAllRates(assemblyNumber);
         Collection<DTORate> replacementRates = allRates.stream().filter(item -> item.getReplacement() > 0).collect(Collectors.toList());
         Collection<Long> replacementIds = replacementRates.stream().map(DTORate::getReplacement).collect(Collectors.toSet());
@@ -69,6 +70,9 @@ public class RateService implements IRateService {
         Collection<DTORate> result = allRates.stream().filter(item -> item.getReplacement() == 0).collect(Collectors.toList());
         result.addAll(defaultReplacements);
         return result;
+
+         */
+        return null;
     }
 
     @Override
@@ -177,6 +181,21 @@ public class RateService implements IRateService {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean updateReplacementPriority(String number, String subNumber, String replacementNumber, int priority) {
+        DBRateReplacementKey key = new DBRateReplacementKey()
+                .setAssemblyId(number)
+                .setElementId(subNumber)
+                .setReplacementId(replacementNumber);
+
+        Optional<DBRateReplacement> rateReplacement = rateReplacementRepository.findById(key);
+        if (rateReplacement.isPresent()) {
+            rateReplacementRepository.save(rateReplacement.get().setPriority(priority));
+            return true;
+        };
+        return false;
     }
 
 

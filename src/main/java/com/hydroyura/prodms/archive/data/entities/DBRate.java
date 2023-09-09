@@ -3,6 +3,8 @@ package com.hydroyura.prodms.archive.data.entities;
 import com.hydroyura.prodms.archive.data.entities.keys.DBRateKey;
 import jakarta.persistence.*;
 
+// import java.util.Set;
+
 @Entity @Table(name = "assembly_rates")
 public class DBRate {
 
@@ -22,6 +24,10 @@ public class DBRate {
     @Column(name = "count")
     private long count;
 
+    /*
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<DBRateReplacement> replacements;
+    */
 
     public DBRate() {}
 
@@ -58,4 +64,14 @@ public class DBRate {
         this.count = count;
     }
 
+    /*
+    public Set<DBRateReplacement> getReplacements() {
+        return replacements;
+    }
+
+    public void setReplacements(Set<DBRateReplacement> replacements) {
+        this.replacements = replacements;
+    }
+
+     */
 }

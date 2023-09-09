@@ -15,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.DataBinder;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.HandlerMapping;
 
@@ -251,8 +253,14 @@ public class PartRestController extends AbstractRestController implements IPartR
     }
 
     @Override
-    public ResponseEntity<ApiResponse> updateReplacementPriority(String number, String subNumber, String replacementPriority) {
-        return null;
+    public ResponseEntity<ApiResponse> updateReplacementPriority(String number, String subNumber, String replacementNumber, int priority) {
+        ApiResponse response = new ApiResponse();
+
+        rateService.updateReplacementPriority(number, subNumber, replacementNumber, priority);
+
+
+        response.setMessage("SUCCESS_UPDATED_REPLACEMENT");
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Override
