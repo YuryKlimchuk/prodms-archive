@@ -2,10 +2,6 @@ package com.hydroyura.prodms.archive.restcontrollers;
 
 import com.hydroyura.prodms.archive.dto.DTOPart;
 import com.hydroyura.prodms.archive.dto.DTORate;
-import com.hydroyura.prodms.archive.restcontrollers.examples.ApiResponseExampleForSuccessGetId;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,24 +17,6 @@ public interface IPartRestController {
     @RequestMapping(value = "/api/v1/parts", method = RequestMethod.POST)
     ResponseEntity<ApiResponse> createPart(@RequestBody DTOPart item);
 
-    @Operation(
-            summary = "Get part by number",
-            description = "Get part by number",
-            responses = {
-                    @io.swagger.v3.oas.annotations.responses.ApiResponse(
-                            responseCode = "200",
-                            description = "Part with present number was found, success operation",
-                            content = @Content(
-                                    mediaType = "application/json",
-                                    schema = @Schema(implementation = ApiResponseExampleForSuccessGetId.class)
-                            )
-                    ),
-                    @io.swagger.v3.oas.annotations.responses.ApiResponse(
-                            responseCode = "400",
-                            description = "Part with present number was not found"
-                    ),
-                    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500")
-            })
     @RequestMapping(value = "/api/v1/parts/{number}", method = RequestMethod.GET)
     ResponseEntity<ApiResponse> getItemById(@PathVariable(name = "number") String number);
 
