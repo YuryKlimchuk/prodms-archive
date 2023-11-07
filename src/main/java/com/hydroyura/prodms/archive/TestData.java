@@ -10,11 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;
 
-@Component
+//@Component
 public class TestData {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -24,6 +26,16 @@ public class TestData {
 
     @Autowired @Qualifier(value = "RateService")
     private IRateService rateService;
+
+
+    @Autowired
+    WebApplicationContext context;
+
+    @Autowired
+    ApplicationContext context2;
+
+
+
 
 
     @PostConstruct

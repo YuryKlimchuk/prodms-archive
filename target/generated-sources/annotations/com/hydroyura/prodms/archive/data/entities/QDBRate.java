@@ -28,9 +28,7 @@ public class QDBRate extends EntityPathBase<DBRate> {
 
     public final QDBPart element;
 
-    public final QDBRateKey key;
-
-    public final NumberPath<Long> priority = createNumber("priority", Long.class);
+    public final com.hydroyura.prodms.archive.data.entities.keys.QDBRateKey key;
 
     public QDBRate(String variable) {
         this(DBRate.class, forVariable(variable), INITS);
@@ -52,7 +50,7 @@ public class QDBRate extends EntityPathBase<DBRate> {
         super(type, metadata, inits);
         this.assembly = inits.isInitialized("assembly") ? new QDBPart(forProperty("assembly")) : null;
         this.element = inits.isInitialized("element") ? new QDBPart(forProperty("element")) : null;
-        this.key = inits.isInitialized("key") ? new QDBRateKey(forProperty("key")) : null;
+        this.key = inits.isInitialized("key") ? new com.hydroyura.prodms.archive.data.entities.keys.QDBRateKey(forProperty("key")) : null;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.hydroyura.prodms.archive.data.entities;
+package com.hydroyura.prodms.archive.data.entities.keys;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -15,35 +15,25 @@ public class DBRateKey implements Serializable {
     @Column(name = "element_id")
     private String elementId;
 
-    @Column(name = "replacement")
-    private long replacement = 0;
-
 
     public DBRateKey() {}
-
 
     public String getAssemblyId() {
         return assemblyId;
     }
 
-    public void setAssemblyId(String assemblyId) {
+    public DBRateKey setAssemblyId(String assemblyId) {
         this.assemblyId = assemblyId;
+        return this;
     }
 
     public String getElementId() {
         return elementId;
     }
 
-    public void setElementId(String elementId) {
+    public DBRateKey setElementId(String elementId) {
         this.elementId = elementId;
-    }
-
-    public long getReplacement() {
-        return replacement;
-    }
-
-    public void setReplacement(long replacement) {
-        this.replacement = replacement;
+        return this;
     }
 
     @Override
@@ -51,11 +41,11 @@ public class DBRateKey implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DBRateKey dbRateKey = (DBRateKey) o;
-        return replacement == dbRateKey.replacement && Objects.equals(assemblyId, dbRateKey.assemblyId) && Objects.equals(elementId, dbRateKey.elementId);
+        return Objects.equals(assemblyId, dbRateKey.assemblyId) && Objects.equals(elementId, dbRateKey.elementId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(assemblyId, elementId, replacement);
+        return Objects.hash(assemblyId, elementId);
     }
 }

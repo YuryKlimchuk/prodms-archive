@@ -12,6 +12,14 @@ services:
     volumes:
       - "db-volume:/var/lib/postgresql/data"
 
+  mongo-db-dev:
+    image: mongo
+    ports:
+      - "8081:8081"
+    #environment:
+    #  - MONGO_INITDB_ROOT_USERNAME=root
+    #  - MONGO_INITDB_ROOT_PASSWORD=example
+
   postgres-test:
     image: postgres:15-alpine
     ports:

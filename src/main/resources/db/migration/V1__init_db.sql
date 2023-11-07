@@ -1,5 +1,4 @@
 -- create tables parts: BEGIN
-DROP TABLE IF EXISTS parts CASCADE;
 CREATE TABLE parts(
     number VARCHAR(255) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -14,7 +13,6 @@ CREATE TABLE parts(
 );
 -- create tables parts: END
 -- create tables parts_changes: BEGIN
-DROP TABLE IF EXISTS parts_changes CASCADE;
 CREATE TABLE parts_changes(
     part_number VARCHAR(255) NOT NULL,
     user_name VARCHAR(255) NOT NULL,
@@ -27,11 +25,25 @@ CREATE TABLE parts_changes(
 
     PRIMARY KEY (part_number, version),
     CONSTRAINT fk_parts2parts_changes
-        FOREIGN KEY(part_number)
-        REFERENCES parts(number)
-        ON DELETE CASCADE
+        FOREIGN KEY (part_number)
+        REFERENCES parts (number)
 );
 -- create tables parts_changes: END
+
+CREATE TABLE assembly_rates(
+    assembly_id VARCHAR(255) NOT NULL,
+    element_id VARCHAR(255) NOT NULL,
+    count bigint NOT NULL,
+
+    PRIMARY KEY (assembly_id, element_id),
+
+    CONSTRAINT asm_rates2parts__element_id2number
+        FOREIGN KEY (element_id)
+        REFERENCES parts (number),
+    CONSTRAINT asm_rates2parts__assembly_id2number
+        FOREIGN KEY (assembly_id)
+        REFERENCES parts (number)
+)
 
 
 

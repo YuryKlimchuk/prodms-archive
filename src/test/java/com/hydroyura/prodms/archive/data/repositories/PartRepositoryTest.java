@@ -1,171 +1,70 @@
 package com.hydroyura.prodms.archive.data.repositories;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hydroyura.prodms.archive.data.entities.*;
-import jakarta.persistence.EntityManager;
+import com.hydroyura.prodms.archive.data.entities.DBPart;
+import com.hydroyura.prodms.archive.data.entities.DBPartStatus;
+import com.hydroyura.prodms.archive.data.entities.DBPartType;
+import com.hydroyura.prodms.archive.services.predicates.IPredicateGenerator;
+import com.hydroyura.prodms.archive.services.predicates.PartPredicateGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 
-import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.Map;
 import java.util.stream.StreamSupport;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
+@Import(PartPredicateGenerator.class)
 class PartRepositoryTest {
 
     @Autowired @Qualifier(value = "PartRepository")
-    BaseRepository<DBPart, String> repository;
+    private BaseRepository<DBPart, String> partRepository;
 
-    @Autowired @Qualifier(value = "PartChangeRepository")
-    BaseRepository<DBPartChange, DBPartChangeKey> changeRepository;
-
-    @Autowired @Qualifier(value = "RateRepository")
-    BaseRepository<DBRate, DBRateKey> rateRepository;
-
-    @Autowired
-    EntityManager entityManager;
-
-    ObjectMapper mapper = new ObjectMapper();
-
-    @Test
-    void initTest() {
-        assertNotNull(changeRepository);
-        assertNotNull(repository);
-        assertNotNull(entityManager);
-    }
-
-    @Test
-    void createTest() {
-        DBPart part1 = createPart();
-        DBPart part2 = createPart();
-        part2.setNumber("RGR100-15009");
-
-        repository.save(part1);
-        repository.save(part2);
-
-        assertEquals(2, repository.findAll().size());
-    }
-
-    @Test
-    void deleteTest() {
-        DBPart part = createPart();
-        String key = "RGR100-500";
-        part.setNumber(key);
-
-        repository.saveAndFlush(part);
-        assertEquals(1, repository.findAll().size());
-
-        repository.deleteById(key);
-        assertEquals(0, repository.findAll().size());
-    }
+    @Autowired @Qualifier(value = "PartPredicateGenerator")
+    private IPredicateGenerator partPredicateGenerator;
 
 
     @Test
-    void simpleRateTest() {
-        DBPart asm1 = createAssembly();
-        String asm1Num = "RGR100-00000 СБ";
-        asm1.setNumber(asm1Num);
-
-        DBPart part1 = createPart();
-        String part11Num = "RGR100-00001";
-        part1.setNumber(part11Num);
-
-
-        DBPart part2 = createPart();
-        String part21Num = "RGR100-00002";
-        part2.setNumber(part21Num);
-
-
-        repository.save(asm1);
-        repository.save(part1);
-        repository.save(part2);
-        assertEquals(3, repository.findAll().size());
-
-        DBRate rate1 = new DBRate();
-        rate1.setCount(3L);
-        DBRateKey rate1Key = new DBRateKey();
-        rate1.setKey(rate1Key);
-        rate1.setAssembly(repository.getReferenceById(asm1Num));
-        rate1.setElement(repository.getReferenceById(part11Num));
-        rateRepository.save(rate1);
-
-        DBRate rate2 = new DBRate();
-        rate2.setCount(1L);
-        DBRateKey rate2Key = new DBRateKey();
-        rate2.setKey(rate2Key);
-        rate2.setAssembly(repository.getReferenceById(asm1Num));
-        rate2.setElement(repository.getReferenceById(part21Num));
-        rateRepository.save(rate2);
-
-        assertEquals(2, rateRepository.findAll().size());
-
-        Collection<DBRate> rates = StreamSupport.stream(rateRepository.findAll(QDBRate.dBRate.assembly.number.eq(asm1Num)).spliterator(), false).collect(Collectors.toList());
-        assertEquals(2, rates.size());
+    void contextLoad() {
+        assertNotNull(partRepository);
+        assertNotNull(partPredicateGenerator);
+    }
+    
+    @Test
+    void save() {
+        DBPart part1 = DBEntitiesBuilders.createDBPart("part1", "part1", DBPartStatus.DESIGN, DBPartType.PART);
+        DBPart part2 = DBEntitiesBuilders.createDBPart("part2", "part2", DBPartStatus.DESIGN, DBPartType.PART);
+        partRepository.save(part1);
+        partRepository.save(part2);
+        assertEquals(2, partRepository.findAll().size());
     }
 
+    @Test
+    void findByPredicate() {
+        DBPart part1 = DBEntitiesBuilders.createDBPart("part1", "part1", DBPartStatus.DESIGN, DBPartType.PART);
+        DBPart part2 = DBEntitiesBuilders.createDBPart("part2", "part2", DBPartStatus.DESIGN, DBPartType.PART);
+        DBPart part3 = DBEntitiesBuilders.createDBPart("part3", "part3", DBPartStatus.PRODUCTION, DBPartType.ASSEMBLY);
+        DBPart part4 = DBEntitiesBuilders.createDBPart("part4", "part4", DBPartStatus.PRODUCTION, DBPartType.ASSEMBLY);
+        DBPart part5 = DBEntitiesBuilders.createDBPart("part5", "part5", DBPartStatus.TEST, DBPartType.STANDARD_PART);
+        DBPart part6 = DBEntitiesBuilders.createDBPart("part6", "part6", DBPartStatus.TEST, DBPartType.BUY_PART);
+        partRepository.save(part1);
+        partRepository.save(part2);
+        partRepository.save(part3);
+        partRepository.save(part4);
+        partRepository.save(part5);
+        partRepository.save(part6);
+        assertEquals(6, partRepository.findAll().size());
 
-
-
-
-    DBPart createPart() {
-        DBPart part = new DBPart();
-        part.setVersion(1L);
-        part.setCreated(LocalDate.now());
-        part.setUpdated(LocalDate.now());
-        part.setPdf(null);
-        part.setOtherFile(null);
-        part.setType(DBPartType.PART);
-        part.setStatus(DBPartStatus.PRODUCTION);
-        part.setInfo(null);
-        part.setName("Ось");
-        part.setNumber("RGR100-15006");
-        return part;
-    }
-
-
-    DBPart createAssembly() {
-        DBPart part = new DBPart();
-        part.setVersion(1L);
-        part.setCreated(LocalDate.now());
-        part.setUpdated(LocalDate.now());
-        part.setPdf(null);
-        part.setOtherFile(null);
-        part.setType(DBPartType.ASSEMBLY);
-        part.setStatus(DBPartStatus.PRODUCTION);
-        part.setInfo(null);
-        part.setName("Ось");
-        part.setNumber("RGR100-15006");
-        return part;
-    }
-
-    DBPartChange createChange(DBPart part) {
-        DBPartChangeKey key = new DBPartChangeKey();
-        key.setVersion(part.getVersion());
-        key.setPartNumber(part.getNumber());
-
-        DBPartChange change = new DBPartChange();
-        change.setKey(key);
-
-        change.setUpdate(part.getUpdated());
-        change.setFieldName("");
-        change.setFieldValue("");
-        try {
-            change.setObject(mapper.writeValueAsString(part));
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-        change.setOperation("CREATE");
-        change.setUser("YURY_KLIMCHUK");
-        change.setPart(part);
-
-        return change;
+        Map<String, String> predicament1 = Map.of(
+                "NUMBER", "part",
+                "NAME", "5",
+                "STATUS", "TEST"
+        );
+        assertEquals(1, StreamSupport.stream(partRepository.findAll(partPredicateGenerator.generate(predicament1)).spliterator(), false).count());
     }
 
 }

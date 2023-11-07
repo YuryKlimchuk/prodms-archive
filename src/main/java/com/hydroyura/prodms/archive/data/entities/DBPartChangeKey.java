@@ -21,18 +21,19 @@ public class DBPartChangeKey implements Serializable {
         return version;
     }
 
-    public void setVersion(long version) {
+    public DBPartChangeKey setVersion(long version) {
         this.version = version;
+        return this;
     }
 
     public String getPartNumber() {
         return partNumber;
     }
 
-    public void setPartNumber(String partNumber) {
+    public DBPartChangeKey setPartNumber(String partNumber) {
         this.partNumber = partNumber;
+        return this;
     }
-
 
     @Override
     public boolean equals(Object o) {

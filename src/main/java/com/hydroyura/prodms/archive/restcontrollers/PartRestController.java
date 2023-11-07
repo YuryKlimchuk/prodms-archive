@@ -6,18 +6,19 @@ import com.hydroyura.prodms.archive.dto.DTORate;
 import com.hydroyura.prodms.archive.services.changes.IPartChangeService;
 import com.hydroyura.prodms.archive.services.parts.IPartService;
 import com.hydroyura.prodms.archive.services.rates.IRateService;
-import com.hydroyura.prodms.archive.services.rates.RateService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.DataBinder;
 import org.springframework.validation.Validator;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.HandlerMapping;
 
 import java.util.Collection;
 import java.util.Map;
@@ -40,34 +41,30 @@ public class PartRestController extends AbstractRestController implements IPartR
 
     @Override
     public ResponseEntity<ApiResponse> getItemById(String id) {
-        logger.warn("Attempt to receive item with ID = {}", id);
         ApiResponse response = new ApiResponse();
         Optional<DTOPart> part;
         try {
             part = partService.getItemById(id);
         } catch (Exception e) {
-            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            response.setMessage("Error has occurred during fetching data from DB");
-            logger.warn("Internal server error while receiving item with ID = {}", id);
+            response.setMessage("SERVER_ERROR");
+            logger.info("Internal server error while receiving item with ID = {}", id);
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         if(part.isEmpty()) {
-            response.setStatus(HttpStatus.BAD_REQUEST.value());
-            response.setMessage("Entity with current ID was not found");
-            logger.warn("Item with ID = {}, => Not found", id);
+            response.setMessage("PART_NOT_FOUND");
+            logger.info("Item with ID = {}, => Not found", id);
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
 
-        response.setStatus(HttpStatus.OK.value());
-        response.setMessage("success");
+        response.setMessage("SUCCESS_OPERATION");
         response.setObject(part.get());
-        logger.warn("Item with ID = {} => received from DB successfully", id);
+        logger.info("Item with ID = {} => received from DB successfully", id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<ApiResponse> create(DTOPart item) {
+    public ResponseEntity<ApiResponse> createPart(DTOPart item) {
         logger.warn("Attempt to create item with ID = {}", item.getNumber());
         ApiResponse response = new ApiResponse();
 
@@ -76,7 +73,6 @@ public class PartRestController extends AbstractRestController implements IPartR
         dataBinder.validate();
 
         if(dataBinder.getBindingResult().hasErrors()) {
-            response.setStatus(HttpStatus.BAD_REQUEST.value());
             response.setMessage("Item has not passed validation");
             logger.warn("Attempt to create item with ID = {}, => validation failed", item.getNumber());
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
@@ -85,7 +81,6 @@ public class PartRestController extends AbstractRestController implements IPartR
         Optional<DTOPart> savedDTO = null;
         try {
             savedDTO = partService.create(item);
-            response.setStatus(HttpStatus.CREATED.value());
             response.setMessage("Item was created successfully");
             response.setObject(savedDTO.get());
             logger.warn("Item with ID = {} => created successfully", item.getNumber());
@@ -93,7 +88,6 @@ public class PartRestController extends AbstractRestController implements IPartR
         } catch (Exception e) {
             e.printStackTrace();
             response.setMessage("Error has occurred while creating item");
-            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             logger.warn(" Internal server error while creating item with ID = {}", item.getNumber());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -109,11 +103,9 @@ public class PartRestController extends AbstractRestController implements IPartR
         } catch (Exception e) {
             logger.warn("Error has been during request to DB [getAll], exception text => {}", e);
             e.printStackTrace();
-            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             logger.warn(" Internal server error while receiving items by filter");
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        response.setStatus(HttpStatus.OK.value());
         response.setObject(items);
 
         HttpHeaders responseHeaders = new HttpHeaders();
@@ -131,7 +123,6 @@ public class PartRestController extends AbstractRestController implements IPartR
         Optional<DTOPart> result = partService.delete(number);
 
         if(result.isEmpty()) {
-            response.setStatus(HttpStatus.BAD_REQUEST.value());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
@@ -151,7 +142,6 @@ public class PartRestController extends AbstractRestController implements IPartR
         dataBinder.validate();
 
         if(dataBinder.getBindingResult().hasErrors()) {
-            response.setStatus(HttpStatus.BAD_REQUEST.value());
             response.setMessage("Object has not passed validation");
             logger.warn("Attempt to update item with ID = {}, => validation failed", modifiedItem.getNumber());
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
@@ -160,7 +150,6 @@ public class PartRestController extends AbstractRestController implements IPartR
         Optional<DTOPart> updatedDTO = null;
         try {
             updatedDTO = partService.update(modifiedItem);
-            response.setStatus(HttpStatus.OK.value());
             response.setMessage("Object was update successfully");
             response.setObject(updatedDTO.get());
             logger.warn("Item with ID = {} => received from DB successfully", modifiedItem.getNumber());
@@ -168,7 +157,6 @@ public class PartRestController extends AbstractRestController implements IPartR
         } catch (Exception e) {
             e.printStackTrace();
             response.setMessage("Error has occurred while update entity to DB");
-            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             logger.warn("Internal server error while update item with ID = {}", modifiedItem.getNumber());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -178,7 +166,6 @@ public class PartRestController extends AbstractRestController implements IPartR
     public ResponseEntity<ApiResponse> getChangesByItemNumber(String number) {
         logger.warn("Attempt to receive changes for item with ID = {}", number);
         ApiResponse response = new ApiResponse();
-        response.setStatus(HttpStatus.OK.value());
         response.setMessage("Changes success");
 
         Collection<DTOPartChange> changes = partChangeService.getChanges(number);
@@ -188,12 +175,28 @@ public class PartRestController extends AbstractRestController implements IPartR
     }
 
     @Override
-    public ResponseEntity<ApiResponse> getAllRatesByAssemblyNumber(String number) {
+    public ResponseEntity<ApiResponse> getAssembliesByPartNumber(String number) {
+        ApiResponse response = new ApiResponse();
+        Optional<DTOPart> part = partService.getItemById(number);
+
+        if (part.isEmpty()) {
+            response.setMessage("element with id[" + number + "] not found");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+
+        Collection<DTOPart> assemblies = rateService.getAssemblies(number);
+        response.setMessage("element found");
+        response.setObject(assemblies);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> getRatesByAssemblyNumber(String number) {
         logger.warn("Attempt to receive all rates for assembly with ID = {}", number);
         ApiResponse response = new ApiResponse();
         Collection<DTORate> rates = rateService.getAllRates(number);
-
-        response.setStatus(HttpStatus.OK.value());
+        //TODO: add check if assembly exist
         response.setMessage("Get rates success");
         response.setObject(rates);
 
@@ -213,5 +216,99 @@ public class PartRestController extends AbstractRestController implements IPartR
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+
+    // TODO: add logic for bad cases
+    @Override
+    public ResponseEntity<ApiResponse> createRate(String number, DTORate rate) {
+        ApiResponse response = new ApiResponse();
+        response.setMessage("SUCCESS");
+        response.setObject(rateService.create(number, rate.getElement().getNumber(), rate.getCount()).get());
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> deleteRate(String number, String subNumber) {
+        ApiResponse response = new ApiResponse();
+
+        if (rateService.delete(number, subNumber)) {
+            response.setMessage("SUCCESS_DELETED");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+
+        response.setMessage("NOT_DELETED");
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> changeRateCount(String number, String subNumber, int newCount) {
+        ApiResponse response = new ApiResponse();
+
+        if (rateService.changeCount(number, subNumber, newCount)) {
+            response.setMessage("SUCCESS_UPDATED_COUNT");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+
+        response.setMessage("NOT_UPDATED");
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> addReplacement(String number, String subNumber, String replacementNumber) {
+        ApiResponse response = new ApiResponse();
+
+        if (rateService.addReplacement(number, subNumber, replacementNumber)) {
+            response.setMessage("SUCCESS_ADDED_REPLACEMENT");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+
+        response.setMessage("SERVER_ERROR");
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> updateReplacementPriority(String number, String subNumber, String replacementNumber, int priority) {
+        ApiResponse response = new ApiResponse();
+
+        rateService.updateReplacementPriority(number, subNumber, replacementNumber, priority);
+
+
+        response.setMessage("SUCCESS_UPDATED_REPLACEMENT");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> removeReplacement(String number, String subNumber, String replacementNumber) {
+        ApiResponse response = new ApiResponse();
+
+        if (rateService.removeReplacement(number, subNumber, replacementNumber)) {
+            response.setMessage("SUCCESS_REMOVED_REPLACEMENT");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+
+        response.setMessage("SERVER_ERROR");
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> getExpandedRatesByAssemblyNumber(String number) {
+        return null;
+    }
+
+    @ModelAttribute
+    private void getRequestLog(HttpServletRequest request) {
+        Map<String, Object> pathVars = (Map<String, Object>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+        String method = request.getMethod();
+        String uriPattern = (String) request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
+        String params = request.getQueryString();
+
+        logger.info("Start handling"
+                + " [" + method + "] request to ["
+                + uriPattern
+                + "] with params=["
+                + ((params == null) ? "no params" : params)
+                + "] and path vars=["
+                + ((pathVars == null) ? "no path vars" : pathVars) + "]"
+        );
+    }
 
 }
