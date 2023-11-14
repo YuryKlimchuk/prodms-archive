@@ -3,9 +3,7 @@ package com.hydroyura.prodms.archive;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.hydroyura.prodms.archive.data.entities.DBPartChange;
-import com.hydroyura.prodms.archive.data.entities.DBRate;
-import com.hydroyura.prodms.archive.dto.DTOPartChange;
-import com.hydroyura.prodms.archive.dto.DTORate;
+import com.hydroyura.prodms.archive.data.entities.dto.DTOPartChange;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.boot.SpringApplication;
@@ -19,17 +17,6 @@ public class ArchiveApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ArchiveApplication.class, args);
-	}
-
-	@Bean
-	public ModelMapper getModelMapper() {
-		ModelMapper modelMapper = new ModelMapper();
-		TypeMap<DBPartChange, DTOPartChange> propertyMapper = modelMapper.createTypeMap(DBPartChange.class, DTOPartChange.class);
-		propertyMapper.addMappings(
-				arg -> arg.map(src -> src.getKey().getVersion(), DTOPartChange::setVersion)
-		);
-
-		return modelMapper;
 	}
 
 	@Bean

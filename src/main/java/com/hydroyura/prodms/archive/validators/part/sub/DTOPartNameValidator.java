@@ -1,11 +1,8 @@
 package com.hydroyura.prodms.archive.validators.part.sub;
 
-import com.hydroyura.prodms.archive.dto.DTOPart;
+import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
 import com.hydroyura.prodms.archive.validators.part.AbstractDTOPartValidator;
 import org.springframework.validation.Errors;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class DTOPartNameValidator extends AbstractDTOPartValidator {
 

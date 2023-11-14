@@ -1,7 +1,7 @@
 package com.hydroyura.prodms.archive.services.rates;
 
-import com.hydroyura.prodms.archive.dto.DTOPart;
-import com.hydroyura.prodms.archive.dto.DTORate;
+import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
+import com.hydroyura.prodms.archive.data.entities.dto.DTORate;
 
 import java.util.Collection;
 import java.util.Optional;

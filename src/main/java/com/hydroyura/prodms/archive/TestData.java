@@ -1,8 +1,8 @@
 package com.hydroyura.prodms.archive;
 
-import com.hydroyura.prodms.archive.data.entities.DBPartStatus;
-import com.hydroyura.prodms.archive.data.entities.DBPartType;
-import com.hydroyura.prodms.archive.dto.DTOPart;
+import com.hydroyura.prodms.archive.data.entities.enums.DBPartStatus;
+import com.hydroyura.prodms.archive.data.entities.enums.DBPartType;
+import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
 import com.hydroyura.prodms.archive.services.parts.IPartService;
 import com.hydroyura.prodms.archive.services.rates.IRateService;
 import jakarta.annotation.PostConstruct;
@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;

@@ -2,10 +2,11 @@ package com.hydroyura.prodms.archive.services.rates;
 
 import com.hydroyura.prodms.archive.data.entities.DBPart;
 import com.hydroyura.prodms.archive.data.entities.DBRate;
-import com.hydroyura.prodms.archive.data.entities.DBRateKey;
+import com.hydroyura.prodms.archive.data.entities.keys.DBRateKey;
 import com.hydroyura.prodms.archive.data.entities.QDBRate;
 import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
-import com.hydroyura.prodms.archive.dto.DTORate;
+import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
+import com.hydroyura.prodms.archive.data.entities.dto.DTORate;
 import com.querydsl.core.types.Predicate;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -61,11 +62,14 @@ public class RateService implements IRateService {
     }
 
     @Override
-    public Collection<DTORate> getAssemblies(String elementNumber) {
+    public Collection<DTOPart> getAssemblies(String elementNumber) {
         Predicate predicate = QDBRate.dBRate.element.number.eq(elementNumber);
+        /*
         return StreamSupport.stream(rateRepository.findAll(predicate).spliterator(), false)
                 .map(item -> mapper.map(item, DTORate.class))
                 .collect(Collectors.toList());
+        */
+        return null;
     }
 
     @Override
@@ -78,6 +82,31 @@ public class RateService implements IRateService {
         rate.setElement(partRepository.getReferenceById(elementNumber));
         DBRate savedRate = rateRepository.save(rate);
         return Optional.ofNullable(mapper.map(savedRate, DTORate.class));
+    }
+
+    @Override
+    public boolean delete(String assemblyNumber, String elementNumber) {
+        return false;
+    }
+
+    @Override
+    public boolean changeCount(String assemblyNumber, String elementNumber, long newCount) {
+        return false;
+    }
+
+    @Override
+    public boolean addReplacement(String number, String subNumber, String replacementNumber) {
+        return false;
+    }
+
+    @Override
+    public boolean removeReplacement(String number, String subNumber, String replacementNumber) {
+        return false;
+    }
+
+    @Override
+    public boolean updateReplacementPriority(String number, String subNumber, String replacementNumber, int priority) {
+        return false;
     }
 
 

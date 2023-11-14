@@ -2,6 +2,7 @@ package com.hydroyura.prodms.archive.data.entities;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
+import com.hydroyura.prodms.archive.data.entities.keys.DBPartChangeKey;
 import com.querydsl.core.types.dsl.*;
 
 import com.querydsl.core.types.PathMetadata;

@@ -2,10 +2,9 @@ package com.hydroyura.prodms.archive.services.changes;
 
 import com.hydroyura.prodms.archive.data.entities.DBPart;
 import com.hydroyura.prodms.archive.data.entities.DBPartChange;
-import com.hydroyura.prodms.archive.data.entities.DBPartChangeKey;
+import com.hydroyura.prodms.archive.data.entities.keys.DBPartChangeKey;
 import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
-import com.hydroyura.prodms.archive.dto.DTOPart;
-import com.hydroyura.prodms.archive.dto.DTOPartChange;
+import com.hydroyura.prodms.archive.data.entities.dto.DTOPartChange;
 import com.hydroyura.prodms.archive.services.parts.PartService;
 import com.hydroyura.prodms.archive.services.predicates.IPredicateGenerator;
 import com.querydsl.core.types.Predicate;
@@ -15,11 +14,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.querydsl.QSort;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -40,6 +37,11 @@ public class PartChangeService implements IPartChangeService {
     @Autowired @Qualifier(value = "PartChangeRepository")
     private BaseRepository<DBPartChange, DBPartChangeKey> repository;
 
+    // NEED to remove only for test
+    @Autowired @Qualifier(value = "PartRepository")
+    private BaseRepository<DBPart, String> repository2;
+
+
 
     @Override
     public Collection<DTOPartChange> getChanges(String number) {
@@ -51,4 +53,10 @@ public class PartChangeService implements IPartChangeService {
                     .map(entity -> modelMapper.map(entity, dtoType))
                     .collect(Collectors.toList());
     }
+
+    @Override
+    public void create(DBPartChange partChange) {
+        repository.save(partChange);
+    }
+
 }

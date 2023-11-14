@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
-import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -19,8 +18,6 @@ public class QDBPart extends EntityPathBase<DBPart> {
     private static final long serialVersionUID = -2100854793L;
 
     public static final QDBPart dBPart = new QDBPart("dBPart");
-
-    public final CollectionPath<DBPartChange, QDBPartChange> changes = this.<DBPartChange, QDBPartChange>createCollection("changes", DBPartChange.class, QDBPartChange.class, PathInits.DIRECT2);
 
     public final DatePath<java.time.LocalDate> created = createDate("created", java.time.LocalDate.class);
 
@@ -34,9 +31,9 @@ public class QDBPart extends EntityPathBase<DBPart> {
 
     public final StringPath pdf = createString("pdf");
 
-    public final EnumPath<DBPartStatus> status = createEnum("status", DBPartStatus.class);
+    public final EnumPath<com.hydroyura.prodms.archive.data.entities.enums.DBPartStatus> status = createEnum("status", com.hydroyura.prodms.archive.data.entities.enums.DBPartStatus.class);
 
-    public final EnumPath<DBPartType> type = createEnum("type", DBPartType.class);
+    public final EnumPath<com.hydroyura.prodms.archive.data.entities.enums.DBPartType> type = createEnum("type", com.hydroyura.prodms.archive.data.entities.enums.DBPartType.class);
 
     public final DatePath<java.time.LocalDate> updated = createDate("updated", java.time.LocalDate.class);
 

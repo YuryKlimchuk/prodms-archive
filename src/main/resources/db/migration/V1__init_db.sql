@@ -1,4 +1,3 @@
--- create tables parts: BEGIN
 CREATE TABLE parts(
     number VARCHAR(255) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -11,8 +10,7 @@ CREATE TABLE parts(
     pdf VARCHAR(255),
     info TEXT
 );
--- create tables parts: END
--- create tables parts_changes: BEGIN
+
 CREATE TABLE parts_changes(
     part_number VARCHAR(255) NOT NULL,
     user_name VARCHAR(255) NOT NULL,
@@ -28,7 +26,6 @@ CREATE TABLE parts_changes(
         FOREIGN KEY (part_number)
         REFERENCES parts (number)
 );
--- create tables parts_changes: END
 
 CREATE TABLE assembly_rates(
     assembly_id VARCHAR(255) NOT NULL,
@@ -43,7 +40,26 @@ CREATE TABLE assembly_rates(
     CONSTRAINT asm_rates2parts__assembly_id2number
         FOREIGN KEY (assembly_id)
         REFERENCES parts (number)
-)
+);
+
+CREATE TABLE rate_replacements(
+    assembly_id VARCHAR(255) NOT NULL,
+    element_id VARCHAR(255) NOT NULL,
+    replacement_id VARCHAR(255) NOT NULL,
+    priority bigint NOT NULL,
+
+    PRIMARY KEY (assembly_id, element_id, replacement_id),
+
+    CONSTRAINT rate_replacements2parts__element_id2number
+        FOREIGN KEY (element_id)
+        REFERENCES parts (number),
+    CONSTRAINT rate_replacements2parts__assembly_id2number
+        FOREIGN KEY (assembly_id)
+        REFERENCES parts (number),
+    CONSTRAINT rate_replacements2parts__replacement_id2number
+        FOREIGN KEY (replacement_id)
+        REFERENCES parts (number)
+);
 
 
 

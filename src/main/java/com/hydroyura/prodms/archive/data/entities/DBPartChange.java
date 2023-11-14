@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.hydroyura.prodms.archive.services.publisher.partchange.PartChangeEventType;
+import com.hydroyura.prodms.archive.data.entities.keys.DBPartChangeKey;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -29,13 +31,8 @@ public class DBPartChange {
     @Column(name = "user_name")
     private String user;
 
-    // Operation should be ENUM
-    @Column
-    private String operation;
-    @Column(name = "field_name")
-    private String fieldName;
-    @Column(name = "field_value")
-    private String fieldValue;
+    @Column @Enumerated(EnumType.STRING)
+    private PartChangeEventType operation;
 
 
     public DBPartChange() {}
@@ -86,30 +83,13 @@ public class DBPartChange {
         return this;
     }
 
-    public String getOperation() {
+    public PartChangeEventType getOperation() {
         return operation;
     }
 
-    public DBPartChange setOperation(String operation) {
+    public DBPartChange setOperation(PartChangeEventType operation) {
         this.operation = operation;
         return this;
     }
 
-    public String getFieldName() {
-        return fieldName;
-    }
-
-    public DBPartChange setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-        return this;
-    }
-
-    public String getFieldValue() {
-        return fieldValue;
-    }
-
-    public DBPartChange setFieldValue(String fieldValue) {
-        this.fieldValue = fieldValue;
-        return this;
-    }
 }

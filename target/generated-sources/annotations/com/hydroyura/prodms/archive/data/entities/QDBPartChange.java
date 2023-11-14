@@ -22,15 +22,11 @@ public class QDBPartChange extends EntityPathBase<DBPartChange> {
 
     public static final QDBPartChange dBPartChange = new QDBPartChange("dBPartChange");
 
-    public final StringPath fieldName = createString("fieldName");
-
-    public final StringPath fieldValue = createString("fieldValue");
-
-    public final QDBPartChangeKey key;
+    public final com.hydroyura.prodms.archive.data.entities.keys.QDBPartChangeKey key;
 
     public final StringPath object = createString("object");
 
-    public final StringPath operation = createString("operation");
+    public final EnumPath<com.hydroyura.prodms.archive.services.publisher.partchange.PartChangeEventType> operation = createEnum("operation", com.hydroyura.prodms.archive.services.publisher.partchange.PartChangeEventType.class);
 
     public final QDBPart part;
 
@@ -56,7 +52,7 @@ public class QDBPartChange extends EntityPathBase<DBPartChange> {
 
     public QDBPartChange(Class<? extends DBPartChange> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.key = inits.isInitialized("key") ? new QDBPartChangeKey(forProperty("key")) : null;
+        this.key = inits.isInitialized("key") ? new com.hydroyura.prodms.archive.data.entities.keys.QDBPartChangeKey(forProperty("key")) : null;
         this.part = inits.isInitialized("part") ? new QDBPart(forProperty("part")) : null;
     }
 

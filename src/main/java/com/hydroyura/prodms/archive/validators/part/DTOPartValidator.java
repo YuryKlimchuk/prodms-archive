@@ -1,6 +1,5 @@
 package com.hydroyura.prodms.archive.validators.part;
 
-import com.hydroyura.prodms.archive.dto.DTOPart;
 import com.hydroyura.prodms.archive.validators.part.sub.DTOPartNameValidator;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;

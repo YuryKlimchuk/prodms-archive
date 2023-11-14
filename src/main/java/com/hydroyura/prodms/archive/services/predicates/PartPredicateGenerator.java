@@ -1,7 +1,7 @@
 package com.hydroyura.prodms.archive.services.predicates;
 
-import com.hydroyura.prodms.archive.data.entities.DBPartStatus;
-import com.hydroyura.prodms.archive.data.entities.DBPartType;
+import com.hydroyura.prodms.archive.data.entities.enums.DBPartStatus;
+import com.hydroyura.prodms.archive.data.entities.enums.DBPartType;
 import com.hydroyura.prodms.archive.data.entities.QDBPart;
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Predicate;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Component(value = "PartPredicateGenerator")
 public class PartPredicateGenerator implements IPredicateGenerator {

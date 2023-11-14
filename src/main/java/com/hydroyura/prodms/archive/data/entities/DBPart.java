@@ -5,12 +5,13 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.hydroyura.prodms.archive.data.entities.enums.DBPartStatus;
+import com.hydroyura.prodms.archive.data.entities.enums.DBPartType;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
 
 @Entity @Table(name = "parts")
 public class DBPart {
@@ -39,8 +40,6 @@ public class DBPart {
     private DBPartStatus status;
     @Column @Enumerated(EnumType.STRING)
     private DBPartType type;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "part", fetch = FetchType.EAGER)
-    private Collection<DBPartChange> changes = new ArrayList<>();
     @Column
     private String info;
 
@@ -132,15 +131,6 @@ public class DBPart {
 
     public DBPart setType(DBPartType type) {
         this.type = type;
-        return this;
-    }
-
-    public Collection<DBPartChange> getChanges() {
-        return changes;
-    }
-
-    public DBPart setChanges(Collection<DBPartChange> changes) {
-        this.changes = changes;
         return this;
     }
 
