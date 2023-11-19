@@ -1,5 +1,6 @@
 package com.hydroyura.prodms.archive.services.publisher.partchange;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hydroyura.prodms.archive.data.entities.DBPart;
 import com.hydroyura.prodms.archive.data.entities.DBPartChange;
@@ -34,13 +35,18 @@ public class PartChangeSubscriber implements Subscriber {
         DBPartChangeKey key = new DBPartChangeKey()
                 .setPartNumber(part.getNumber())
                 .setVersion(part.getVersion());
-        DBPartChange partChange = new DBPartChange()
-                .setPart(part)
-                .setOperation(event.getEventType())
-                .setUser(event.getUser())
-                .setUpdate(LocalDate.now())
-                .setObject(part.toString())
-                .setKey(key);
-        return partChange;
+        try {
+            DBPartChange partChange = new DBPartChange()
+                    .setPart(part)
+                    .setOperation(event.getEventType())
+                    .setUser(event.getUser())
+                    .setUpdate(LocalDate.now())
+                    .setObject(objectMapper.writeValueAsString(part))
+                    .setKey(key);
+            return partChange;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

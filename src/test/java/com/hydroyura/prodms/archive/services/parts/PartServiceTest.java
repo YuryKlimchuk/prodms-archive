@@ -66,6 +66,19 @@ class PartServiceTest {
     }
 
 
+    @Test
+    void delete() {
+        String id = "TEST_NUMBER";
+        DTOPart part = create(id);
+        partService.create(part);
+        entityManager.flush();
+        partService.delete(id);
+        entityManager.flush();
+        assertEquals(id, partService.getItemById(id).get().getNumber());
+        assertEquals(2, partChangeService.getChanges(id).size());
+    }
+
+
 
     private DTOPart create(String id) {
         return new DTOPart()

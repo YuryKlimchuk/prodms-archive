@@ -1,4 +1,4 @@
-package restcontrollers;
+package com.hydroyura.prodms.archive.restcontrollers;
 
 import java.util.HashMap;
 

@@ -5,103 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="saved changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/configuration/ModelMapperConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/publisher/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/publisher/Publisher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/publisher/Subscriber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/publisher/partchange/PartChangeEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/publisher/partchange/PartChangeEventType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/publisher/partchange/PartChangePublisher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/publisher/partchange/PartChangeSubscriber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTestConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/ArchiveApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/ArchiveApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/TestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/TestData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPartChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPartChange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPartChangeKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/keys/DBPartChangeKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPartStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/enums/DBPartStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBPartType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/enums/DBPartType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/DBRate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/repositories/PartChangeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/repositories/PartChangeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/dto/DTOPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/dto/DTOPart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/dto/DTOPartChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/dto/DTOPartChange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/dto/DTORate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/dto/DTORate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/dto/TestRecord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/AbstractRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restcontrollers/AbstractRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restcontrollers/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/IPartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restcontrollers/IPartRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restcontrollers/PartRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/examples/ApiResponseExampleForSuccessGetId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restcontrollers/examples/ApiResponseExampleForSuccessGetId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/changes/IPartChangeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/changes/IPartChangeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/changes/PartChangeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/changes/PartChangeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/listeners/EntityChangeMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/listeners/IEntityChangeListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/listeners/parts/PartListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/objectcomparator/IObjectComparator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/objectcomparator/ObjectComparator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/security/ApiKeyAuthentication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/security/AuthFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/security/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/security/Config.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartChangePredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartChangePredicateGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartPredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartPredicateGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/IRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/IRateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/validators/part/AbstractDTOPartValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/validators/part/AbstractDTOPartValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/validators/part/DTOPartValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/validators/part/DTOPartValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/validators/part/sub/DTOPartNameValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/validators/part/sub/DTOPartNameValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__init_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__init_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V2__add_replacement_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/DBEntitiesBuilders.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/PartChangeRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/PartChangeRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/PartRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/PartRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/RateRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/dto/DTOPartChangeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/AbstractRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/AbstractRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/ApiResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/IPartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/IPartRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/PartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/examples/ApiResponseExampleForSuccessGetId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/examples/ApiResponseExampleForSuccessGetId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/ArchiveApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/ArchiveApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/TestData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/TestData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBPart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBPart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBPartChange.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBPartChange.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBPartChangeKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBPartStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBPartType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBRate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/DBRate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/QDBPart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/QDBPart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/QDBPartChange.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/QDBPartChange.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/QDBPartChangeKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/entities/QDBRateKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/repositories/PartChangeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/data/repositories/PartChangeRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/dto/DTOPart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/dto/DTOPartChange.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/dto/DTORate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/AbstractRestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/ApiResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/IPartRestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/restcontrollers/PartRestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/changes/IPartChangeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/changes/IPartChangeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/changes/PartChangeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/changes/PartChangeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/listeners/EntityChangeMessage$EntityChangeMessageBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/listeners/EntityChangeMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/listeners/IEntityChangeListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/listeners/parts/PartListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/objectcomparator/IObjectComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/objectcomparator/ObjectComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/parts/PartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/parts/PartService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/predicates/PartChangePredicateGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/predicates/PartChangePredicateGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/predicates/PartPredicateGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/predicates/PartPredicateGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/IRateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/IRateService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/RateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/services/rates/RateService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/validators/part/AbstractDTOPartValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/validators/part/AbstractDTOPartValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/validators/part/DTOPartValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/validators/part/DTOPartValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/validators/part/sub/DTOPartNameValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hydroyura/prodms/archive/validators/part/sub/DTOPartNameValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/hydroyura/prodms/archive/data/entities/QDBPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/hydroyura/prodms/archive/data/entities/QDBPart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/hydroyura/prodms/archive/data/entities/QDBPartChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/hydroyura/prodms/archive/data/entities/QDBPartChange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/hydroyura/prodms/archive/data/entities/QDBPartChangeKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/hydroyura/prodms/archive/data/entities/QDBPartChangeKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/hydroyura/prodms/archive/data/repositories/PartRepositoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/hydroyura/prodms/archive/data/repositories/PartRepositoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/hydroyura/prodms/archive/dto/DTOPartChangeTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/hydroyura/prodms/archive/services/parts/PartServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/hydroyura/prodms/archive/services/parts/PartServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/hydroyura/prodms/archive/services/rates/RateServiceTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +105,7 @@
       <recent name="com.hydroyura.prodms.archive.services.parts" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PartServiceTest">
+  <component name="RunManager" selected="JUnit.PartServiceTest.delete">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -233,22 +149,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PartRepositoryTest.create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.PartRepositoryTest" />
-      <option name="METHOD_NAME" value="create" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PartServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="archive" />
       <extension name="coverage">
@@ -260,6 +160,22 @@
       <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
       <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PartServiceTest.delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.parts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
+      <option name="METHOD_NAME" value="delete" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -282,19 +198,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Starter" />
+      <item itemvalue="JUnit.PartServiceTest.delete" />
       <item itemvalue="JUnit.PartServiceTest" />
       <item itemvalue="JUnit.PartServiceTest.inject" />
       <item itemvalue="JUnit.PartChangeRepositoryTest" />
       <item itemvalue="JUnit.PartRepositoryTest" />
-      <item itemvalue="JUnit.PartRepositoryTest.create" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PartServiceTest.delete" />
         <item itemvalue="JUnit.PartServiceTest" />
         <item itemvalue="JUnit.PartServiceTest.inject" />
         <item itemvalue="JUnit.PartChangeRepositoryTest" />
         <item itemvalue="JUnit.PartRepositoryTest" />
-        <item itemvalue="JUnit.PartRepositoryTest.create" />
       </list>
     </recent_temporary>
   </component>
@@ -363,7 +279,23 @@
       <option name="project" value="LOCAL" />
       <updated>1685858979619</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added tests for partService.getItemById, partService.create">
+      <option name="closed" value="true" />
+      <created>1699986373111</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699986373111</updated>
+    </task>
+    <task id="LOCAL-00010" summary="removed files from repository">
+      <option name="closed" value="true" />
+      <created>1699986421468</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699986421468</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -389,9 +321,31 @@
     <MESSAGE value="updates" />
     <MESSAGE value="add getAssembliesByElementNumber" />
     <MESSAGE value="updated test data" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated test data" />
+    <MESSAGE value="added tests for partService.getItemById, partService.create" />
+    <MESSAGE value="removed files from repository" />
+    <MESSAGE value="saved changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="saved changes" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="java.beans.PropertyChangeSupport" memberName="map" />

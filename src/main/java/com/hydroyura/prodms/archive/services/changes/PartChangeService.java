@@ -37,11 +37,6 @@ public class PartChangeService implements IPartChangeService {
     @Autowired @Qualifier(value = "PartChangeRepository")
     private BaseRepository<DBPartChange, DBPartChangeKey> repository;
 
-    // NEED to remove only for test
-    @Autowired @Qualifier(value = "PartRepository")
-    private BaseRepository<DBPart, String> repository2;
-
-
 
     @Override
     public Collection<DTOPartChange> getChanges(String number) {

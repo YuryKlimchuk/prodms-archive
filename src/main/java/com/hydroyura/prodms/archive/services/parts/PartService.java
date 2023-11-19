@@ -3,6 +3,7 @@ package com.hydroyura.prodms.archive.services.parts;
 
 import com.hydroyura.prodms.archive.data.entities.DBPart;
 import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
+import com.hydroyura.prodms.archive.data.entities.enums.DBPartStatus;
 import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
 import com.hydroyura.prodms.archive.services.predicates.IPredicateGenerator;
 import com.hydroyura.prodms.archive.services.publisher.Publisher;
@@ -67,10 +68,12 @@ public class PartService implements IPartService<DTOPart, String> {
     public Optional<DTOPart> delete(String id) {
         Optional<DBPart> dbPart = repository.findById(id);
         if (dbPart.isEmpty()) {
+            logger.info("DBPart with ID = [{}] not found", id);
             return Optional.empty();
         }
-        repository.deleteById(id);
+        repository.save(dbPart.get().setStatus(DBPartStatus.DELETED).setVersion(dbPart.get().getVersion() + 1));
         DTOPart dtoPart = modelMapper.map(dbPart.get(), DTOPart.class);
+        publisher.sendEvent(new PartChangeEvent(PartChangeEventType.DELETED, dbPart.get(), DBPart.class));
         return Optional.of(dtoPart);
     }
 

@@ -1,7 +1,7 @@
-package restcontrollers.examples;
+package com.hydroyura.prodms.archive.restcontrollers.examples;
 
 import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
-import restcontrollers.ApiResponse;
+import com.hydroyura.prodms.archive.restcontrollers.ApiResponse;
 
 
 public class ApiResponseExampleForSuccessGetId extends ApiResponse {

@@ -1,4 +1,4 @@
-package restcontrollers;
+package com.hydroyura.prodms.archive.restcontrollers;
 
 import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
 import com.hydroyura.prodms.archive.data.entities.dto.DTORate;
