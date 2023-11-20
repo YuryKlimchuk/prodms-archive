@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="saved changes">
+    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="PartService: added test for delete method">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/security/ApiKeyAuthentication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/security/AuthFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/security/AuthService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/security/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/dto/DTOPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/dto/DTOPart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/AbstractRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/AbstractRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/IPartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/IPartRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/PartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/restcontrollers/examples/ApiResponseExampleForSuccessGetId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/examples/ApiResponseExampleForSuccessGetId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTestConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTestConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +98,7 @@
       <recent name="com.hydroyura.prodms.archive.services.parts" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PartServiceTest.delete">
+  <component name="RunManager" selected="JUnit.PartServiceTest">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -115,36 +108,6 @@
     <configuration name="Starter" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.ArchiveApplication" />
       <module name="archive" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PartChangeRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.PartChangeRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PartRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.PartRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -180,6 +143,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PartServiceTest.findByFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.parts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
+      <option name="METHOD_NAME" value="findByFilter" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PartServiceTest.inject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="archive" />
       <extension name="coverage">
@@ -196,21 +175,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PartServiceTest.update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.parts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
+      <option name="METHOD_NAME" value="update" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Starter" />
+      <item itemvalue="JUnit.PartServiceTest.findByFilter" />
+      <item itemvalue="JUnit.PartServiceTest.update" />
       <item itemvalue="JUnit.PartServiceTest.delete" />
       <item itemvalue="JUnit.PartServiceTest" />
       <item itemvalue="JUnit.PartServiceTest.inject" />
-      <item itemvalue="JUnit.PartChangeRepositoryTest" />
-      <item itemvalue="JUnit.PartRepositoryTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PartServiceTest.delete" />
         <item itemvalue="JUnit.PartServiceTest" />
+        <item itemvalue="JUnit.PartServiceTest.update" />
+        <item itemvalue="JUnit.PartServiceTest.findByFilter" />
+        <item itemvalue="JUnit.PartServiceTest.delete" />
         <item itemvalue="JUnit.PartServiceTest.inject" />
-        <item itemvalue="JUnit.PartChangeRepositoryTest" />
-        <item itemvalue="JUnit.PartRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -295,7 +290,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699986421468</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="PartService: added test for delete method">
+      <option name="closed" value="true" />
+      <created>1700411400877</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1700411400877</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,7 +327,8 @@
     <MESSAGE value="added tests for partService.getItemById, partService.create" />
     <MESSAGE value="removed files from repository" />
     <MESSAGE value="saved changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="saved changes" />
+    <MESSAGE value="PartService: added test for delete method" />
+    <option name="LAST_COMMIT_MESSAGE" value="PartService: added test for delete method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -338,11 +342,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java</url>
           <line>41</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

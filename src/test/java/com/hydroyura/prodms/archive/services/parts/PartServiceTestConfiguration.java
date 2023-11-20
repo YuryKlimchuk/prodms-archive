@@ -50,5 +50,9 @@ public class PartServiceTestConfiguration {
         return new PartChangeSubscriber();
     }
 
+    @Bean
+    public PartComparator partComparator() {
+        return new PartComparator();
+    };
 
 }

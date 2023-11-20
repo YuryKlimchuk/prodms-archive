@@ -20,8 +20,6 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -31,7 +29,7 @@ public class PartService implements IPartService<DTOPart, String> {
     private Logger logger = LoggerFactory.getLogger(PartService.class);
     private Class<DTOPart> dtoType = DTOPart.class;
     private Class<DBPart> entityType = DBPart.class;
-    private Executor executor = Executors.newSingleThreadExecutor();
+
 
     @Autowired
     private ModelMapper modelMapper;
@@ -44,6 +42,9 @@ public class PartService implements IPartService<DTOPart, String> {
 
     @Autowired @Qualifier(value = "partChangePublisher")
     private Publisher publisher;
+
+    @Autowired
+    private PartComparator partComparator;
 
 
     @Override
@@ -99,34 +100,32 @@ public class PartService implements IPartService<DTOPart, String> {
         return Optional.ofNullable(savedDTO);
     }
 
-
     @Override
     public Optional<DTOPart> update(DTOPart updated) {
         Optional<DTOPart> current = getItemById(updated.getNumber());
         if(current.isEmpty()) {
-            logger.info("Item with ID = {} => Not found", updated.getNumber());
+            logger.info("DBPart with ID = [{}] not found", updated.getNumber());
             return Optional.empty();
         }
 
-        /*
-        Map<String, String> difference = objectComparator.getDifference(DTOPart.class, current.get(), updated);
-        if(difference.isEmpty()) {
-            logger.info("Nothing to update, updatedObject the same with current version", updated.getNumber());
+        Optional<PartChangeEventType> partChangeEventType = partComparator.getDifference(current.get(), updated);
+        if (partChangeEventType.isEmpty()) {
+            logger.info("DBPart with ID = [{}] not modified", updated.getNumber());
             return Optional.empty();
         }
-         */
 
         DTOPart updatedResult;
         try {
             updated.setVersion(current.get().getVersion() + 1L);
             updated.setUpdated(LocalDate.now());
-            updatedResult = modelMapper.map(repository.save(modelMapper.map(updated, entityType)), dtoType);
+            DBPart updatedResultDB = repository.save(modelMapper.map(updated, entityType));
+            updatedResult = modelMapper.map(updatedResultDB, dtoType);
+            publisher.sendEvent(new PartChangeEvent(partChangeEventType.get(), updatedResultDB, DBPart.class));
         } catch (Exception e) {
-            logger.info("DB error while updating item with ID = {} => e = {}", updated.getNumber(), e);
+            logger.info("DBPart with ID = [{}] not updated, server error = {}", updated.getNumber(), e);
             throw new RuntimeException(e);
         }
         return Optional.ofNullable(updatedResult);
     }
-
 
 }

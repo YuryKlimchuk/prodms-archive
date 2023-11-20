@@ -25,6 +25,7 @@ public class DTOPart {
         setUpdated(LocalDate.now());
         setPdf("N/A");
         setOtherFile("N/A");
+        setInfo("");
     }
 
 

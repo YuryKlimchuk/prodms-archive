@@ -15,8 +15,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.Collection;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -65,7 +65,6 @@ class PartServiceTest {
         assertEquals(Optional.empty(), partService.getItemById("incorrect_id"));
     }
 
-
     @Test
     void delete() {
         String id = "TEST_NUMBER";
@@ -78,6 +77,59 @@ class PartServiceTest {
         assertEquals(2, partChangeService.getChanges(id).size());
     }
 
+    @Test
+    void findByFilter() {
+        partService.create(create("ID1", DBPartStatus.TEST, DBPartType.ASSEMBLY));
+        partService.create(create("ID2", DBPartStatus.PRODUCTION, DBPartType.PART));
+        partService.create(create("ID3", DBPartStatus.DESIGN, DBPartType.PART));
+        partService.create(create("ID4", DBPartStatus.DESIGN, DBPartType.STANDARD_PART));
+        partService.create(create("ID5", DBPartStatus.DESIGN, DBPartType.BUY_PART));
+        entityManager.flush();
+
+        Map<String, String> filter = new HashMap<>();
+        filter.put("NUMBER", "ID");
+        assertEquals(5, partService.getAllByFilter(filter).size());
+        filter.put("TYPE", "PART");
+        assertEquals(2, partService.getAllByFilter(filter).size());
+        filter.put("STATUS", "PRODUCTION");
+        assertEquals(1, partService.getAllByFilter(filter).size());
+        filter.put("NAME", "NAME");
+        assertEquals(1, partService.getAllByFilter(filter).size());
+    }
+
+    @Test
+    void update() {
+        DTOPart original = create("ID1", DBPartStatus.TEST, DBPartType.ASSEMBLY);
+        partService.create(original);
+        entityManager.flush();
+        assertEquals(Optional.empty(), partService.update(original));
+
+        original.setStatus(DBPartStatus.DESIGN);
+        partService.update(original);
+        entityManager.flush();
+        assertEquals(
+                PartChangeEventType.UPDATED_STATUS,
+                partChangeService.getChanges("ID1").stream().collect(Collectors.toCollection(ArrayList::new)).get(1).getOperation()
+        );
+
+        original.setName("NEW_NAME");
+        partService.update(original);
+        entityManager.flush();
+        assertEquals(
+                PartChangeEventType.UPDATED_NAME,
+                partChangeService.getChanges("ID1").stream().collect(Collectors.toCollection(ArrayList::new)).get(2).getOperation()
+        );
+
+        original.setPdf("NEW_PDF");
+        partService.update(original);
+        entityManager.flush();
+        assertEquals(
+                PartChangeEventType.UPDATED_PDF,
+                partChangeService.getChanges("ID1").stream().collect(Collectors.toCollection(ArrayList::new)).get(3).getOperation()
+        );
+
+    }
+
 
 
     private DTOPart create(String id) {
@@ -86,6 +138,14 @@ class PartServiceTest {
                 .setNumber(id)
                 .setStatus(DBPartStatus.TEST)
                 .setType(DBPartType.PART);
+    }
+
+    private DTOPart create(String id, DBPartStatus status, DBPartType type) {
+        return new DTOPart()
+                .setName("NAME")
+                .setNumber(id)
+                .setStatus(status)
+                .setType(type);
     }
 
 }
