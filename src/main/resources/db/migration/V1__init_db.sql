@@ -17,8 +17,6 @@ CREATE TABLE parts_changes(
     last_update DATE NOT NULL,
     operation VARCHAR(255) NOT NULL,
     version SERIAL NOT NULL,
-    field_name VARCHAR(255),
-    field_value VARCHAR(255),
     object_json TEXT NOT NULL,
 
     PRIMARY KEY (part_number, version),

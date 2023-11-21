@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="PartService: added test for delete method">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartComparator.java" afterDir="false" />
+    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="PartService: added test for update, getAllByFilter methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/dto/DTOPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/data/entities/dto/DTOPart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTestConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTestConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dev/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/TestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/TestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__init_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__init_db.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +96,7 @@
       <recent name="com.hydroyura.prodms.archive.services.parts" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PartServiceTest">
+  <component name="RunManager" selected="Application.Starter">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -298,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700411400877</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="PartService: added test for update, getAllByFilter methods">
+      <option name="closed" value="true" />
+      <created>1700506449671</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1700506449671</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -328,7 +334,8 @@
     <MESSAGE value="removed files from repository" />
     <MESSAGE value="saved changes" />
     <MESSAGE value="PartService: added test for delete method" />
-    <option name="LAST_COMMIT_MESSAGE" value="PartService: added test for delete method" />
+    <MESSAGE value="PartService: added test for update, getAllByFilter methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="PartService: added test for update, getAllByFilter methods" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -3,6 +3,7 @@ package com.hydroyura.prodms.archive;
 import com.hydroyura.prodms.archive.data.entities.enums.DBPartStatus;
 import com.hydroyura.prodms.archive.data.entities.enums.DBPartType;
 import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
+import com.hydroyura.prodms.archive.data.repositories.PartRepository;
 import com.hydroyura.prodms.archive.services.parts.IPartService;
 import com.hydroyura.prodms.archive.services.rates.IRateService;
 import jakarta.annotation.PostConstruct;
@@ -11,11 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;
 
-//@Component
+@Component
 public class TestData {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -26,19 +28,12 @@ public class TestData {
     @Autowired @Qualifier(value = "RateService")
     private IRateService rateService;
 
-
     @Autowired
-    WebApplicationContext context;
-
-    @Autowired
-    ApplicationContext context2;
-
-
-
-
+    private PartRepository partRepository;
 
     @PostConstruct
     void populate() {
+        if (partRepository.findAll().size() > 0) return;
         try {
             // Детали
             partService.create(createPart("RGR100-00001", "Шпилька"));
@@ -139,6 +134,7 @@ public class TestData {
             partService.create(createStandard("VC.000.002", "Клапан комбинированный"));
             // 12
 
+            /*
             // RGR100-16000 СБ
             rateService.create("RGR100-16000 СБ", "RGR100-16001", 1);
             rateService.create("RGR100-16000 СБ", "OR.000.001", 1);
@@ -302,12 +298,10 @@ public class TestData {
             rateService.create("RGR100/5-00000 СБ", "RGR100-20000-02 СБ", 1);
             rateService.create("RGR100/5-00000 СБ", "RGR100-13000-01 СБ", 4);
             rateService.create("RGR100/5-00000 СБ", "RGR100-10000 СБ", 1);
-
-
-
+            */
         } catch (Exception e) {
             logger.warn(e.getMessage());
-            logger.warn("Test data have already existed");
+            logger.warn("Error while init database data");
         }
     }
 
@@ -316,14 +310,8 @@ public class TestData {
         DTOPart part = new DTOPart();
         part.setName(name);
         part.setNumber(number);
-        part.setUpdated(LocalDate.now());
-        part.setCreated(LocalDate.now());
         part.setType(DBPartType.PART);
         part.setStatus(DBPartStatus.DESIGN);
-        part.setVersion(1);
-        part.setPdf("NONE");
-        part.setOtherFile("NONE");
-        part.setInfo(null);
         return part;
     }
 
@@ -331,14 +319,8 @@ public class TestData {
         DTOPart part = new DTOPart();
         part.setName(name);
         part.setNumber(number);
-        part.setUpdated(LocalDate.now());
-        part.setCreated(LocalDate.now());
         part.setType(DBPartType.ASSEMBLY);
         part.setStatus(DBPartStatus.DESIGN);
-        part.setVersion(1);
-        part.setPdf("NONE");
-        part.setOtherFile("NONE");
-        part.setInfo(null);
         return part;
     }
 
@@ -346,14 +328,8 @@ public class TestData {
         DTOPart part = new DTOPart();
         part.setName(name);
         part.setNumber(number);
-        part.setUpdated(LocalDate.now());
-        part.setCreated(LocalDate.now());
         part.setType(DBPartType.STANDARD_PART);
         part.setStatus(DBPartStatus.NONE);
-        part.setVersion(1);
-        part.setPdf("NONE");
-        part.setOtherFile("NONE");
-        part.setInfo(null);
         return part;
     }
 
