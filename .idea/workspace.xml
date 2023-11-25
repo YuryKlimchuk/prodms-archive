@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="small updates">
+    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="added tests for RateRepository">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTestConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/RateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/RateRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +22,8 @@
         <option value="Dockerfile" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -84,17 +87,17 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.hydroyura.prodms.archive.services.rates" />
       <recent name="com.hydroyura.prodms.archive.data.repositories" />
       <recent name="com.hydroyura.prodms.archive.services.parts" />
       <recent name="com.hydroyura.prodms.archive.dto" />
       <recent name="com.hydroyura.prodms.archive.restcontrollers" />
-      <recent name="com.hydroyura.prodms.archive.services.rates" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.hydroyura.prodms.archive.services.parts" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RateRepositoryTest">
+  <component name="RunManager" selected="JUnit.RateServiceTest">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -119,22 +122,6 @@
       <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
       <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PartServiceTest.findByFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.parts.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
-      <option name="METHOD_NAME" value="findByFilter" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -186,21 +173,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RateServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.rates.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.rates" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.rates.RateServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Starter" />
       <item itemvalue="JUnit.RateRepositoryTest" />
+      <item itemvalue="JUnit.RateServiceTest" />
       <item itemvalue="JUnit.RateRepositoryTest.inject" />
-      <item itemvalue="JUnit.PartServiceTest.findByFilter" />
       <item itemvalue="JUnit.PartServiceTest.update" />
       <item itemvalue="JUnit.PartServiceTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RateServiceTest" />
         <item itemvalue="JUnit.RateRepositoryTest" />
         <item itemvalue="JUnit.RateRepositoryTest.inject" />
         <item itemvalue="JUnit.PartServiceTest" />
         <item itemvalue="JUnit.PartServiceTest.update" />
-        <item itemvalue="JUnit.PartServiceTest.findByFilter" />
       </list>
     </recent_temporary>
   </component>
@@ -317,7 +319,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700931939649</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added tests for RateRepository">
+      <option name="closed" value="true" />
+      <created>1700941823918</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1700941823918</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -350,7 +360,8 @@
     <MESSAGE value="PartService: added test for update, getAllByFilter methods" />
     <MESSAGE value="added init data for parts table" />
     <MESSAGE value="small updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="small updates" />
+    <MESSAGE value="added tests for RateRepository" />
+    <option name="LAST_COMMIT_MESSAGE" value="added tests for RateRepository" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

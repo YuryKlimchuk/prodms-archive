@@ -38,6 +38,7 @@ public class RateService implements IRateService {
 
     @Override
     public Optional<DTORate> create(String assemblyNumber, String elementNumber, long count) {
+        logger.info("Start creation of rate, for assembly number = [{}], element number = [{}], count = [{}]", assemblyNumber, elementNumber, count);
         DBRate rate = new DBRate();
         rate.setCount(count);
         DBRateKey key = new DBRateKey();
