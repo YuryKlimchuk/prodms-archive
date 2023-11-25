@@ -26,7 +26,6 @@ public class RateService implements IRateService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
     @Autowired @Qualifier(value = "RateRepository")
     private BaseRepository<DBRate, DBRateKey> rateRepository;
 
@@ -36,6 +35,64 @@ public class RateService implements IRateService {
     @Autowired
     private ModelMapper mapper;
 
+
+    @Override
+    public Optional<DTORate> create(String assemblyNumber, String elementNumber, long count) {
+        DBRate rate = new DBRate();
+        rate.setCount(count);
+        DBRateKey key = new DBRateKey();
+        rate.setKey(key);
+        rate.setAssembly(partRepository.getReferenceById(assemblyNumber));
+        rate.setElement(partRepository.getReferenceById(elementNumber));
+        DBRate savedRate = rateRepository.save(rate);
+        return Optional.ofNullable(mapper.map(savedRate, DTORate.class));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public Collection<DTORate> getAllRates(String assemblyNumber) {
         Predicate predicate = QDBRate.dBRate.assembly.number.eq(assemblyNumber);
@@ -43,6 +100,7 @@ public class RateService implements IRateService {
                     .map(item -> mapper.map(item, DTORate.class))
                     .collect(Collectors.toList());
     }
+
 
     @Override
     public Collection<DTORate> getDefaultRates(String assemblyNumber) {
@@ -61,6 +119,7 @@ public class RateService implements IRateService {
         return result;
     }
 
+
     @Override
     public Collection<DTOPart> getAssemblies(String elementNumber) {
         Predicate predicate = QDBRate.dBRate.element.number.eq(elementNumber);
@@ -70,18 +129,6 @@ public class RateService implements IRateService {
                 .collect(Collectors.toList());
         */
         return null;
-    }
-
-    @Override
-    public Optional<DTORate> create(String assemblyNumber, String elementNumber, long count) {
-        DBRate rate = new DBRate();
-        rate.setCount(count);
-        DBRateKey key = new DBRateKey();
-        rate.setKey(key);
-        rate.setAssembly(partRepository.getReferenceById(assemblyNumber));
-        rate.setElement(partRepository.getReferenceById(elementNumber));
-        DBRate savedRate = rateRepository.save(rate);
-        return Optional.ofNullable(mapper.map(savedRate, DTORate.class));
     }
 
     @Override

@@ -22,6 +22,7 @@ public class DBRate {
     @Column(name = "count")
     private long count;
 
+
     public DBRate() {}
 
 
@@ -29,32 +30,35 @@ public class DBRate {
         return key;
     }
 
-    public void setKey(DBRateKey key) {
+    public DBRate setKey(DBRateKey key) {
         this.key = key;
+        return this;
     }
 
     public DBPart getAssembly() {
         return assembly;
     }
 
-    public void setAssembly(DBPart assembly) {
+    public DBRate setAssembly(DBPart assembly) {
         this.assembly = assembly;
+        return this;
     }
 
     public DBPart getElement() {
         return element;
     }
 
-    public void setElement(DBPart element) {
+    public DBRate setElement(DBPart element) {
         this.element = element;
+        return this;
     }
 
     public long getCount() {
         return count;
     }
 
-    public void setCount(long count) {
+    public DBRate setCount(long count) {
         this.count = count;
+        return this;
     }
-
 }
