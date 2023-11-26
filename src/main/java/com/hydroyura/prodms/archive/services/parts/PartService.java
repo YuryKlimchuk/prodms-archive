@@ -5,7 +5,7 @@ import com.hydroyura.prodms.archive.data.entities.DBPart;
 import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
 import com.hydroyura.prodms.archive.data.entities.enums.DBPartStatus;
 import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
-import com.hydroyura.prodms.archive.services.predicates.IPredicateGenerator;
+import com.hydroyura.prodms.archive.services.rates.predicates.IPredicateGenerator;
 import com.hydroyura.prodms.archive.services.publisher.Publisher;
 import com.hydroyura.prodms.archive.services.publisher.partchange.PartChangeEvent;
 import com.hydroyura.prodms.archive.services.publisher.partchange.PartChangeEventType;

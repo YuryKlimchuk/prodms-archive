@@ -2,15 +2,13 @@ package com.hydroyura.prodms.archive.services.parts;
 
 import com.hydroyura.prodms.archive.configuration.ModelMapperConfiguration;
 import com.hydroyura.prodms.archive.services.changes.PartChangeService;
-import com.hydroyura.prodms.archive.services.predicates.IPredicateGenerator;
-import com.hydroyura.prodms.archive.services.predicates.PartChangePredicateGenerator;
-import com.hydroyura.prodms.archive.services.predicates.PartPredicateGenerator;
+import com.hydroyura.prodms.archive.services.rates.predicates.IPredicateGenerator;
+import com.hydroyura.prodms.archive.services.rates.predicates.PartChangePredicateGenerator;
+import com.hydroyura.prodms.archive.services.rates.predicates.PartPredicateGenerator;
 import com.hydroyura.prodms.archive.services.publisher.Publisher;
 import com.hydroyura.prodms.archive.services.publisher.Subscriber;
 import com.hydroyura.prodms.archive.services.publisher.partchange.PartChangePublisher;
 import com.hydroyura.prodms.archive.services.publisher.partchange.PartChangeSubscriber;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;

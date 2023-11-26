@@ -193,7 +193,7 @@ public class PartRestController extends AbstractRestController implements IPartR
     public ResponseEntity<ApiResponse> getRatesByAssemblyNumber(String number) {
         logger.warn("Attempt to receive all rates for assembly with ID = {}", number);
         ApiResponse response = new ApiResponse();
-        Collection<DTORate> rates = rateService.getAllRates(number);
+        Collection<DTORate> rates = rateService.getRates(number);
         //TODO: add check if assembly exist
         response.setMessage("Get rates success");
         response.setObject(rates);

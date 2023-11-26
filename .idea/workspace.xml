@@ -4,12 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="added tests for RateRepository">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTestConfiguration.java" afterDir="false" />
+    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="added test for RateService.create">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO_DO_LIST.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TO_DO_LIST.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/changes/PartChangeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/changes/PartChangeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/IPredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/predicates/IPredicateGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartChangePredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/predicates/PartChangePredicateGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartPredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/predicates/PartPredicateGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartRatePredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/predicates/PartRatePredicateGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/IRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/IRateService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/RateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/RateRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTestConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTestConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTestConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTestConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +107,7 @@
       <recent name="com.hydroyura.prodms.archive.services.parts" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RateServiceTest">
+  <component name="RunManager" selected="JUnit.RateServiceTest.changeCount">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -107,68 +117,6 @@
     <configuration name="Starter" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.ArchiveApplication" />
       <module name="archive" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PartServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.parts.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PartServiceTest.update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.parts.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.parts" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.parts.PartServiceTest" />
-      <option name="METHOD_NAME" value="update" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RateRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.RateRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RateRepositoryTest.inject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="archive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hydroyura.prodms.archive.data.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.data.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.data.repositories.RateRepositoryTest" />
-      <option name="METHOD_NAME" value="inject" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,21 +136,85 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RateServiceTest.changeCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.rates.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.rates" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.rates.RateServiceTest" />
+      <option name="METHOD_NAME" value="changeCount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RateServiceTest.create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.rates.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.rates" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.rates.RateServiceTest" />
+      <option name="METHOD_NAME" value="create" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RateServiceTest.getAssemblies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.rates.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.rates" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.rates.RateServiceTest" />
+      <option name="METHOD_NAME" value="getAssemblies" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RateServiceTest.getRates" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="archive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hydroyura.prodms.archive.services.rates.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hydroyura.prodms.archive.services.rates" />
+      <option name="MAIN_CLASS_NAME" value="com.hydroyura.prodms.archive.services.rates.RateServiceTest" />
+      <option name="METHOD_NAME" value="getRates" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Starter" />
-      <item itemvalue="JUnit.RateRepositoryTest" />
+      <item itemvalue="JUnit.RateServiceTest.changeCount" />
+      <item itemvalue="JUnit.RateServiceTest.create" />
+      <item itemvalue="JUnit.RateServiceTest.getAssemblies" />
+      <item itemvalue="JUnit.RateServiceTest.getRates" />
       <item itemvalue="JUnit.RateServiceTest" />
-      <item itemvalue="JUnit.RateRepositoryTest.inject" />
-      <item itemvalue="JUnit.PartServiceTest.update" />
-      <item itemvalue="JUnit.PartServiceTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RateServiceTest.changeCount" />
+        <item itemvalue="JUnit.RateServiceTest.getAssemblies" />
+        <item itemvalue="JUnit.RateServiceTest.getRates" />
+        <item itemvalue="JUnit.RateServiceTest.create" />
         <item itemvalue="JUnit.RateServiceTest" />
-        <item itemvalue="JUnit.RateRepositoryTest" />
-        <item itemvalue="JUnit.RateRepositoryTest.inject" />
-        <item itemvalue="JUnit.PartServiceTest" />
-        <item itemvalue="JUnit.PartServiceTest.update" />
       </list>
     </recent_temporary>
   </component>
@@ -327,7 +339,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700941823918</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="added test for RateService.create">
+      <option name="closed" value="true" />
+      <created>1700942955758</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1700942955758</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -361,7 +381,8 @@
     <MESSAGE value="added init data for parts table" />
     <MESSAGE value="small updates" />
     <MESSAGE value="added tests for RateRepository" />
-    <option name="LAST_COMMIT_MESSAGE" value="added tests for RateRepository" />
+    <MESSAGE value="added test for RateService.create" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test for RateService.create" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

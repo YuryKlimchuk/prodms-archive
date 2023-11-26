@@ -1,3 +1,4 @@
 1. Think of where need transactions.
 2. Implement transactions.
 3. Test for transactions.
+4. Outh 2.0 with Keycloak.

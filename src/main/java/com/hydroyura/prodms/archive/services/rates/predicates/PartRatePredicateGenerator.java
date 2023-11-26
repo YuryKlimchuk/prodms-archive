@@ -1,4 +1,4 @@
-package com.hydroyura.prodms.archive.services.predicates;
+package com.hydroyura.prodms.archive.services.rates.predicates;
 
 import com.hydroyura.prodms.archive.data.entities.QDBRate;
 import com.querydsl.core.types.ExpressionUtils;

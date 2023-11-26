@@ -1,12 +1,11 @@
 package com.hydroyura.prodms.archive.services.changes;
 
-import com.hydroyura.prodms.archive.data.entities.DBPart;
 import com.hydroyura.prodms.archive.data.entities.DBPartChange;
 import com.hydroyura.prodms.archive.data.entities.keys.DBPartChangeKey;
 import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
 import com.hydroyura.prodms.archive.data.entities.dto.DTOPartChange;
 import com.hydroyura.prodms.archive.services.parts.PartService;
-import com.hydroyura.prodms.archive.services.predicates.IPredicateGenerator;
+import com.hydroyura.prodms.archive.services.rates.predicates.IPredicateGenerator;
 import com.querydsl.core.types.Predicate;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;

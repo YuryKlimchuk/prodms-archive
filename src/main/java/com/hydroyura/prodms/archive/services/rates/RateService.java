@@ -7,6 +7,7 @@ import com.hydroyura.prodms.archive.data.entities.QDBRate;
 import com.hydroyura.prodms.archive.data.repositories.BaseRepository;
 import com.hydroyura.prodms.archive.data.entities.dto.DTOPart;
 import com.hydroyura.prodms.archive.data.entities.dto.DTORate;
+import com.hydroyura.prodms.archive.services.rates.predicates.IPredicateGenerator;
 import com.querydsl.core.types.Predicate;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -31,6 +33,9 @@ public class RateService implements IRateService {
 
     @Autowired @Qualifier(value = "PartRepository")
     private BaseRepository<DBPart, String> partRepository;
+
+    @Autowired @Qualifier(value = "PartRatePredicateGenerator")
+    private IPredicateGenerator ratePredicateGenerator;
 
     @Autowired
     private ModelMapper mapper;
@@ -49,63 +54,91 @@ public class RateService implements IRateService {
         return Optional.ofNullable(mapper.map(savedRate, DTORate.class));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public Collection<DTORate> getRates(String assemblyNumber) {
+        logger.info("Attempt to retrieve rates for assembly number = [{}]", assemblyNumber);
+        Predicate predicate = ratePredicateGenerator.generate(Map.of("assembly-number", assemblyNumber));
+        return StreamSupport.stream(rateRepository.findAll(predicate).spliterator(), false)
+                .map(item -> mapper.map(item, DTORate.class))
+                .collect(Collectors.toList());
+    }
 
     @Override
-    public Collection<DTORate> getAllRates(String assemblyNumber) {
-        Predicate predicate = QDBRate.dBRate.assembly.number.eq(assemblyNumber);
+    public Collection<DTOPart> getAssemblies(String elementNumber) {
+        logger.info("Attempt to retrieve assembly list for part number = [{}]", elementNumber);
+        Predicate predicate = ratePredicateGenerator.generate(Map.of("element-number", elementNumber));
         return StreamSupport.stream(rateRepository.findAll(predicate).spliterator(), false)
-                    .map(item -> mapper.map(item, DTORate.class))
-                    .collect(Collectors.toList());
+                .map(item -> mapper.map(item, DTORate.class))
+                .map(DTORate::getAssembly)
+                .collect(Collectors.toList());
     }
+
+    @Override
+    public boolean changeCount(String assemblyNumber, String elementNumber, long newCount) {
+        logger.info("Attempt to change count for part number = [{}], in assembly = [{}]", elementNumber, assemblyNumber);
+
+        Optional<DBRate> currentRate = rateRepository.findById(new DBRateKey().setAssemblyId(assemblyNumber).setElementId(elementNumber));
+        if (currentRate.isEmpty()) {
+            logger.warn("Rate not exist");
+            return false;
+        }
+
+        if (currentRate.get().getCount() == newCount) {
+            logger.warn("Count wasn't updated, newCount == currentCount");
+            return false;
+        }
+
+        rateRepository.save(currentRate.get().setCount(newCount));
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @Override
     public Collection<DTORate> getDefaultRates(String assemblyNumber) {
-        Collection<DTORate> allRates = getAllRates(assemblyNumber);
+        Collection<DTORate> allRates = getRates(assemblyNumber);
         Collection<DTORate> replacementRates = allRates.stream().filter(item -> item.getReplacement() > 0).collect(Collectors.toList());
         Collection<Long> replacementIds = replacementRates.stream().map(DTORate::getReplacement).collect(Collectors.toSet());
 
@@ -120,27 +153,11 @@ public class RateService implements IRateService {
         return result;
     }
 
-
-    @Override
-    public Collection<DTOPart> getAssemblies(String elementNumber) {
-        Predicate predicate = QDBRate.dBRate.element.number.eq(elementNumber);
-        /*
-        return StreamSupport.stream(rateRepository.findAll(predicate).spliterator(), false)
-                .map(item -> mapper.map(item, DTORate.class))
-                .collect(Collectors.toList());
-        */
-        return null;
-    }
-
     @Override
     public boolean delete(String assemblyNumber, String elementNumber) {
         return false;
     }
 
-    @Override
-    public boolean changeCount(String assemblyNumber, String elementNumber, long newCount) {
-        return false;
-    }
 
     @Override
     public boolean addReplacement(String number, String subNumber, String replacementNumber) {
