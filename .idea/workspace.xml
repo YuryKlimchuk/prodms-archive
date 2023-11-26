@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="added test for RateService.create">
+    <list default="true" id="9f9abe84-06e8-47bf-94f7-1d34a1b567f8" name="Changes" comment="added tests for RateService: getRates, getAssemblies, changeCount">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TO_DO_LIST.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TO_DO_LIST.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/changes/PartChangeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/changes/PartChangeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/parts/PartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/IPredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/predicates/IPredicateGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartChangePredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/predicates/PartChangePredicateGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartPredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/predicates/PartPredicateGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/predicates/PartRatePredicateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/predicates/PartRatePredicateGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/IRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/IRateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/services/rates/RateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/RateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/data/repositories/RateRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTestConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/parts/PartServiceTestConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTestConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hydroyura/prodms/archive/services/rates/RateServiceTestConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/TestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/TestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/examples/ApiResponseExampleForSuccessGetId.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +95,7 @@
       <recent name="com.hydroyura.prodms.archive.services.parts" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RateServiceTest.changeCount">
+  <component name="RunManager" selected="Application.Starter">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -347,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700942955758</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="added tests for RateService: getRates, getAssemblies, changeCount">
+      <option name="closed" value="true" />
+      <created>1701003280574</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1701003280574</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -382,28 +378,16 @@
     <MESSAGE value="small updates" />
     <MESSAGE value="added tests for RateRepository" />
     <MESSAGE value="added test for RateService.create" />
-    <option name="LAST_COMMIT_MESSAGE" value="added test for RateService.create" />
+    <MESSAGE value="added tests for RateService: getRates, getAssemblies, changeCount" />
+    <option name="LAST_COMMIT_MESSAGE" value="added tests for RateService: getRates, getAssemblies, changeCount" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/restcontrollers/PartRestController.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hydroyura/prodms/archive/TestData.java</url>
-          <line>35</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="3" />
+          <line>243</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

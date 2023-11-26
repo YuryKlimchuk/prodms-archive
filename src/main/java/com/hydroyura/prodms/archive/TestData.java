@@ -134,7 +134,7 @@ public class TestData {
             partService.create(createStandard("VC.000.002", "Клапан комбинированный"));
             // 12
 
-            /*
+
             // RGR100-16000 СБ
             rateService.create("RGR100-16000 СБ", "RGR100-16001", 1);
             rateService.create("RGR100-16000 СБ", "OR.000.001", 1);
@@ -298,7 +298,6 @@ public class TestData {
             rateService.create("RGR100/5-00000 СБ", "RGR100-20000-02 СБ", 1);
             rateService.create("RGR100/5-00000 СБ", "RGR100-13000-01 СБ", 4);
             rateService.create("RGR100/5-00000 СБ", "RGR100-10000 СБ", 1);
-            */
         } catch (Exception e) {
             logger.warn(e.getMessage());
             logger.warn("Error while init database data");
