@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+
+  postgres-db:
+    container_name: postgres-db
+    restart: always
+    image: postgres:16.2
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_DB=archive-db
+      - POSTGRES_PASSWORD=pwd
+    volumes:
+      - "db-volume:/var/lib/postgresql/data"
+
+
+volumes:
+  db-volume:

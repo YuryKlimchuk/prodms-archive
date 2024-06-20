@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+
+spring:
+  jpa:
+
+    hibernate:
+      ddl-auto: update
+#    generate-ddl: true
+#    show-sql: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/archive-db
+    username: user
+    password: pwd
+
+  flyway:
+    url: jdbc:postgresql://localhost:5432/archive-db
+    username: user
+    password: pwd
+    enabled: true
+#    locations: classpath:db/migr
+#    check-location: false
+    baseline-on-migrate: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
+
+
