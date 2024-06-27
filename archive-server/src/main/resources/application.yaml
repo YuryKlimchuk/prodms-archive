@@ -17,6 +17,7 @@ spring:
 
   flyway:
     url: jdbc:postgresql://localhost:5432/archive-db
+    user: user
     username: user
     password: pwd
     enabled: true

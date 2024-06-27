@@ -1,52 +1,35 @@
 package com.hydroyura.prodms.archive.server.services.processors;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnit;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
-import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitUpdate;
-import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
+import com.hydroyura.prodms.archive.server.entities.Unit;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
 import com.hydroyura.prodms.archive.server.services.mappers.MappersMngr;
-import com.hydroyura.prodms.archive.server.services.predicates.UnitPredicateGenerator;
+import com.hydroyura.prodms.archive.server.services.validators.DTOValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.SimpleErrors;
 
-import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class UnitProcessorImpl implements UnitProcessor {
 
-    private final UnitRepository repository;
-    private final UnitPredicateGenerator predicateGenerator;
-    private final MappersMngr mappersMngr;
+    @Autowired
+    private MappersMngr mappersMngr;
 
-    public UnitProcessorImpl(UnitRepository repository, UnitPredicateGenerator predicateGenerator, MappersMngr mappersMngr) {
-        this.repository = repository;
-        this.predicateGenerator = predicateGenerator;
-        this.mappersMngr = mappersMngr;
-    }
+    @Autowired
+    private DTOValidator validator;
+
+    @Autowired
+    private UnitRepository unitRepository;
 
     @Override
     public Optional<String> create(DTOUnitCreate dto) {
-        return Optional.empty();
-    }
+        SimpleErrors simpleErrors = new SimpleErrors(dto);
+        validator.validate(dto);
 
-    @Override
-    public Optional<DTOUnit> findOne(String number) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Collection<DTOUnit> findMany(FilterUnit filter) {
-        return null;
-    }
-
-    @Override
-    public Boolean update(DTOUnitUpdate dto) {
-        return null;
-    }
-
-    @Override
-    public Boolean delete(String number) {
-        return null;
+        Unit unit = mappersMngr.getMapper(Map.entry(Unit.class, DTOUnitCreate.class)).destinationToSource(dto);
+        return unitRepository.create(unit);
     }
 }

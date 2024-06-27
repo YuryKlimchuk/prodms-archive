@@ -11,8 +11,8 @@ services:
       - POSTGRES_USER=user
       - POSTGRES_DB=archive-db
       - POSTGRES_PASSWORD=pwd
-    volumes:
-      - "db-volume:/var/lib/postgresql/data"
+#    volumes:
+#      - "db-volume:/var/lib/postgresql/data"
 
 
 volumes:

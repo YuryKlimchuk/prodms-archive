@@ -19,13 +19,14 @@ public class MappersMngr {
                 .collect(Collectors.toMap(BaseMapper::getType, Function.identity()));
     }
 
-    public BaseMapper getMapper(Map.Entry<Class<?>, Class<?>> key) {
+    // TODO: custom exception
+    public <Source, Destination> BaseMapper<Source, Destination> getMapper(Map.Entry<Class<Source>, Class<Destination>> key) {
         return Optional
                 .ofNullable(mappers.get(key))
                 .orElseThrow(() -> new RuntimeException(buildErrorMsg(key)));
     }
 
-    private String buildErrorMsg(Map.Entry<Class<?>, Class<?>> key) {
+    private <Source, Destination> String buildErrorMsg(Map.Entry<Class<Source>, Class<Destination>> key) {
         return ERROR_MSG.formatted(key.getKey().getName(), key.getValue().getName());
     }
 

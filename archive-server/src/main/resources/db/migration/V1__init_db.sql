@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS unit_types;
-
 DROP TABLE IF EXISTS units;
 CREATE TABLE units(
     number          	VARCHAR(255)    	NOT NULL    PRIMARY KEY,

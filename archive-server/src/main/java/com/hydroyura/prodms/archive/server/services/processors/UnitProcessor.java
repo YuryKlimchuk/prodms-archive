@@ -12,12 +12,4 @@ public interface UnitProcessor {
 
     Optional<String> create(DTOUnitCreate dto);
 
-    Optional<DTOUnit> findOne(String number);
-
-    Collection<DTOUnit> findMany(FilterUnit filter);
-
-    Boolean update(DTOUnitUpdate dto);
-
-    Boolean delete(String number);
-
 }
