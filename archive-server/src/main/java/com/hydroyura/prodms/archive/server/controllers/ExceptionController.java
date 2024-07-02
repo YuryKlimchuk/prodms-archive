@@ -16,7 +16,10 @@ public class ExceptionController {
     ResponseEntity<Response> validateError(ValidationException ex) {
         Response response = new Response();
         response.setStatus("VALIDATION_FAIL");
-        List<String> errors = ex.getErrors().getFieldErrors().stream().map(err -> err.toString()).toList();
+        List<String> errors = ex.getErrors().getFieldErrors()
+                .stream()
+                .map(err -> err.toString())
+                .toList();
         response.setContent(errors);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
