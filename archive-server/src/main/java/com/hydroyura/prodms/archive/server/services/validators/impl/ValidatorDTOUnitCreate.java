@@ -21,14 +21,3 @@ public class ValidatorDTOUnitCreate implements Validator {
         ValidationUtils.rejectIfEmpty(errors, "status", "validation.unit.create.status");
     }
 }
-
-/*
-
-    private String number;
-    private String name;
-    private String type;
-    private String status;
-    private String comment;
-
-
- */
