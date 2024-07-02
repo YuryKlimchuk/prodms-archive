@@ -7,9 +7,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,8 +43,18 @@ public class UnitController extends BaseController {
     @RequestMapping(method = RequestMethod.POST, value = {"", "/"}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> create(@RequestBody DTOUnitCreate dto) {
         Optional<String> result = unitProcessor.create(dto);
-
-        return null;
+        Response response = new Response();
+        ResponseEntity<Response> responseEntity;
+        if (result.isPresent()) {
+            response.setStatus("SUCCESSFUL");
+            response.setContent(result.get());
+            responseEntity = new ResponseEntity<>(response, HttpStatus.CREATED);
+        } else {
+            response.setStatus("UNSUCCESSFUL");
+            response.setContent("UNKNOWN_ERROR");
+            responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
     }
 
 }
