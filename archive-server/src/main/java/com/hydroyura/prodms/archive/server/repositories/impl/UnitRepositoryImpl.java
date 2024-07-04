@@ -1,17 +1,21 @@
 package com.hydroyura.prodms.archive.server.repositories.impl;
 
+import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
 import com.hydroyura.prodms.archive.server.entities.QUnit;
 import com.hydroyura.prodms.archive.server.entities.Unit;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
+import com.hydroyura.prodms.archive.server.services.predicates.PredicateGenerator;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPQLTemplates;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +33,10 @@ public class UnitRepositoryImpl implements UnitRepository {
     private EntityManager em;
     private QUnit qunit = QUnit.unit;
     private JPAQueryFactory queryFactory;
+
+
+    @Autowired
+    private PredicateGenerator<FilterUnit> predicateGenerator;
 
     private Predicate ALWAYS_TRUE = Expressions.TRUE.eq(true);
 
@@ -97,10 +105,9 @@ public class UnitRepositoryImpl implements UnitRepository {
     }
 
     @Override
-    public Collection<Unit> findMany(Predicate predicate) {
-        return queryFactory
-                .selectFrom(qunit)
-                .where(predicate)
-                .fetch();
+    public Collection<Unit> findMany(FilterUnit filterUnit) {
+        JPAQuery<Unit> query = queryFactory.selectFrom(qunit);
+        predicateGenerator.generate(filterUnit).ifPresent(query::where);
+        return query.fetch();
     }
 }

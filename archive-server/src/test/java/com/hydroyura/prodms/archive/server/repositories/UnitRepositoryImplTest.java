@@ -128,6 +128,9 @@ class UnitRepositoryImplTest {
         repository.create(unit2);
         repository.create(unit3);
 
+        throw new RuntimeException();
+        // TODO: refactor
+        /*
         Predicate predicate1 = qunit.name.containsIgnoreCase("TEST_TEST_NAME");
         assertEquals(3, repository.findMany(predicate1).size());
 
@@ -136,7 +139,7 @@ class UnitRepositoryImplTest {
 
         Predicate predicate3 = ExpressionUtils.and(predicate2, qunit.type.ne("TEST_TEST_TYPE_1"));
         assertEquals(1, repository.findMany(predicate3).size());
-
+        */
     }
 
 

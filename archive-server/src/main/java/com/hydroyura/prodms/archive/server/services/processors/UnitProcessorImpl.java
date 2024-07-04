@@ -30,9 +30,6 @@ public class UnitProcessorImpl implements UnitProcessor {
     @Autowired
     private UnitRepository unitRepository;
 
-    @Autowired
-    private PredicateGenerator<FilterUnit> predicateGenerator;
-
     @Override
     public Optional<String> create(DTOUnitCreate dto) {
         validatorMngr.validate(dto);
@@ -58,12 +55,11 @@ public class UnitProcessorImpl implements UnitProcessor {
     }
 
     @Override
-    public Collection<DTOUnit> findMany(SearchOptions searchOptions) {
-        validatorMngr.validate(searchOptions);
+    public Collection<DTOUnit> findMany(FilterUnit filter) {
+        validatorMngr.validate(filter);
         FilterUnit filterUnit = new FilterUnit();
-        Optional<Predicate> predicate = predicateGenerator.generate(filterUnit);
         BaseMapper<Unit, DTOUnit> mapper =  mappersMngr.getMapper(Map.entry(Unit.class, DTOUnit.class));
-        return unitRepository.findMany(predicate.get())
+        return unitRepository.findMany(filterUnit)
                 .stream()
                 .map(mapper::sourceToDestination)
                 .toList();
