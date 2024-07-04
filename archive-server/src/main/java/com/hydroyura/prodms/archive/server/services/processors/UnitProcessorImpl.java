@@ -1,6 +1,5 @@
 package com.hydroyura.prodms.archive.server.services.processors;
 
-import com.hydroyura.prodms.archive.client.dtos.api.SearchOptions;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnit;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
 import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
@@ -8,9 +7,7 @@ import com.hydroyura.prodms.archive.server.entities.Unit;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
 import com.hydroyura.prodms.archive.server.services.mappers.BaseMapper;
 import com.hydroyura.prodms.archive.server.services.mappers.MappersMngr;
-import com.hydroyura.prodms.archive.server.services.predicates.PredicateGenerator;
 import com.hydroyura.prodms.archive.server.services.validators.DTOValidatorMngr;
-import com.querydsl.core.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

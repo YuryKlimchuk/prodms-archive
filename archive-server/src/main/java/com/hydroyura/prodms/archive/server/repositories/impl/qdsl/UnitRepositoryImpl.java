@@ -1,10 +1,10 @@
-package com.hydroyura.prodms.archive.server.repositories.impl;
+package com.hydroyura.prodms.archive.server.repositories.impl.qdsl;
 
 import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
 import com.hydroyura.prodms.archive.server.entities.QUnit;
 import com.hydroyura.prodms.archive.server.entities.Unit;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
-import com.hydroyura.prodms.archive.server.services.predicates.PredicateGenerator;
+import com.hydroyura.prodms.archive.server.repositories.PredicateGenerator;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPQLTemplates;

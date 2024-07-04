@@ -6,7 +6,9 @@ import java.util.Collection;
 public class FilterUnit {
 
     private String number, name;
-    private Collection<String> types, statuses = new ArrayList<>();
+
+    private Collection<String> types = new ArrayList<>();
+    private Collection<String> statuses = new ArrayList<>();
 
     private String sort, sortOrder;
     private Integer page, perPage;

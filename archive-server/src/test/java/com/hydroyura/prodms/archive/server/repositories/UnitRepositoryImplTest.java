@@ -1,10 +1,9 @@
 package com.hydroyura.prodms.archive.server.repositories;
 
+import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
 import com.hydroyura.prodms.archive.server.entities.QUnit;
 import com.hydroyura.prodms.archive.server.entities.Unit;
-import com.hydroyura.prodms.archive.server.repositories.impl.UnitRepositoryImpl;
-import com.querydsl.core.types.ExpressionUtils;
-import com.querydsl.core.types.Predicate;
+import com.hydroyura.prodms.archive.server.repositories.impl.qdsl.UnitRepositoryImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +15,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -128,18 +128,18 @@ class UnitRepositoryImplTest {
         repository.create(unit2);
         repository.create(unit3);
 
-        throw new RuntimeException();
-        // TODO: refactor
-        /*
-        Predicate predicate1 = qunit.name.containsIgnoreCase("TEST_TEST_NAME");
-        assertEquals(3, repository.findMany(predicate1).size());
 
-        Predicate predicate2 = ExpressionUtils.and(predicate1, qunit.status.eq("TEST_TEST_STATUS"));
-        assertEquals(2, repository.findMany(predicate2).size());
 
-        Predicate predicate3 = ExpressionUtils.and(predicate2, qunit.type.ne("TEST_TEST_TYPE_1"));
-        assertEquals(1, repository.findMany(predicate3).size());
-        */
+        FilterUnit filter1 = new FilterUnit().setName("TEST_TEST_NAME");
+        assertEquals(3, repository.findMany(filter1).size());
+
+        FilterUnit filter2 = new FilterUnit();
+        filter2.getStatuses().add("TEST_TEST_STATUS");
+        assertEquals(2, repository.findMany(filter2).size());
+
+        FilterUnit filter3 = new FilterUnit();
+        filter3.getTypes().add("TEST_TEST_TYPE_1");
+        assertEquals(1, repository.findMany(filter3).size());
     }
 
 

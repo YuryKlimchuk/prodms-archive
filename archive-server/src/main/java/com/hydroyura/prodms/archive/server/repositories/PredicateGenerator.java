@@ -1,4 +1,4 @@
-package com.hydroyura.prodms.archive.server.services.predicates;
+package com.hydroyura.prodms.archive.server.repositories;
 
 import com.querydsl.core.types.Predicate;
 
