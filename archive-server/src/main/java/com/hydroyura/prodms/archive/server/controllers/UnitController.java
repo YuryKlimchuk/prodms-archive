@@ -44,11 +44,11 @@ public class UnitController extends BaseController {
         Response response = new Response();
         ResponseEntity<Response> responseEntity;
         if (result.isPresent()) {
-            response.setStatus("SUCCESSFUL");
+            response.setStatus(ResponseStatus.SUCCESSFUL.name());
             response.setContent(result.get());
             responseEntity = new ResponseEntity<>(response, HttpStatus.CREATED);
         } else {
-            response.setStatus("UNSUCCESSFUL");
+            response.setStatus(ResponseStatus.UNSUCCESSFUL.name());
             response.setContent("UNKNOWN_ERROR");
             responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -80,11 +80,11 @@ public class UnitController extends BaseController {
         Response response = new Response();
         ResponseEntity<Response> responseEntity;
         if (result.isPresent()) {
-            response.setStatus("SUCCESSFUL");
+            response.setStatus(ResponseStatus.SUCCESSFUL.name());
             response.setContent(result.get());
             responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         } else {
-            response.setStatus("UNSUCCESSFUL");
+            response.setStatus(ResponseStatus.UNSUCCESSFUL.name());
             response.setContent("UNKNOWN_ERROR");
             responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }

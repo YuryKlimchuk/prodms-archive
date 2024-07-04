@@ -1,5 +1,7 @@
 package com.hydroyura.prodms.archive.client.dtos.unit.dto;
 
+import java.util.Objects;
+
 public class DTOUnit {
 
     private String number;
@@ -45,5 +47,18 @@ public class DTOUnit {
     public DTOUnit setStatus(String status) {
         this.status = status;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        DTOUnit dtoUnit = (DTOUnit) object;
+        return Objects.equals(number, dtoUnit.number) && Objects.equals(name, dtoUnit.name) && Objects.equals(type, dtoUnit.type) && Objects.equals(status, dtoUnit.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, name, type, status);
     }
 }
