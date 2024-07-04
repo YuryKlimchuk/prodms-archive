@@ -118,12 +118,12 @@ public class UnitController extends BaseController {
         Response response = new Response();
         ResponseEntity<Response> responseEntity;
         if (result) {
-            response.setStatus("SUCCESSFUL");
+            response.setStatus(ResponseStatus.SUCCESSFUL.name());
             response.setContent(number);
             responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         } else {
-            response.setStatus("UNSUCCESSFUL");
-            response.setContent("UNKNOWN_ERROR");
+            response.setStatus(ResponseStatus.UNSUCCESSFUL.name());
+            response.setContent(UNKNOWN_ERROR);
             responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;

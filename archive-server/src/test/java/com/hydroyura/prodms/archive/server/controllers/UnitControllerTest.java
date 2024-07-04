@@ -100,4 +100,32 @@ public class UnitControllerTest {
         assertEquals(UNKNOWN_ERROR, response.getBody().getContent());
         assertEquals(ResponseStatus.UNSUCCESSFUL.name(), response.getBody().getStatus());
     }
+
+    @Test
+    void delete_OK() {
+        String number = "NUMBER";
+
+        Mockito
+                .when(processor.delete(number))
+                .thenReturn(Boolean.TRUE);
+
+        ResponseEntity<Response> response = controller.delete(number);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(number, response.getBody().getContent());
+        assertEquals(ResponseStatus.SUCCESSFUL.name(), response.getBody().getStatus());
+    }
+
+    @Test
+    void delete_INTERNAL_SERVER_ERROR() {
+        String number = "NUMBER";
+
+        Mockito
+                .when(processor.delete(number))
+                .thenReturn(Boolean.FALSE);
+
+        ResponseEntity<Response> response = controller.delete(number);
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals(UNKNOWN_ERROR, response.getBody().getContent());
+        assertEquals(ResponseStatus.UNSUCCESSFUL.name(), response.getBody().getStatus());
+    }
 }
