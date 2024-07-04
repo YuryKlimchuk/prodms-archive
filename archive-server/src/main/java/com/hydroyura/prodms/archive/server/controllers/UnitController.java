@@ -20,6 +20,8 @@ import java.util.Optional;
 @RequestMapping(value = "/api/v1/units")
 public class UnitController extends BaseController {
 
+    public static String UNKNOWN_ERROR = "UNKNOWN_ERROR";
+
     @Autowired
     private UnitProcessor unitProcessor;
 
@@ -49,7 +51,7 @@ public class UnitController extends BaseController {
             responseEntity = new ResponseEntity<>(response, HttpStatus.CREATED);
         } else {
             response.setStatus(ResponseStatus.UNSUCCESSFUL.name());
-            response.setContent("UNKNOWN_ERROR");
+            response.setContent(UNKNOWN_ERROR);
             responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
@@ -85,7 +87,7 @@ public class UnitController extends BaseController {
             responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             response.setStatus(ResponseStatus.UNSUCCESSFUL.name());
-            response.setContent("UNKNOWN_ERROR");
+            response.setContent(UNKNOWN_ERROR);
             responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
