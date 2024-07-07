@@ -14,10 +14,11 @@ public interface UnitProcessor {
     Optional<DTOUnit> findOne(String number);
     Boolean delete(String number);
     Collection<DTOUnit> findMany(FilterUnit filter);
+
 }
 
 
 /*
     Boolean update(Unit unit);
-    Collection<Unit> findMany(Predicate predicate);
+
  */

@@ -3,6 +3,7 @@ package com.hydroyura.prodms.archive.server.controllers;
 import com.hydroyura.prodms.archive.client.dtos.api.Response;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnit;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
+import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
 import com.hydroyura.prodms.archive.server.services.processors.UnitProcessor;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -13,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.Optional;
 
 
@@ -129,4 +131,38 @@ public class UnitController extends BaseController {
         return responseEntity;
     }
 
+    @Operation(summary = "Find units by filter")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Units have been found"
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Filter is not valid"
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Units with given number has been not found"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Server error while handling request"
+            )
+    })
+    public ResponseEntity<Response> findMany(FilterUnit filterUnit) {
+        Collection<DTOUnit> result = unitProcessor.findMany(filterUnit);
+        Response response = new Response();
+        ResponseEntity<Response> responseEntity;
+        if (!result.isEmpty()) {
+            response.setStatus(ResponseStatus.SUCCESSFUL.name());
+            response.setContent(result);
+            responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            response.setStatus(ResponseStatus.UNSUCCESSFUL.name());
+            response.setContent(UNKNOWN_ERROR);
+            responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
 }

@@ -24,12 +24,14 @@ public class UnitPredicateGenerator implements PredicateGenerator<FilterUnit> {
 
         Optional
                 .ofNullable(filter.getName())
-                .map(qUnit.name::like)
+                //.map(s -> "%" + "%")
+                .map(qUnit.name::containsIgnoreCase)
                 .ifPresent(predicates::add);
 
         Optional
                 .ofNullable(filter.getNumber())
-                .map(qUnit.number::like)
+                //.map(s -> "%" + "%")
+                .map(qUnit.number::containsIgnoreCase)
                 .ifPresent(predicates::add);
 
         if (!filter.getStatuses().isEmpty()) {
