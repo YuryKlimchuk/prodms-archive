@@ -2,6 +2,7 @@ package com.hydroyura.prodms.archive.server.services.processors;
 
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnit;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
+import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitUpdate;
 import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
 import com.hydroyura.prodms.archive.server.entities.Unit;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
@@ -58,12 +59,20 @@ public class UnitProcessorImpl implements UnitProcessor {
     @Override
     public Collection<DTOUnit> findMany(FilterUnit filter) {
         validatorMngr.validate(filter);
-        FilterUnit filterUnit = new FilterUnit();
         BaseMapper<Unit, DTOUnit> mapper =  mappersMngr.getMapper(Map.entry(Unit.class, DTOUnit.class));
         FilterUnit f = filterChecker.check(filter);
         return unitRepository.findMany(f)
                 .stream()
                 .map(mapper::sourceToDestination)
                 .toList();
+    }
+
+    @Override
+    public Boolean update(DTOUnitUpdate dto) {
+        validatorMngr.validate(dto);
+        return unitRepository.update(
+                mappersMngr
+                        .getMapper(Map.entry(Unit.class, DTOUnitUpdate.class))
+                        .destinationToSource(dto));
     }
 }

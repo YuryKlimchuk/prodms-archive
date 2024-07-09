@@ -1,8 +1,8 @@
 package com.hydroyura.prodms.archive.server.services.processors;
 
-import com.hydroyura.prodms.archive.client.dtos.api.SearchOptions;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnit;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
+import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitUpdate;
 import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
 
 import java.util.Collection;
@@ -14,11 +14,5 @@ public interface UnitProcessor {
     Optional<DTOUnit> findOne(String number);
     Boolean delete(String number);
     Collection<DTOUnit> findMany(FilterUnit filter);
-
+    Boolean update(DTOUnitUpdate dto);
 }
-
-
-/*
-    Boolean update(Unit unit);
-
- */
