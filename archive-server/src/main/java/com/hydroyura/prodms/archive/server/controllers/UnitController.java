@@ -1,12 +1,15 @@
 package com.hydroyura.prodms.archive.server.controllers;
 
 import com.hydroyura.prodms.archive.client.dtos.api.Response;
+import com.hydroyura.prodms.archive.client.dtos.unit.api.response.UnitCreated;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnit;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitUpdate;
 import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
 import com.hydroyura.prodms.archive.server.services.processors.UnitProcessor;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,26 +35,35 @@ public class UnitController extends BaseController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "201",
-                    description = "Unit has been created"
+                    description = "Unit has been created",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = UnitCreated.class),
+                                    examples = {})
+                    }
             ),
             @ApiResponse(
-                    responseCode = "400",
-                    description = "Unit object is not valid"
+                    responseCode = "422",
+                    description = "Unit object is not valid",
+                    content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = FilterUnit.class))
+                    }
             ),
             @ApiResponse(
                     responseCode = "500",
-                    description = "Server error while handling request"
+                    description = "Unknown error while handling request"
             )
     })
     @RequestMapping(method = RequestMethod.POST, value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Response> create(@RequestBody DTOUnitCreate dto) {
+    public ResponseEntity<?> create(@RequestBody DTOUnitCreate dto) {
         Optional<String> result = unitProcessor.create(dto);
         Response response = new Response();
         ResponseEntity<Response> responseEntity;
         if (result.isPresent()) {
             response.setStatus(ResponseStatus.SUCCESSFUL.name());
             response.setContent(result.get());
-            responseEntity = new ResponseEntity<>(response, HttpStatus.CREATED);
+            responseEntity = new ResponseEntity<>(HttpStatus.CREATED);
         } else {
             response.setStatus(ResponseStatus.UNSUCCESSFUL.name());
             response.setContent(UNKNOWN_ERROR);
@@ -76,7 +88,7 @@ public class UnitController extends BaseController {
             ),
             @ApiResponse(
                     responseCode = "500",
-                    description = "Server error while handling request"
+                    description = "Unknown error while handling request"
             )
     })
     @RequestMapping(method = RequestMethod.GET, value = {"/{number}"}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.TEXT_PLAIN_VALUE)
@@ -99,8 +111,8 @@ public class UnitController extends BaseController {
     @Operation(summary = "Delete unit by number")
     @ApiResponses(value = {
             @ApiResponse(
-                    responseCode = "200",
-                    description = "Unit has been deleted"
+                    responseCode = "204",
+                    description = "Deleted"
             ),
             @ApiResponse(
                     responseCode = "400",
@@ -112,7 +124,7 @@ public class UnitController extends BaseController {
             ),
             @ApiResponse(
                     responseCode = "500",
-                    description = "Server error while handling request"
+                    description = "Unknown error while handling request"
             )
     })
     @RequestMapping(method = RequestMethod.DELETE, value = {"/{number}"}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.TEXT_PLAIN_VALUE)
@@ -143,12 +155,8 @@ public class UnitController extends BaseController {
                     description = "Filter is not valid"
             ),
             @ApiResponse(
-                    responseCode = "404",
-                    description = "Units with given number has been not found"
-            ),
-            @ApiResponse(
                     responseCode = "500",
-                    description = "Server error while handling request"
+                    description = "Unknown error while handling request"
             )
     })
     @RequestMapping(method = RequestMethod.GET, value = "", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -172,11 +180,7 @@ public class UnitController extends BaseController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Units have been found"
-            ),
-            @ApiResponse(
-                    responseCode = "400",
-                    description = "Filter is not valid"
+                    description = "Updated"
             ),
             @ApiResponse(
                     responseCode = "404",
@@ -184,7 +188,7 @@ public class UnitController extends BaseController {
             ),
             @ApiResponse(
                     responseCode = "500",
-                    description = "Server error while handling request"
+                    description = "Unknown error while handling request"
             )
     })
     @RequestMapping(method = RequestMethod.PUT, value = {"/{number}"}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)

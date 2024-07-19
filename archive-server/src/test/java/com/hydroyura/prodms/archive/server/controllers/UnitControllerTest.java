@@ -75,11 +75,14 @@ public class UnitControllerTest {
         Mockito
                 .when(processor.create(dto))
                 .thenReturn(Optional.of(number));
-
+        /*
         ResponseEntity<Response> response = controller.create(dto);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(number, response.getBody().getContent());
         assertEquals(ResponseStatus.SUCCESSFUL.name(), response.getBody().getStatus());
+         */
+
+        throw new RuntimeException("Don't forget change it");
     }
 
     @Test
@@ -95,10 +98,14 @@ public class UnitControllerTest {
                 .when(processor.create(dto))
                 .thenReturn(Optional.empty());
 
+        /*
         ResponseEntity<Response> response = controller.create(dto);
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
         assertEquals(UNKNOWN_ERROR, response.getBody().getContent());
         assertEquals(ResponseStatus.UNSUCCESSFUL.name(), response.getBody().getStatus());
+        */
+
+        throw new RuntimeException("Don't forget change it");
     }
 
     @Test
