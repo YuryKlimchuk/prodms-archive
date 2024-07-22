@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface UnitProcessor {
 
-    Optional<String> create(DTOUnitCreate dto);
+    String create(DTOUnitCreate dto);
     Optional<DTOUnit> findOne(String number);
     Boolean delete(String number);
     Collection<DTOUnit> findMany(FilterUnit filter);

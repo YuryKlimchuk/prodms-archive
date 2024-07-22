@@ -133,17 +133,9 @@ public class UnitController extends BaseController {
             }
 
     )) DTOUnitCreate dto) {
-        Optional<String> result = unitProcessor.create(dto);
-        ResponseEntity<?> response = null;
-        if (result.isPresent()) {
-            UnitCreated created = new UnitCreated().setNumber(result.get());
-            response = new ResponseEntity<>(created, HttpStatus.CREATED);
-        } else {
-            ApiError error = new ApiError();
-            error.setDescription("Unknown api error");
-            response = new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return response;
+        String result = unitProcessor.create(dto);
+        UnitCreated created = new UnitCreated().setNumber(result);
+        return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
     @Operation(summary = "Find unit by number")

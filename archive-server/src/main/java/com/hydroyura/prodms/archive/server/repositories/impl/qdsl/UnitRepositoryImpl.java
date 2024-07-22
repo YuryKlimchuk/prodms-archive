@@ -3,6 +3,7 @@ package com.hydroyura.prodms.archive.server.repositories.impl.qdsl;
 import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
 import com.hydroyura.prodms.archive.server.entities.QUnit;
 import com.hydroyura.prodms.archive.server.entities.Unit;
+import com.hydroyura.prodms.archive.server.models.exceptions.DataBaseException;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
 import com.hydroyura.prodms.archive.server.repositories.PredicateGenerator;
 import com.querydsl.core.types.Predicate;
@@ -50,17 +51,21 @@ public class UnitRepositoryImpl implements UnitRepository {
     }
 
     @Override
-    public Optional<String> create(Unit unit) {
-        if (LOG_INFO) {
-            LOG.info("Attempt to create new unit with number = [{}]", unit.getNumber());
+    public String create(Unit unit) {
+        try {
+            if (LOG_INFO) {
+                LOG.info("Attempt to create new unit with number = [{}]", unit.getNumber());
+            }
+            ZonedDateTime zonedNow = ZonedDateTime.now(ZoneId.of("UTC"));
+            unit.setCreated(zonedNow);
+            unit.setUpdated(zonedNow);
+            unit.setVersion(1);
+            em.persist(unit);
+            em.flush();
+            return unit.getNumber();
+        } catch (Exception e) {
+            throw new DataBaseException(e);
         }
-        ZonedDateTime zonedNow = ZonedDateTime.now(ZoneId.of("UTC"));
-        unit.setCreated(zonedNow);
-        unit.setUpdated(zonedNow);
-        unit.setVersion(1);
-        em.persist(unit);
-        em.flush();
-        return Optional.ofNullable(unit.getNumber());
     }
 
     @Override

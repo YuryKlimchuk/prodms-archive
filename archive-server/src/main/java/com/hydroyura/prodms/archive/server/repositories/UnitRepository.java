@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface UnitRepository extends BaseRepository<Unit, String, FilterUnit> {
-    Optional<String> create(Unit unit);
+    String create(Unit unit);
     Optional<Unit> findOne(String number);
     Boolean delete(String number);
     Boolean update(Unit unit);

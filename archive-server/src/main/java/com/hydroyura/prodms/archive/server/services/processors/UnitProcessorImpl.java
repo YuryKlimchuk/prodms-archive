@@ -33,7 +33,7 @@ public class UnitProcessorImpl implements UnitProcessor {
     private FilterChecker<FilterUnit> filterChecker;
 
     @Override
-    public Optional<String> create(DTOUnitCreate dto) {
+    public String create(DTOUnitCreate dto) {
         validatorMngr.validate(dto);
         Unit unit = mappersMngr
                 .getMapper(Map.entry(Unit.class, DTOUnitCreate.class))
