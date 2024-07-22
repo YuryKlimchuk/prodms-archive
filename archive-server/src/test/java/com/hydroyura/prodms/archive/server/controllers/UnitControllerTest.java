@@ -2,6 +2,7 @@ package com.hydroyura.prodms.archive.server.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hydroyura.prodms.archive.client.dtos.unit.api.response.UnitCreated;
+import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnit;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
 import com.hydroyura.prodms.archive.server.models.exceptions.DataBaseException;
 import com.hydroyura.prodms.archive.server.models.exceptions.ValidationException;
@@ -16,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.SimpleErrors;
 
+
+import java.util.Optional;
 
 import static com.hydroyura.prodms.archive.server.controllers.UnitController.UNKNOWN_ERROR;
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,6 +42,15 @@ public class UnitControllerTest {
 
     private static DTOUnitCreate createDTOUnitCreate(String number) {
         DTOUnitCreate dto = new DTOUnitCreate()
+                .setName("NAME")
+                .setNumber(number)
+                .setStatus("STATUS")
+                .setType("TYPE");
+        return dto;
+    }
+
+    private static DTOUnit createDTOUnit(String number) {
+        DTOUnit dto = new DTOUnit()
                 .setName("NAME")
                 .setNumber(number)
                 .setStatus("STATUS")
@@ -77,6 +89,51 @@ public class UnitControllerTest {
                 .when(processor.create(dto))
                 .thenThrow(new ValidationException(new SimpleErrors(dto)));
         assertThrows(ValidationException.class, () -> controller.create(dto));
+    }
+
+    @Test
+    void findOne_OK() throws Exception {
+        String number = "NUMBER";
+        DTOUnit dto = createDTOUnit(number);
+        Mockito
+                .when(processor.findOne(number))
+                .thenReturn(Optional.of(dto));
+
+        ResponseEntity<?> response = controller.findOne(number);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(number, ((DTOUnit) response.getBody()).getNumber());
+    }
+
+    @Test
+    void findOne_BAD_REQUEST() throws Exception {
+        String number = "NUMBER";
+        DTOUnit dto = createDTOUnit(number);
+        Mockito
+                .when(processor.findOne(number))
+                .thenThrow(new ValidationException(new SimpleErrors(dto)));
+        assertThrows(ValidationException.class, () -> controller.findOne(number));
+    }
+
+    @Test
+    void findOne_NOT_FOUND() throws Exception {
+        String number = "NUMBER";
+        DTOUnit dto = createDTOUnit(number);
+        Mockito
+                .when(processor.findOne(number))
+                .thenReturn(Optional.empty());
+        ResponseEntity<?> response = controller.findOne(number);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+    }
+
+    @Test
+    void findOne_DATABASE_EXCEPTION() throws Exception {
+        String number = "NUMBER";
+        DTOUnit dto = createDTOUnit(number);
+        Mockito
+                .when(processor.findOne(number))
+                .thenThrow(new DataBaseException(new RuntimeException()));
+        assertThrows(DataBaseException.class, () -> controller.findOne(number));
     }
 
 }

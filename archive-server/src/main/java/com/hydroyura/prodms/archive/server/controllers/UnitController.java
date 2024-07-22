@@ -52,7 +52,8 @@ public class UnitController extends BaseController {
                                                                 }
                                                             """
                                             )
-                                    })
+                                    }
+                            )
                     }
             ),
             @ApiResponse(
@@ -142,36 +143,88 @@ public class UnitController extends BaseController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Unit has been found"
+                    description = "Unit has been found",
+                    content = {
+                            @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = DTOUnit.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Example of unit data",
+                                                    value = """
+                                                                {
+                                                                    "number": "RGR100-00001",
+                                                                    "name": "Body",
+                                                                    "type": "PART",
+                                                                    "status": "DESIGN"
+                                                                }
+                                                            """
+                                            )
+                                    }
+                            )
+                    }
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Number is not valid"
+                    description = "Number is not valid",
+                    content = {
+                            @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = ApiError.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Example of wrong number",
+                                                    value = """
+                                                                {
+                                                                    "description": "Number didn't pass validation",
+                                                                    "errors": [
+                                                                        "[number] doesn't correspond to regex"
+                                                                    ]
+                                                                }
+                                                            """
+                                            )
+                                    }
+                            )
+                    }
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Unit with given number has been not found"
+                    description = "Unit with given number has been not found",
+                    content = {
+                            @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = Object.class)
+                            )
+                        }
             ),
             @ApiResponse(
                     responseCode = "500",
-                    description = "Unknown error while handling request"
+                    description = "Unknown error while handling request",
+                    content = {
+                            @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = ApiError.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Example with unknown error",
+                                                    value = """
+                                                                {
+                                                                    "description": "While handle request error occurred",
+                                                                    "errors": []
+                                                                }
+                                                            """
+                                            )
+                                    }
+                            )
+                    }
             )
     })
     @RequestMapping(method = RequestMethod.GET, value = {"/{number}"}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.TEXT_PLAIN_VALUE)
-    public ResponseEntity<Response> findOne(@PathVariable String number) {
+    public ResponseEntity<?> findOne(@PathVariable String number) {
         Optional<DTOUnit> result = unitProcessor.findOne(number);
-        Response response = new Response();
-        ResponseEntity<Response> responseEntity;
-        if (result.isPresent()) {
-            response.setStatus(ResponseStatus.SUCCESSFUL.name());
-            response.setContent(result.get());
-            responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
-        } else {
-            response.setStatus(ResponseStatus.UNSUCCESSFUL.name());
-            response.setContent(UNKNOWN_ERROR);
-            responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return responseEntity;
+        return result.isPresent()
+                ? new ResponseEntity<>(result.get(), HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @Operation(summary = "Delete unit by number")
