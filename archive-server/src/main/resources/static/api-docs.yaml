@@ -1,0 +1,84 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /v1/units:
+    post:
+      summary: Create new unit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnitCreateReq'
+            examples:
+              example1:
+                description: PART unit with status DESIGN
+                value:
+                  number: RGR100-11001
+                  name: Body
+                  type: PART
+                  status: DESIGN
+              example2:
+                description: PART unit with status TEST and not empty comment
+                value:
+                  number: RGR100-11002
+                  name: Spool
+                  type: PART
+                  status: TEST
+                  comment: Blank is from chrome steel
+        required: true
+      responses:
+        "201":
+          description: Unit was created successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnitCreateRes'
+              examples:
+                example1:
+                  description: Success creation response
+                  value:
+                    number: RGR100-11001
+
+
+        "400":
+          description: Client side error
+
+        "500":
+          description: Server side error
+
+
+components:
+  schemas:
+
+    UnitCreateReq:
+      type: object
+      properties:
+        number:
+          type: string
+          description: Not NULL, Unique value is using like ID
+        name:
+          type: string
+          description: Not NULL
+        type:
+          type: string
+          description: Not NULL, Must be in [PART, ASM, BUY, STANDARD]
+        status:
+          type: string
+          description: Not NULL, Must be in [DESIGN, TEST, PRODUCTION]
+        comment:
+          type: string
+          description: Can be NULL
+
+    UnitCreateRes:
+      type: object
+      properties:
+        number:
+          type: string
+          description: Not NULL, Unique value is using like ID
+
+

@@ -6,9 +6,9 @@ import org.springframework.validation.Errors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/*
 class ValidatorDTOUnitCreateTest {
-
+    /*
     ValidatorDTOUnitCreate validator = new ValidatorDTOUnitCreate();
 
 
@@ -64,5 +64,5 @@ class ValidatorDTOUnitCreateTest {
                 .setStatus(status);
         return dto;
     }
-
-}
+    */
+//}

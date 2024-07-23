@@ -30,3 +30,8 @@ spring:
 #    path: /swagger-ui-custom.html
 
 
+
+springdoc:
+  swagger-ui:
+    url: /api-docs.yaml
+

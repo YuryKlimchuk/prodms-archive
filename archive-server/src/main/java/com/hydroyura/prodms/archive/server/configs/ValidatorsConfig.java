@@ -1,6 +1,6 @@
 package com.hydroyura.prodms.archive.server.configs;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
+import com.hydroyura.prodms.archive.client.dtos.unit.request.UnitCreateReq;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.Validator;
@@ -17,7 +17,8 @@ public class ValidatorsConfig {
     Map<Class<?>, Validator> validators(Collection<Validator> validatorsList) {
         Map<Class<?>, Validator> validatorsMap = new HashMap<>();
 
-        validatorsMap.put(DTOUnitCreate.class, findValidator(validatorsList, DTOUnitCreate.class));
+        validatorsMap.put(UnitCreateReq.class, findValidator(validatorsList, UnitCreateReq.class));
+        validatorsMap.put(String.class, findValidator(validatorsList, String.class));
 
         return validatorsMap;
     }

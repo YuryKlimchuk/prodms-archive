@@ -3,17 +3,16 @@ package com.hydroyura.prodms.archive.server.repositories.impl.qdsl;
 import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
 import com.hydroyura.prodms.archive.server.entities.QUnit;
 import com.hydroyura.prodms.archive.server.entities.Unit;
-import com.hydroyura.prodms.archive.server.models.exceptions.DataBaseException;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
 import com.hydroyura.prodms.archive.server.repositories.PredicateGenerator;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPQLTemplates;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +21,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Collection;
-import java.util.Optional;
 
 @Repository
 @Transactional
 public class UnitRepositoryImpl implements UnitRepository {
 
     private Logger LOG = LoggerFactory.getLogger(this.getClass());
+
     @PersistenceContext
+
     private EntityManager em;
     private QUnit qunit = QUnit.unit;
     private JPAQueryFactory queryFactory;
@@ -53,21 +52,21 @@ public class UnitRepositoryImpl implements UnitRepository {
     @Override
     public String create(Unit unit) {
         try {
-            if (LOG_INFO) {
-                LOG.info("Attempt to create new unit with number = [{}]", unit.getNumber());
-            }
             ZonedDateTime zonedNow = ZonedDateTime.now(ZoneId.of("UTC"));
             unit.setCreated(zonedNow);
             unit.setUpdated(zonedNow);
             unit.setVersion(1);
             em.persist(unit);
             em.flush();
-            return unit.getNumber();
-        } catch (Exception e) {
-            throw new DataBaseException(e);
+        } catch (ConstraintViolationException e) {
+            int a = 1;
+        } catch (RuntimeException e) {
+            int a = 2;
         }
+        return unit.getNumber();
     }
 
+    /*
     @Override
     public Optional<Unit> findOne(String number) {
         Unit result = queryFactory
@@ -115,4 +114,6 @@ public class UnitRepositoryImpl implements UnitRepository {
         predicateGenerator.generate(filterUnit).ifPresent(query::where);
         return query.fetch();
     }
+
+     */
 }

@@ -1,0 +1,104 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /v1/units:
+    post:
+      tags:
+      - unit-controller
+      summary: To create a new unit entity
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DTOUnitCreate'
+            examples:
+              With comment:
+                description: With comment
+                value:
+                  number: RGR100-00001
+                  name: Pin
+                  type: PART
+                  status: DESIGN
+                  comment: Pin with thread M12x1.5
+              Without comment:
+                description: Without comment
+                value:
+                  number: RGR100-11001
+                  name: Body
+                  type: PART
+                  status: DESIGN
+        required: true
+      responses:
+        "422":
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+              examples:
+                Example of wrong entity (with empty field):
+                  description: Example of wrong entity (with empty field)
+                  value:
+                    description: Entity didn't pass validation
+                    errors:
+                    - "Filed [name] mustn't be empty"
+                    - "Filed [number] mustn't be empty"
+        "500":
+          description: Unknown error while handling request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+              examples:
+                Example with unknown error:
+                  description: Example with unknown error
+                  value:
+                    description: While handle request error occurred
+                    errors: []
+        "201":
+          description: Successful result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnitCreated'
+              examples:
+                Unit with number = [RGR100-00001] has created:
+                  description: "Unit with number = [RGR100-00001] has created"
+                  value:
+                    number: RGR100-00001
+components:
+  schemas:
+    DTOUnitCreate:
+      type: object
+      properties:
+        number:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        comment:
+          type: string
+    ApiError:
+      type: object
+      properties:
+        description:
+          type: string
+        errors:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+    UnitCreated:
+      type: object
+      properties:
+        number:
+          type: string

@@ -12,8 +12,10 @@ import java.util.Optional;
 
 public interface UnitRepository extends BaseRepository<Unit, String, FilterUnit> {
     String create(Unit unit);
+    /*
     Optional<Unit> findOne(String number);
     Boolean delete(String number);
     Boolean update(Unit unit);
     Collection<Unit> findMany(FilterUnit filterUnit);
+     */
 }

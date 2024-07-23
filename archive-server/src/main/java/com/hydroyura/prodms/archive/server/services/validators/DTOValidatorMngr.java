@@ -1,6 +1,6 @@
 package com.hydroyura.prodms.archive.server.services.validators;
 
-import com.hydroyura.prodms.archive.server.models.exceptions.ValidationException;
+import com.hydroyura.prodms.archive.server.models.exceptions.RequestBodyValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
@@ -24,7 +24,7 @@ public class DTOValidatorMngr {
                 .ofNullable(validators.get(obj.getClass()))
                 .orElseThrow(() -> new RuntimeException("Necessary validator didn't find"))
                 .validate(obj, errs);
-        if (errs.hasErrors()) throw new ValidationException(errs);
+        if (errs.hasErrors()) throw new RequestBodyValidationException(errs);
     }
 
 }

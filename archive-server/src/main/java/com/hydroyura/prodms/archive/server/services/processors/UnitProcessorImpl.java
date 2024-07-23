@@ -4,6 +4,8 @@ import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnit;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
 import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitUpdate;
 import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
+import com.hydroyura.prodms.archive.client.dtos.unit.request.UnitCreateReq;
+import com.hydroyura.prodms.archive.client.dtos.unit.response.UnitCreateRes;
 import com.hydroyura.prodms.archive.server.entities.Unit;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
 import com.hydroyura.prodms.archive.server.services.mappers.BaseMapper;
@@ -33,14 +35,41 @@ public class UnitProcessorImpl implements UnitProcessor {
     private FilterChecker<FilterUnit> filterChecker;
 
     @Override
-    public String create(DTOUnitCreate dto) {
+    public UnitCreateRes create(UnitCreateReq dto) {
         validatorMngr.validate(dto);
-        Unit unit = mappersMngr
-                .getMapper(Map.entry(Unit.class, DTOUnitCreate.class))
-                .destinationToSource(dto);
-        return unitRepository.create(unit);
+        BaseMapper<Unit, UnitCreateReq> mapperToEntity = mappersMngr.getMapper(Map.entry(Unit.class, UnitCreateReq.class));
+        Unit unit = mapperToEntity.destinationToSource(dto);
+        unitRepository.create(unit);
+        return new UnitCreateRes().setNumber(dto.getNumber());
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
     @Override
     public Optional<DTOUnit> findOne(String number) {
         validatorMngr.validate(number);
@@ -75,4 +104,6 @@ public class UnitProcessorImpl implements UnitProcessor {
                         .getMapper(Map.entry(Unit.class, DTOUnitUpdate.class))
                         .destinationToSource(dto));
     }
+
+     */
 }
