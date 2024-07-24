@@ -1,24 +1,5 @@
 package com.hydroyura.prodms.archive.server.repositories;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
-import com.hydroyura.prodms.archive.server.entities.QUnit;
-import com.hydroyura.prodms.archive.server.entities.Unit;
-import com.hydroyura.prodms.archive.server.repositories.impl.qdsl.UnitRepositoryImpl;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
-
-import java.util.List;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 /*
 @SpringBootTest
 @Testcontainers

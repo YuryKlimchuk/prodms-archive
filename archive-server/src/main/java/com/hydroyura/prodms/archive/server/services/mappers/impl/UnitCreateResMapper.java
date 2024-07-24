@@ -1,6 +1,6 @@
 package com.hydroyura.prodms.archive.server.services.mappers.impl;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.response.UnitCreateRes;
+import com.hydroyura.prodms.archive.client.unit.response.UnitCreateRes;
 import com.hydroyura.prodms.archive.server.entities.Unit;
 import com.hydroyura.prodms.archive.server.services.mappers.BaseMapper;
 import org.mapstruct.Mapper;

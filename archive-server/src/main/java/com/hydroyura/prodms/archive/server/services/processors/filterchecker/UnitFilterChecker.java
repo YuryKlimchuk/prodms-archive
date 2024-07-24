@@ -1,12 +1,8 @@
 package com.hydroyura.prodms.archive.server.services.processors.filterchecker;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
+import com.hydroyura.prodms.archive.client.unit.FilterUnit;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 @Component
 public class UnitFilterChecker implements FilterChecker<FilterUnit> {

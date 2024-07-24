@@ -1,6 +1,6 @@
 package com.hydroyura.prodms.archive.server.configs;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.request.UnitCreateReq;
+import com.hydroyura.prodms.archive.client.unit.request.UnitCreateReq;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.Validator;

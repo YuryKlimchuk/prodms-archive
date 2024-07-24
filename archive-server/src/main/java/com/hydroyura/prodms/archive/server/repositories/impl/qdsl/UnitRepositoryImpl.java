@@ -1,8 +1,10 @@
 package com.hydroyura.prodms.archive.server.repositories.impl.qdsl;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
+import com.hydroyura.prodms.archive.client.unit.FilterUnit;
 import com.hydroyura.prodms.archive.server.entities.QUnit;
 import com.hydroyura.prodms.archive.server.entities.Unit;
+import com.hydroyura.prodms.archive.server.models.exceptions.InternalServerException;
+import com.hydroyura.prodms.archive.server.models.exceptions.UnitNumberDuplicationException;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
 import com.hydroyura.prodms.archive.server.repositories.PredicateGenerator;
 import com.querydsl.core.types.Predicate;
@@ -23,7 +25,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @Repository
-@Transactional
 public class UnitRepositoryImpl implements UnitRepository {
 
     private Logger LOG = LoggerFactory.getLogger(this.getClass());
@@ -50,6 +51,7 @@ public class UnitRepositoryImpl implements UnitRepository {
     }
 
     @Override
+    @Transactional
     public String create(Unit unit) {
         try {
             ZonedDateTime zonedNow = ZonedDateTime.now(ZoneId.of("UTC"));
@@ -59,9 +61,11 @@ public class UnitRepositoryImpl implements UnitRepository {
             em.persist(unit);
             em.flush();
         } catch (ConstraintViolationException e) {
-            int a = 1;
+            throw new UnitNumberDuplicationException(unit.getNumber(), e);
         } catch (RuntimeException e) {
-            int a = 2;
+            throw new InternalServerException(e);
+        } catch (Exception e) {
+            throw new InternalServerException(e);
         }
         return unit.getNumber();
     }

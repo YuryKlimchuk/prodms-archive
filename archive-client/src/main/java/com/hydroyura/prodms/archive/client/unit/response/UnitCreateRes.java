@@ -1,4 +1,4 @@
-package com.hydroyura.prodms.archive.client.dtos.unit.response;
+package com.hydroyura.prodms.archive.client.unit.response;
 
 public class UnitCreateRes {
 

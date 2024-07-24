@@ -43,13 +43,48 @@ paths:
                   description: Success creation response
                   value:
                     number: RGR100-11001
-
-
         "400":
           description: Client side error
-
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientErrorRes'
+              examples:
+                Number duplication:
+                  description: When unit with given number has already existed
+                  value:
+                    timestamp: 2024-07-24T07:29:24.122802469
+                    path: /v1/units
+                    errors:
+                      - "Unit with number = [RGR100-11001] has already exist"
+                Validation failed:
+                  description: Cannot create new unit cause of given body is not valid
+                  value:
+                    timestamp: 2024-07-24T07:29:24.122802469
+                    path: /v1/units
+                    errors:
+                      - validation.unit.create.req.name.null
+                      - validation.unit.create.req.type.nonexistent
         "500":
           description: Server side error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorRes'
+              examples:
+                example1:
+                  description: Unknown server error
+                  value:
+                    timestamp: 2024-07-24T07:29:24.122802469
+                    path: /v1/units
+                    msg: Unknown server error. Write to email admin@admin
+
+
+
+
+
+
+
 
 
 components:
@@ -81,4 +116,25 @@ components:
           type: string
           description: Not NULL, Unique value is using like ID
 
+    ClientErrorRes:
+      type: object
+      properties:
+        timestamp:
+          type: string
+        errors:
+          type: array
+          items:
+            type: string
+        path:
+          type: string
 
+
+    ServerErrorRes:
+      type: object
+      properties:
+        timestamp:
+          type: string
+        path:
+          type: string
+        msg:
+          type: string

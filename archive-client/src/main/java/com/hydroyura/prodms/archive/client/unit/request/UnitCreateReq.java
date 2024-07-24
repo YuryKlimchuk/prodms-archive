@@ -1,4 +1,4 @@
-package com.hydroyura.prodms.archive.client.dtos.unit.request;
+package com.hydroyura.prodms.archive.client.unit.request;
 
 public class UnitCreateReq {
 

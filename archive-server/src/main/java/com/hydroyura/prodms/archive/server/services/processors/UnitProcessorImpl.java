@@ -1,11 +1,8 @@
 package com.hydroyura.prodms.archive.server.services.processors;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnit;
-import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitCreate;
-import com.hydroyura.prodms.archive.client.dtos.unit.dto.DTOUnitUpdate;
-import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
-import com.hydroyura.prodms.archive.client.dtos.unit.request.UnitCreateReq;
-import com.hydroyura.prodms.archive.client.dtos.unit.response.UnitCreateRes;
+import com.hydroyura.prodms.archive.client.unit.FilterUnit;
+import com.hydroyura.prodms.archive.client.unit.request.UnitCreateReq;
+import com.hydroyura.prodms.archive.client.unit.response.UnitCreateRes;
 import com.hydroyura.prodms.archive.server.entities.Unit;
 import com.hydroyura.prodms.archive.server.repositories.UnitRepository;
 import com.hydroyura.prodms.archive.server.services.mappers.BaseMapper;
@@ -15,9 +12,7 @@ import com.hydroyura.prodms.archive.server.services.validators.DTOValidatorMngr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class UnitProcessorImpl implements UnitProcessor {

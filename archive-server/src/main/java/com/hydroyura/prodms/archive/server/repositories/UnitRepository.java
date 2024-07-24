@@ -1,14 +1,8 @@
 package com.hydroyura.prodms.archive.server.repositories;
 
 
-import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
+import com.hydroyura.prodms.archive.client.unit.FilterUnit;
 import com.hydroyura.prodms.archive.server.entities.Unit;
-import com.querydsl.core.types.OrderSpecifier;
-import com.querydsl.core.types.Predicate;
-
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
 
 public interface UnitRepository extends BaseRepository<Unit, String, FilterUnit> {
     String create(Unit unit);

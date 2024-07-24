@@ -1,4 +1,4 @@
-package com.hydroyura.prodms.archive.client.dtos.unit.filter;
+package com.hydroyura.prodms.archive.client.unit;
 
 import java.util.ArrayList;
 import java.util.Collection;

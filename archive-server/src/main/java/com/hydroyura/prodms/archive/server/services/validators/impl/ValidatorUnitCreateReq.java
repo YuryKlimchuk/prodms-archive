@@ -1,6 +1,6 @@
 package com.hydroyura.prodms.archive.server.services.validators.impl;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.request.UnitCreateReq;
+import com.hydroyura.prodms.archive.client.unit.request.UnitCreateReq;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;

@@ -1,6 +1,6 @@
 package com.hydroyura.prodms.archive.server.repositories.impl.qdsl;
 
-import com.hydroyura.prodms.archive.client.dtos.unit.filter.FilterUnit;
+import com.hydroyura.prodms.archive.client.unit.FilterUnit;
 import com.hydroyura.prodms.archive.server.entities.QUnit;
 import com.hydroyura.prodms.archive.server.repositories.PredicateGenerator;
 import com.querydsl.core.types.ExpressionUtils;
