@@ -30,7 +30,6 @@ public class UnitRepositoryImpl implements UnitRepository {
     private Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     @PersistenceContext
-
     private EntityManager em;
     private QUnit qunit = QUnit.unit;
     private JPAQueryFactory queryFactory;
