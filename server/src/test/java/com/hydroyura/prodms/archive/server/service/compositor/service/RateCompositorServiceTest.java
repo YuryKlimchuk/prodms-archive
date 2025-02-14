@@ -33,12 +33,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class RateCompositorServiceTest {
 
     private final RateRepository rateRepository;
-    private final EntityManagerProvider entityManagerProvider;
     private final RateCompositorService rateCompositorService;
 
 
     RateCompositorServiceTest() {
-        this.entityManagerProvider = Mockito.mock(EntityManagerProvider.class);
+        EntityManagerProvider entityManagerProvider = Mockito.mock(EntityManagerProvider.class);
         this.rateRepository = Mockito.mock(RateRepository.class);
         this.rateCompositorService = new RateCompositorService(rateRepository, entityManagerProvider);
     }
