@@ -27,13 +27,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <distributionManagement>
+    <repositories>
         <repository>
             <id>github</id>
             <name>prodms-m2-repo</name>
             <url>https://maven.pkg.github.com/YuryKlimchuk/prodms-m2-repo</url>
         </repository>
-    </distributionManagement>
+    </repositories>
 
     <dependencies>
         <dependency>
