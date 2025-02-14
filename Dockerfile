@@ -1,6 +1,6 @@
 FROM bellsoft/liberica-openjdk-alpine-musl:17
 
-ARG JAR_FILE="./server/target/server-1.0.0-SNAPSHOT.jar"
+ARG JAR_FILE="./server/target/app.jar"
 
 ENV JAVA_OPTS "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
 EXPOSE 8080
