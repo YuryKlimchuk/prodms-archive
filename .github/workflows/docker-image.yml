@@ -33,6 +33,7 @@ jobs:
           echo "DOCKER_IMAGE_FULL_NAME=$DOCKER_IMAGE_FULL_NAME" >> $GITHUB_ENV
           echo "docker = $DOCKER_IMAGE_FULL_NAME"
           mvn clean package -DskipTests  # Пропускаем тесты, если нужно
+          mvn deploy -pl client
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           PROJECT_FOLDER: ${{ vars.PROJECT_FOLDER }}
