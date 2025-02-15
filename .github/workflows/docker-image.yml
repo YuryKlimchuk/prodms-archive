@@ -28,6 +28,7 @@ jobs:
           echo "github repo: ${GITHUB_REPOSITORY,,}"
           echo "github actor: ${GITHUB_ACTOR,,}"
           echo "project folder: $PROJECT_FOLDER"
+          echo "project folder: ${{ env.PROJECT_FOLDER }}"
           ARTIFACT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           ARTIFACT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           echo "version: $ARTIFACT_VERSION"
