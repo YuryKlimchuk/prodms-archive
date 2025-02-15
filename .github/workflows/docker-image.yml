@@ -26,8 +26,8 @@ jobs:
       - name: Build with Maven
         run: |
           echo "github repo: + ${GITHUB_REPOSITORY,,}"
-          ARTIFACT_VERSION=${mvn help:evaluate -Dexpression=project.version -q -DforceStdout}
-          ARTIFACT_NAME=${mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout}
+          ARTIFACT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          ARTIFACT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           echo "version: $ARTIFACT_VERSION"
           echo "name: $ARTIFACT_NAME"          
           mvn clean package -DskipTests  # Пропускаем тесты, если нужно
