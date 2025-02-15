@@ -29,7 +29,7 @@ jobs:
           ARTIFACT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           ARTIFACT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           DOCKER_IMAGE_FULL_NAME=$(echo "ghcr.io/$ACTOR/$PROJECT_FOLDER/$ARTIFACT_NAME:$ARTIFACT_VERSION")      
-          echo $DOCKER_IMAGE_FULL_NAME >> $GITHUB_ENV
+          echo "DOCKER_IMAGE_FULL_NAME=$DOCKER_IMAGE_FULL_NAME" >> $GITHUB_ENV
           echo "docker = $DOCKER_IMAGE_FULL_NAME"
           mvn clean package -DskipTests  # Пропускаем тесты, если нужно
         env:
