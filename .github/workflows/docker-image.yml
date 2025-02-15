@@ -25,7 +25,9 @@ jobs:
       # Шаг 3: Сборка проекта с помощью Maven
       - name: Build with Maven
         run: |
-          echo "github repo: + ${GITHUB_REPOSITORY,,}"
+          echo "github repo: ${GITHUB_REPOSITORY,,}"
+          echo "github actor: ${GITHUB_ACTOR,,}"
+          echo "project folder: ${PROJECT_FOLDER} 
           ARTIFACT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           ARTIFACT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           echo "version: $ARTIFACT_VERSION"
