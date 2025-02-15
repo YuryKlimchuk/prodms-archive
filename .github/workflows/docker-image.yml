@@ -29,7 +29,7 @@ jobs:
           echo "github actor: ${GITHUB_ACTOR,,}"
           echo "project folder: $PROJECT_FOLDER"
           echo "project folder: ${PROJECT_FOLDER}"
-          echo "project folder: ${{ env.PROJECT_FOLDER }}"
+          echo "project folder: ${{ vars.PROJECT_FOLDER }}"
           ARTIFACT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           ARTIFACT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           echo "version: $ARTIFACT_VERSION"
@@ -37,7 +37,7 @@ jobs:
           mvn clean package -DskipTests  # Пропускаем тесты, если нужно
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          PROJECT_FOLDER: ${{ env.PROJECT_FOLDER }}
+          PROJECT_FOLDER: ${{ vars.PROJECT_FOLDER }}
 
       # Шаг 4: Логин в GitHub Container Registry
       - name: Log in to GitHub Container Registry
