@@ -26,6 +26,7 @@ jobs:
       - name: Build with Maven
         run: |
           echo "github repo: + ${GITHUB_REPOSITORY,,}"
+          echo "${mvn help:evaluate -Dexpression=project.version -q -DforceStdout}"
           mvn clean package -DskipTests  # Пропускаем тесты, если нужно
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
