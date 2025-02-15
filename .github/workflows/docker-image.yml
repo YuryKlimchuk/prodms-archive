@@ -27,6 +27,7 @@ jobs:
         run: |
           echo "github repo: + ${GITHUB_REPOSITORY,,}"
           echo "${mvn help:evaluate -Dexpression=project.version -q -DforceStdout}"
+          echo "${mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout}"
           mvn clean package -DskipTests  # Пропускаем тесты, если нужно
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
