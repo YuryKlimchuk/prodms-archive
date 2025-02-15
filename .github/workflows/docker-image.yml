@@ -35,7 +35,7 @@ jobs:
           mvn clean package -DskipTests  # Пропускаем тесты, если нужно
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          PROJECT_FOLDER: ${{ variables.PROJECT_FOLDER }}
+          PROJECT_FOLDER: ${{ env.PROJECT_FOLDER }}
 
       # Шаг 4: Логин в GitHub Container Registry
       - name: Log in to GitHub Container Registry
