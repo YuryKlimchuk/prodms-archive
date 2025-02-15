@@ -28,6 +28,8 @@ jobs:
           ACTOR=${GITHUB_ACTOR,,}
           ARTIFACT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           ARTIFACT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
+          ARTIFACT_NAME2=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout -pl server)
+          echo $ARTIFACT_NAME2
           DOCKER_IMAGE_FULL_NAME=$(echo "ghcr.io/$ACTOR/$PROJECT_FOLDER/$ARTIFACT_NAME:$ARTIFACT_VERSION")      
           echo "DOCKER_IMAGE_FULL_NAME=$DOCKER_IMAGE_FULL_NAME" >> $GITHUB_ENV
           echo "docker = $DOCKER_IMAGE_FULL_NAME"
