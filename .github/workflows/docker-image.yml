@@ -122,6 +122,8 @@ jobs:
     steps:
       - name: Install helm chart to local minikube
         run: |
+          ARTIFACT_NAME={{ needs.server.ARTIFACT_NAME }}
+          CHART_FULL_NAME={{ needs.server.CHART_FULL_NAME }}
           echo $ARTIFACT_NAME
           echo $CHART_FULL_NAME
           helm install --namespace prodms ${ARTIFACT_NAME} oci://ghcr.io/yuryklimchuk/prodms/${CHART_FULL_NAME}
