@@ -114,6 +114,8 @@ jobs:
           ls -a
           cd sources
           helm push $CHART_FULL_NAME oci://ghcr.io/yuryklimchuk/prodms
+          echo "CHART_FULL_NAME=$CHART_FULL_NAME" >> $GITHUB_OUTPUT
+          echo "ARTIFACT_NAME=$ARTIFACT_NAME" >> $GITHUB_OUTPUT
   deploy:
     runs-on: self-hosted
     needs: server
