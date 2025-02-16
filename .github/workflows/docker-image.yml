@@ -35,7 +35,7 @@ jobs:
           distribution: 'temurin'
       - name: Deploy client artifact
         run: |
-          cd ./sources
+          cd sources
           mvn deploy -pl client
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
@@ -57,7 +57,7 @@ jobs:
       - name: Set up env vars
         run: |
           ls -a
-          cd ./sources
+          cd sources
           ACTOR=${GITHUB_ACTOR,,}
           ARTIFACT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           ARTIFACT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
