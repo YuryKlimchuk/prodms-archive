@@ -1,5 +1,5 @@
 basicEnabled: true
-prodmsBasic:
+basic:
   replicaCount: 1
   
   image:
