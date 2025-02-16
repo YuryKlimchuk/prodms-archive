@@ -103,7 +103,7 @@ jobs:
           ls -a
           cd sources
           helm dependency update ./helm
-          helm package ./helm #--version  ${{ github.ref_name }}
+          helm package ./helm
           CHART_NAME=$(grep '^name:' ./helm/Chart.yaml | awk '{print $2}')
           CHART_VERSION=$(grep '^version:' ./helm/Chart.yaml | awk '{print $2}')
           echo "Chart Name: $CHART_NAME"
@@ -120,4 +120,4 @@ jobs:
     steps:
       - name: Install helm chart to local minikube
         run: |
-          helm upgrade --install --namespace prodms $ARTIFACT_NAME oci://ghcr.io/yuryklimchuk/prodms/$CHART_FULL_NAME
+          helm install --namespace prodms $ARTIFACT_NAME oci://ghcr.io/yuryklimchuk/prodms/$CHART_FULL_NAME
