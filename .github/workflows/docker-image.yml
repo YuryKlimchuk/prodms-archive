@@ -37,6 +37,8 @@ jobs:
         run: |
           cd ./sources
           mvn deploy -pl client
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
   server:
     runs-on: ubuntu-latest
