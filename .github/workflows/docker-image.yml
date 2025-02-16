@@ -89,3 +89,11 @@ jobs:
         run: |
           echo $CHART_FULL_NAME
           helm push $CHART_FULL_NAME oci://ghcr.io/yuryklimchuk/prodms
+
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Install helm
+        run: |
+          helm install --namespace prodms archive oci://ghcr.io/yuryklimchuk/prodms/archive:1.0.0-SNAPSHOT
