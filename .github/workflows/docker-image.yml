@@ -56,6 +56,7 @@ jobs:
           distribution: 'temurin'
       - name: Set up env vars
         run: |
+          ls -a
           cd ./sources
           ACTOR=${GITHUB_ACTOR,,}
           ARTIFACT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
@@ -70,6 +71,8 @@ jobs:
           PROJECT_FOLDER: ${{ vars.PROJECT_FOLDER }}
       - name: Build .jar
         run: mvn clean package
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: Log in to ghcr.io
         uses: docker/login-action@v2
         with:
@@ -103,7 +106,7 @@ jobs:
     steps:
       - name: Install helm chart to local minikube
         run: |
-          helm install --namespace prodms $ARTIFACT_NAME-release oci://ghcr.io/yuryklimchuk/prodms/$CHART_FULL_NAME
+          helm upgrade --install --namespace prodms $ARTIFACT_NAME-release oci://ghcr.io/yuryklimchuk/prodms/$CHART_FULL_NAME
   
   
 
