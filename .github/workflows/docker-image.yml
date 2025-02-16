@@ -110,7 +110,10 @@ jobs:
           echo "Chart Version: $CHART_VERSION"
           echo "CHART_FULL_NAME=$CHART_NAME-$CHART_VERSION.tgz" >> $GITHUB_ENV
       - name: Push Helm Chart to ghcr.io
-        run: helm push $CHART_FULL_NAME oci://ghcr.io/yuryklimchuk/prodms
+        run: | 
+          ls -a
+          cd sources
+          helm push $CHART_FULL_NAME oci://ghcr.io/yuryklimchuk/prodms
   deploy:
     runs-on: self-hosted
     needs: server
