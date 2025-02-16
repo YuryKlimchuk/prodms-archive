@@ -74,6 +74,7 @@ jobs:
       - name: Build .jar
         run: |
           ls -a
+          cd sources
           mvn clean package
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
@@ -85,9 +86,13 @@ jobs:
           password: ${{ secrets.TOKEN }}
       - name: Build Docker image
         run: |
+          ls -a
+          cd sources
           docker build -t $DOCKER_IMAGE_FULL_NAME .
       - name: Push Docker image
         run: |
+          ls -a
+          cd sources
           docker push $DOCKER_IMAGE_FULL_NAME
       - name: Install Helm
         uses: azure/setup-helm@v3
@@ -95,6 +100,8 @@ jobs:
           token: ${{ secrets.TOKEN }}
       - name: Package Helm Chart
         run: |
+          ls -a
+          cd sources
           helm dependency update ./helm
           helm package ./helm #--version  ${{ github.ref_name }}
           CHART_NAME=$(grep '^name:' ./helm/Chart.yaml | awk '{print $2}')
