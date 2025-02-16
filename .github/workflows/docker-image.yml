@@ -26,6 +26,8 @@ jobs:
       - name: Build with Maven
         run: |
           ls -a
+          cd ..
+          ls -a
           ACTOR=${GITHUB_ACTOR,,}
           ARTIFACT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           ARTIFACT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
