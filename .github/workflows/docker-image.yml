@@ -121,4 +121,5 @@ jobs:
       - name: Install helm chart to local minikube
         run: |
           echo $ARTIFACT_NAME
+          echo $CHART_FULL_NAME
           helm install --namespace prodms ${ARTIFACT_NAME} oci://ghcr.io/yuryklimchuk/prodms/${CHART_FULL_NAME}
