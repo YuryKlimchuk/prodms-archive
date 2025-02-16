@@ -3,7 +3,7 @@ basic:
   replicaCount: 1
   
   image:
-    repository: "io/yuryklimchuk/prodms"
+    repository: "ghcr.io/yuryklimchuk/prodms"
     tag: "prodms/archive-server"
     version: "1.0.0-SNAPSHOT"
     pullPolicy: IfNotPresent
