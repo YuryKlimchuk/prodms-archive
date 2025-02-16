@@ -70,6 +70,7 @@ jobs:
           echo "ARTIFACT_NAME = $ARTIFACT_NAME"
         env:
           PROJECT_FOLDER: ${{ vars.PROJECT_FOLDER }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: Build .jar
         run: mvn clean package
         env:
