@@ -46,7 +46,7 @@ jobs:
     needs: checkout
     outputs:
       ARTIFACT_NAME: ${{ steps.output.outputs.ARTIFACT_NAME }}
-      CHART_FULL_NAME: ${{ needs.output.outputs.CHART_FULL_NAME }}
+      CHART_FULL_NAME: ${{ steps.output.outputs.CHART_FULL_NAME }}
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -112,6 +112,7 @@ jobs:
           CHART_FULL_NAME=${CHART_NAME}-${CHART_VERSION}.tgz
           echo "Chart Name: $CHART_NAME"
           echo "Chart Version: $CHART_VERSION"
+          echo "Chart full name: $CHART_FULL_NAME"
           echo "CHART_FULL_NAME=$CHART_FULL_NAME" >> $GITHUB_ENV
       - name: Push Helm Chart to ghcr.io
         id: output
