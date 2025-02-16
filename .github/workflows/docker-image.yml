@@ -72,7 +72,9 @@ jobs:
           PROJECT_FOLDER: ${{ vars.PROJECT_FOLDER }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: Build .jar
-        run: mvn clean package
+        run: |
+          ls -a
+          mvn clean package
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: Log in to ghcr.io
