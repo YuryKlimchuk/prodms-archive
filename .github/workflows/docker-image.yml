@@ -90,6 +90,7 @@ jobs:
           echo $CHART_FULL_NAME
           helm push $CHART_FULL_NAME oci://ghcr.io/yuryklimchuk/prodms
 
+
   deploy:
     runs-on: self-hosted
     needs: build-and-push
