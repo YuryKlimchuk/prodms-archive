@@ -109,9 +109,10 @@ jobs:
           helm package ./helm
           CHART_NAME=$(grep '^name:' ./helm/Chart.yaml | awk '{print $2}')
           CHART_VERSION=$(grep '^version:' ./helm/Chart.yaml | awk '{print $2}')
+          CHART_FULL_NAME=${CHART_NAME}-${CHART_VERSION}.tgz
           echo "Chart Name: $CHART_NAME"
           echo "Chart Version: $CHART_VERSION"
-          echo "CHART_FULL_NAME=$CHART_NAME-$CHART_VERSION.tgz" >> $GITHUB_ENV
+          echo "CHART_FULL_NAME=$CHART_FULL_NAME" >> $GITHUB_ENV
       - name: Push Helm Chart to ghcr.io
         id: output
         run: | 
