@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.prodms-basic.app.id }}-env-cm
+  name: {{ .Values.prodmsBasic.app.id }}-env-cm
   namespace: {{ .Release.namespace }}
 data:
   DB_URL: {{ required "'db.url' parameter is required" .Values.db.url | quote }}
