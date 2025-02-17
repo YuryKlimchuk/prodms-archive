@@ -71,7 +71,6 @@ jobs:
           echo "DOCKER_IMAGE_FULL_NAME=$DOCKER_IMAGE_FULL_NAME" >> $GITHUB_ENV
           echo "ARTIFACT_NAME=$ARTIFACT_NAME" >> $GITHUB_ENV
           echo "DOCKER_IMAGE_FULL_NAME = $DOCKER_IMAGE_FULL_NAME"
-          echo "ARTIFACT_NAME = $ARTIFACT_NAME"
         env:
           PROJECT_FOLDER: ${{ vars.PROJECT_FOLDER }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
@@ -115,15 +114,15 @@ jobs:
           echo "Chart Version: $CHART_VERSION"
           echo "Chart full name: $CHART_FULL_NAME"
           echo "CHART_FULL_NAME=$CHART_FULL_NAME" >> $GITHUB_ENV
-          echo "CHART_NAME=$CHART_NAME" >> $GITHUB_OUTPUT
-          echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_OUTPUT
-          echo "ARTIFACT_NAME=$ARTIFACT_NAME" >> $GITHUB_OUTPUT
       - name: Push Helm Chart to ghcr.io
         id: output
         run: | 
           ls -a
           cd sources
           helm push $CHART_FULL_NAME oci://ghcr.io/yuryklimchuk/prodms
+          echo "CHART_NAME=$CHART_NAME" >> $GITHUB_OUTPUT
+          echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_OUTPUT
+          echo "ARTIFACT_NAME=$ARTIFACT_NAME" >> $GITHUB_OUTPUT
   deploy:
     runs-on: self-hosted
     needs: server
