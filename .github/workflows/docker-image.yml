@@ -46,7 +46,8 @@ jobs:
     needs: checkout
     outputs:
       ARTIFACT_NAME: ${{ steps.output.outputs.ARTIFACT_NAME }}
-      CHART_FULL_NAME: ${{ steps.output.outputs.CHART_FULL_NAME }}
+      CHART_NAME: ${{ steps.output.outputs.CHART_NAME }}
+      CHART_VERSION: ${{ steps.output.outputs.CHART_VERSION }}
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -114,14 +115,15 @@ jobs:
           echo "Chart Version: $CHART_VERSION"
           echo "Chart full name: $CHART_FULL_NAME"
           echo "CHART_FULL_NAME=$CHART_FULL_NAME" >> $GITHUB_ENV
+          echo "CHART_NAME=$CHART_NAME" >> $GITHUB_OUTPUT
+          echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_OUTPUT
+          echo "ARTIFACT_NAME=$ARTIFACT_NAME" >> $GITHUB_OUTPUT
       - name: Push Helm Chart to ghcr.io
         id: output
         run: | 
           ls -a
           cd sources
           helm push $CHART_FULL_NAME oci://ghcr.io/yuryklimchuk/prodms
-          echo "CHART_FULL_NAME=$CHART_FULL_NAME" >> $GITHUB_OUTPUT
-          echo "ARTIFACT_NAME=$ARTIFACT_NAME" >> $GITHUB_OUTPUT
   deploy:
     runs-on: self-hosted
     needs: server
@@ -130,7 +132,8 @@ jobs:
         run: |
           echo $ARTIFACT_NAME
           echo $CHART_FULL_NAME
-          helm install --namespace prodms ${ARTIFACT_NAME} oci://ghcr.io/yuryklimchuk/prodms/${CHART_FULL_NAME}
+          helm install --namespace prodms ${ARTIFACT_NAME} oci://ghcr.io/yuryklimchuk/prodms/${CHART_NAME}:${CHART_VERSION}
         env:
           ARTIFACT_NAME: ${{ needs.server.outputs.ARTIFACT_NAME }}
-          CHART_FULL_NAME: ${{ needs.server.outputs.CHART_FULL_NAME }}
+          CHART_NAME: ${{ needs.server.outputs.CHART_NAME }}
+          CHART_VERSION: ${{ needs.server.outputs.CHART_VERSION }}
