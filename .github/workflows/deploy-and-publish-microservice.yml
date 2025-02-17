@@ -9,3 +9,5 @@ on:
 jobs:
   reuse:
     uses: YuryKlimchuk/prodms-workflows/.github/workflows/microservice-workflow-standard.yml@master
+    secrets:
+      TOKEN: ${{ secrets.TOKEN }}
