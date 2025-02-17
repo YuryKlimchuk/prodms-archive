@@ -133,7 +133,7 @@ jobs:
         run: |
           echo $ARTIFACT_NAME
           echo $CHART_FULL_NAME
-          helm install --namespace prodms ${ARTIFACT_NAME} oci://ghcr.io/yuryklimchuk/prodms/${CHART_NAME}:${CHART_VERSION}
+          helm upgrade --install --namespace prodms --create-namespace ${ARTIFACT_NAME} oci://ghcr.io/yuryklimchuk/prodms/${CHART_NAME}:${CHART_VERSION}
         env:
           ARTIFACT_NAME: ${{ needs.server.outputs.ARTIFACT_NAME }}
           CHART_NAME: ${{ needs.server.outputs.CHART_NAME }}
