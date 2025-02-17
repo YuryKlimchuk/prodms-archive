@@ -114,6 +114,8 @@ jobs:
           echo "Chart Version: $CHART_VERSION"
           echo "Chart full name: $CHART_FULL_NAME"
           echo "CHART_FULL_NAME=$CHART_FULL_NAME" >> $GITHUB_ENV
+          echo "CHART_NAME=$CHART_NAME" >> $GITHUB_ENV
+          echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_ENV
       - name: Push Helm Chart to ghcr.io
         id: output
         run: | 
